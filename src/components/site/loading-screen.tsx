@@ -3,11 +3,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { assets } from "@/lib/products";
 
 export function LoadingScreen() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !sessionStorage.getItem("mimi-loaded");
+  });
   useEffect(() => {
-    const t = setTimeout(() => setShow(false), 1400);
+    if (!show) return;
+    const t = setTimeout(() => {
+      setShow(false);
+      sessionStorage.setItem("mimi-loaded", "1");
+    }, 1400);
     return () => clearTimeout(t);
-  }, []);
+  }, [show]);
+
   return (
     <AnimatePresence>
       {show && (

@@ -57,19 +57,16 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
       </motion.div>
 
-      {/* floating shapes */}
-      <motion.img
-        src={assets.dew}
-        alt=""
+      {/* soft gold orbs */}
+      <motion.div
         style={{ y }}
-        className="animate-float absolute right-[6%] top-[18%] hidden h-[52vh] w-auto drop-shadow-[0_40px_60px_rgba(0,0,0,0.4)] md:block"
+        className="pointer-events-none absolute right-[-6%] top-[10%] hidden h-[46vh] w-[46vh] rounded-full bg-gradient-to-br from-gold/40 to-transparent blur-3xl md:block"
       />
-      <motion.img
-        src={assets.herbe}
-        alt=""
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -160]) }}
-        className="animate-float absolute left-[4%] top-[46%] hidden h-[36vh] w-auto opacity-90 drop-shadow-[0_30px_50px_rgba(0,0,0,0.4)] lg:block"
+      <motion.div
+        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -140]) }}
+        className="pointer-events-none absolute left-[-8%] top-[40%] hidden h-[36vh] w-[36vh] rounded-full bg-gradient-to-br from-forest/40 to-transparent blur-3xl lg:block"
       />
+
 
       <motion.div
         style={{ opacity }}
