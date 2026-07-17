@@ -107,12 +107,12 @@ function ProductPage() {
               <div className="mt-5 text-sm text-foreground/85">
                 {tab === "ingredients" && (
                   <ul className="grid grid-cols-2 gap-2">
-                    {product.ingredients.map((i) => <li key={i} className="rounded-lg border border-border px-3 py-2">{i}</li>)}
+                    {product.ingredients.map((i: string) => <li key={i} className="rounded-lg border border-border px-3 py-2">{i}</li>)}
                   </ul>
                 )}
                 {tab === "benefits" && (
                   <ul className="space-y-2">
-                    {product.benefits.map((b) => <li key={b} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> {b}</li>)}
+                    {product.benefits.map((b: string) => <li key={b} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> {b}</li>)}
                   </ul>
                 )}
                 {tab === "directions" && <p className="leading-relaxed">{product.directions}</p>}
