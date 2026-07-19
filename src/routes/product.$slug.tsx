@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Heart, Minus, Plus, Share2, Star } from "lucide-react";
 import { useCart } from "@/lib/cart";
+import { useWishlist } from "@/lib/wishlist";
 import { ProductCard } from "@/components/site/product-card";
 
 export const Route = createFileRoute("/product/$slug")({
@@ -80,6 +81,9 @@ function ProductPage() {
 
             <div className="mt-8 flex items-baseline gap-3">
               <span className="font-display text-4xl">${product.price}</span>
+              {product.originalPrice > product.price && (
+                <span className="text-lg text-muted-foreground line-through">${product.originalPrice}</span>
+              )}
               <span className="text-sm text-muted-foreground">/ {product.size}</span>
             </div>
 

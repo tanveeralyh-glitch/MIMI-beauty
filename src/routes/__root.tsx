@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "@/lib/theme";
 import { CartProvider } from "@/lib/cart";
+import { WishlistProvider } from "@/lib/wishlist";
 import { useSmoothScroll } from "@/lib/lenis";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
@@ -113,7 +114,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <CartProvider>
-          <AppShell />
+          <WishlistProvider>
+            <AppShell />
+          </WishlistProvider>
         </CartProvider>
       </ThemeProvider>
     </QueryClientProvider>

@@ -18,20 +18,11 @@ const Pinterest = (props: any) => (
 );
 
 export function Footer() {
-  const shopLinks = [
-    ["Cleansers", "/shop/cleansers"],
-    ["Serums", "/shop/serums"],
-    ["Moisturizers", "/shop/moisturizers"],
-    ["Sunscreen", "/shop/sunscreen"],
-    ["Gift Sets", "/shop/gift-sets"],
-    ["Best Sellers", "/shop/best-sellers"],
-  ];
+
   
   const companyLinks = [
     ["About Us", "/about"],
     ["Our Story", "/story"],
-    ["Ingredients", "/ingredients"],
-    ["Sustainability", "/sustainability"],
     ["Contact", "/contact"],
     ["FAQ", "/faq"],
   ];
@@ -41,7 +32,6 @@ export function Footer() {
     ["Returns", "/returns"],
     ["Privacy Policy", "/privacy"],
     ["Terms & Conditions", "/terms"],
-    ["Track Order", "/track"],
   ];
 
   const fadeUp = {
@@ -88,7 +78,7 @@ export function Footer() {
         {/* Footer Layout (4 Columns) */}
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={stagger}
-          className="grid gap-16 py-24 md:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-16 py-24 md:grid-cols-2 lg:grid-cols-3"
         >
           {/* Column 1 - Brand */}
           <motion.div variants={fadeUp} className="flex flex-col">
@@ -107,20 +97,7 @@ export function Footer() {
             <p className="mt-10 text-[11px] uppercase tracking-[0.3em] font-semibold text-gold">ESTD. 2026</p>
           </motion.div>
 
-          {/* Column 2 - Shop */}
-          <motion.div variants={fadeUp}>
-            <h4 className="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-white/90">Shop</h4>
-            <ul className="space-y-4 text-sm">
-              {shopLinks.map(([label, to]) => (
-                <li key={label} className="group flex w-max items-center">
-                  <Link to={to} className="relative text-white/70 transition-all duration-400 hover:text-white group-hover:translate-x-2">
-                    {label}
-                    <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-gold transition-all duration-400 group-hover:w-full" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+
 
           {/* Column 3 - Company */}
           <motion.div variants={fadeUp}>

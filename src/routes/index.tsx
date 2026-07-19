@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   ArrowRight, Leaf, ShieldCheck, Sparkles, Truck, Rabbit, Recycle,
   Star, ChevronDown, Play,
@@ -27,7 +27,7 @@ function Home() {
     <>
       <Hero />
       <BestSellers />
-      <FeaturedCategories />
+
       <WhyChoose />
       <Ingredients />
       <Compare />
@@ -141,47 +141,6 @@ function SectionHeader({ eyebrow, title, kicker }: { eyebrow: string; title: str
   );
 }
 
-function FeaturedCategories() {
-  const catImages = [
-    "/media__1784439898541.jpg",
-    "/media__1784439898491.jpg",
-    "/media__1784439898596.jpg",
-    "/media__1784439898781.jpg",
-    "/media__1784439898181.jpg",
-    "/media__1784439730149.png",
-    "/media__1784439730167.png",
-    "/media__1784439898541.jpg"
-  ];
-  return (
-    <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
-      <SectionHeader eyebrow="The Wardrobe" title="Curated by ritual" kicker="Every category, considered. Choose the object that will live on your shelf." />
-      <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {categories.map((c, i) => (
-          <motion.button
-            key={c}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: i * 0.05 }}
-            whileHover={{ y: -6 }}
-            className="group relative aspect-square overflow-hidden rounded-2xl border border-border bg-secondary/50 p-6 text-left"
-          >
-            <img
-              src={catImages[i % catImages.length]}
-              alt=""
-              className="absolute inset-0 -z-10 h-full w-full object-cover transition duration-700 group-hover:scale-110"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background/85 via-background/30 to-background/10 transition group-hover:from-background/70" />
-            <p className="text-[11px] uppercase tracking-[0.3em] text-gold">0{i + 1}</p>
-            <p className="mt-auto flex h-full items-end font-display text-2xl md:text-3xl text-foreground">{c}</p>
-            <ArrowRight className="absolute bottom-6 right-6 h-4 w-4 -translate-x-2 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100 text-gold" />
-          </motion.button>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 
 function BestSellers() {
@@ -384,45 +343,222 @@ function Testimonials() {
   );
 }
 
+const cinematicScenes = [
+  {
+    src: "/media__1784439898781.jpg",
+    label: "Herbé · Pre Wash",
+    title: "Nourish. Strengthen. Balance.",
+    caption: "Scalp Treatment · 50ml",
+    pan: { x: [0, -14, 0], y: [0, 6, 0] },
+  },
+  {
+    src: "/media__1784439898181.jpg",
+    label: "The Collection",
+    title: "A ritual for every need.",
+    caption: "Dew · Veil · Herbé · Hálo",
+    pan: { x: [0, 10, 0], y: [0, -8, 0] },
+  },
+  {
+    src: "/media__1784439898596.jpg",
+    label: "Dew · Barrier Repair",
+    title: "Hydrate. Repair. Glow.",
+    caption: "Dewy Glow Face Serum · 30ml",
+    pan: { x: [0, -10, 0], y: [0, 10, 0] },
+  },
+  {
+    src: "/media__1784439898491.jpg",
+    label: "Mimi Beauty · Ritual",
+    title: "Crafted for the considered.",
+    caption: "Botanical · Clinical · Precise",
+    pan: { x: [0, 8, 0], y: [0, -6, 0] },
+  },
+  {
+    src: "/media__1784439898541.jpg",
+    label: "The Ritual · Pure",
+    title: "Every gesture, intentional.",
+    caption: "Radiance · Strength · Grace",
+    pan: { x: [0, -12, 0], y: [0, 8, 0] },
+  },
+];
+
+const SCENE_DURATION = 4000; // ms per scene
+
 function VideoSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startPlayback = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (progressRef.current) clearInterval(progressRef.current);
+
+    setProgress(0);
+    const tick = 50;
+    const steps = SCENE_DURATION / tick;
+    let step = 0;
+    progressRef.current = setInterval(() => {
+      step++;
+      setProgress((step / steps) * 100);
+    }, tick);
+
+    intervalRef.current = setInterval(() => {
+      setActiveIndex(i => (i + 1) % cinematicScenes.length);
+      setProgress(0);
+      step = 0;
+    }, SCENE_DURATION);
+  };
+
+  useEffect(() => {
+    if (isPlaying) startPlayback();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
+  }, [isPlaying]);
+
+  const scene = cinematicScenes[activeIndex];
+
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.2 }}
         className="relative aspect-[21/9] overflow-hidden rounded-3xl"
       >
-        <motion.video
-          src="https://videos.pexels.com/video-files/7479891/7479891-uhd_2560_1440_25fps.mp4"
-          poster={assets.water}
-          autoPlay
-          muted
-          loop
-          playsInline
-          initial={{ scale: 1.15 }}
-          animate={{ scale: [1.15, 1.05, 1.15] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 h-full w-full object-cover"
+        {/* ── Cinematic scenes with cross-fade ── */}
+        {cinematicScenes.map((s, i) => (
+          <motion.img
+            key={s.src}
+            src={s.src}
+            alt={s.title}
+            aria-hidden={i !== activeIndex}
+            animate={{
+              opacity: i === activeIndex ? 1 : 0,
+              scale: i === activeIndex ? [1.12, 1.04] : 1.12,
+              x: i === activeIndex ? s.pan.x : 0,
+              y: i === activeIndex ? s.pan.y : 0,
+            }}
+            transition={{
+              opacity: { duration: 1.2, ease: "easeInOut" },
+              scale: { duration: SCENE_DURATION / 1000, ease: "easeInOut" },
+              x: { duration: SCENE_DURATION / 1000, ease: "easeInOut" },
+              y: { duration: SCENE_DURATION / 1000, ease: "easeInOut" },
+            }}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        ))}
+
+        {/* Cinematic vignette overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/15 to-background/30 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/20 z-10" />
+
+        {/* Warm golden shimmer */}
+        <motion.div
+          animate={{ opacity: [0.15, 0.28, 0.15] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 bg-gradient-to-br from-amber-900/20 via-transparent to-yellow-900/10 z-10"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-background/40" />
-        <div className="absolute inset-0 grid place-items-center">
-          <button className="group relative grid h-24 w-24 place-items-center rounded-full border border-gold/80 bg-background/40 backdrop-blur">
-            <span className="absolute inset-0 animate-ping rounded-full bg-gold/30" />
-            <Play className="h-6 w-6 translate-x-0.5 text-gold" />
+
+        {/* Top right label */}
+        <div className="absolute top-8 right-10 flex items-center gap-3 z-20">
+          <span className="h-px w-10 bg-gold/60" />
+          <p className="text-[10px] uppercase tracking-[0.45em] text-gold/80">Mimi Beauty · The Ritual</p>
+        </div>
+
+        {/* Pulsing orb */}
+        <motion.div
+          animate={{ scale: [1, 1.15, 1], opacity: [0.18, 0.32, 0.18] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute right-1/4 top-1/3 h-64 w-64 rounded-full bg-gold/10 blur-3xl pointer-events-none z-10"
+        />
+
+        {/* Center play/pause button */}
+        <div className="absolute inset-0 grid place-items-center z-20">
+          <button
+            onClick={() => setIsPlaying(p => !p)}
+            className="group relative grid h-20 w-20 place-items-center rounded-full border border-gold/70 bg-background/30 backdrop-blur-sm cursor-pointer hover:bg-gold/20 transition-colors duration-500"
+            aria-label={isPlaying ? "Pause" : "Play"}
+          >
+            <span className="absolute inset-0 animate-ping rounded-full bg-gold/20" />
+            <span className="absolute inset-[-8px] rounded-full border border-gold/20 animate-pulse" />
+            {isPlaying ? (
+              <span className="flex gap-1">
+                <span className="h-4 w-1 rounded-sm bg-gold" />
+                <span className="h-4 w-1 rounded-sm bg-gold" />
+              </span>
+            ) : (
+              <Play className="h-5 w-5 translate-x-0.5 text-gold" />
+            )}
           </button>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-          className="absolute bottom-10 left-10"
-        >
-          <p className="text-[11px] uppercase tracking-[0.4em] text-gold">The Ritual · 01</p>
-          <h3 className="mt-3 font-display text-4xl md:text-5xl">A morning, illuminated.</h3>
-        </motion.div>
+
+        {/* Bottom left – animated scene text */}
+        <div className="absolute bottom-10 left-10 z-20">
+          <motion.p
+            key={scene.label}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-[11px] uppercase tracking-[0.4em] text-gold"
+          >
+            {scene.label}
+          </motion.p>
+          <motion.h3
+            key={scene.title}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mt-3 font-display text-4xl md:text-5xl leading-tight"
+          >
+            {scene.title}
+          </motion.h3>
+          <motion.div
+            key={`line-${activeIndex}`}
+            initial={{ width: 0 }}
+            animate={{ width: "4rem" }}
+            transition={{ duration: 0.9, delay: 0.3 }}
+            className="mt-4 h-px bg-gold/60"
+          />
+        </div>
+
+        {/* Bottom right – caption + scene dots */}
+        <div className="absolute bottom-10 right-10 text-right z-20 flex flex-col items-end gap-3">
+          <motion.p
+            key={scene.caption}
+            initial={{ opacity: 0, x: 12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/70"
+          >
+            {scene.caption}
+          </motion.p>
+          {/* Scene selector dots */}
+          <div className="flex gap-2">
+            {cinematicScenes.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setActiveIndex(i); if (isPlaying) startPlayback(); }}
+                className={`h-1 rounded-full transition-all duration-500 ${
+                  i === activeIndex ? "w-6 bg-gold" : "w-2 bg-gold/30 hover:bg-gold/60"
+                }`}
+                aria-label={`Go to scene ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom progress bar */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/10 z-30">
+          <motion.div
+            className="h-full bg-gradient-to-r from-gold/60 to-gold"
+            style={{ width: `${progress}%` }}
+            transition={{ ease: "linear" }}
+          />
+        </div>
       </motion.div>
     </section>
   );

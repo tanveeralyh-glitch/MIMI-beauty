@@ -25,6 +25,7 @@ export type Product = {
   category: string;
   collection: string;
   price: number;
+  originalPrice: number;
   size: string;
   image: string;
   hoverImage: string;
@@ -45,6 +46,7 @@ export const products: Product[] = [
     category: "Serum",
     collection: "Glow",
     price: 68,
+    originalPrice: 85,
     size: "30ml",
     image: assets.dew,
     hoverImage: assets.water,
@@ -64,6 +66,7 @@ export const products: Product[] = [
     category: "Hair",
     collection: "Hydration",
     price: 54,
+    originalPrice: 72,
     size: "30ml",
     image: assets.veil,
     hoverImage: assets.lineup,
@@ -83,6 +86,7 @@ export const products: Product[] = [
     category: "Scalp",
     collection: "Anti Aging",
     price: 62,
+    originalPrice: 78,
     size: "50ml",
     image: assets.herbe,
     hoverImage: assets.stone,
@@ -102,6 +106,7 @@ export const products: Product[] = [
     category: "Body",
     collection: "Glow",
     price: 78,
+    originalPrice: 98,
     size: "100ml",
     image: assets.halo,
     hoverImage: assets.water,
