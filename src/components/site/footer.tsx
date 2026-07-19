@@ -1,60 +1,183 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Music2 } from "lucide-react";
+import { Instagram, Facebook, Youtube, ShieldCheck, Leaf, Rabbit } from "lucide-react";
+import { motion } from "framer-motion";
 import { assets } from "@/lib/products";
 
+// Custom SVGs for icons not in lucide by default
+const Tiktok = (props: any) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
+const Pinterest = (props: any) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <line x1="12" y1="22" x2="12" y2="12" />
+    <path d="M12 2a8 8 0 1 0 0 16c4 0 7-3.5 7-8" />
+  </svg>
+);
+
 export function Footer() {
-  const groups = [
-    { title: "Shop", links: [["Shop All", "/shop"], ["Collections", "/collections"], ["Ingredients", "/ingredients"], ["Skin Quiz", "/quiz"]] },
-    { title: "Company", links: [["About", "/about"], ["Blog", "/blog"], ["Contact", "/contact"], ["FAQ", "/faq"]] },
-    { title: "Support", links: [["Shipping", "/shipping"], ["Refund", "/refund"], ["Terms", "/terms"], ["Privacy", "/privacy"]] },
+  const shopLinks = [
+    ["Cleansers", "/shop/cleansers"],
+    ["Serums", "/shop/serums"],
+    ["Moisturizers", "/shop/moisturizers"],
+    ["Sunscreen", "/shop/sunscreen"],
+    ["Gift Sets", "/shop/gift-sets"],
+    ["Best Sellers", "/shop/best-sellers"],
   ];
+  
+  const companyLinks = [
+    ["About Us", "/about"],
+    ["Our Story", "/story"],
+    ["Ingredients", "/ingredients"],
+    ["Sustainability", "/sustainability"],
+    ["Contact", "/contact"],
+    ["FAQ", "/faq"],
+  ];
+  
+  const supportLinks = [
+    ["Shipping", "/shipping"],
+    ["Returns", "/returns"],
+    ["Privacy Policy", "/privacy"],
+    ["Terms & Conditions", "/terms"],
+    ["Track Order", "/track"],
+  ];
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+  };
+
+  const stagger = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
+
   return (
-    <footer className="relative mt-32 border-t border-border/60 bg-secondary/40 pt-20 grain">
-      <div className="mx-auto grid max-w-[1400px] gap-12 px-6 pb-16 md:grid-cols-[1.4fr_repeat(3,1fr)_1.2fr]">
-        <div>
-          <div className="flex items-center gap-3">
-            <img src={assets.logo} alt="MIMIbeauty" className="h-10 w-10 rounded-full object-cover" />
-            <span className="font-display text-2xl">MIMI<span className="text-gold">beauty</span></span>
-          </div>
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Ritualistic skincare crafted in small batches. Botanical actives, clinical results, quiet luxury.
+    <footer className="relative mt-32 overflow-hidden bg-black text-white pt-24 pb-8 transition-colors duration-700">
+      {/* Subtle Premium Glow Divider */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent shadow-[0_0_15px_rgba(212,175,55,0.4)]" />
+
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+        {/* Top CTA Section */}
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
+          className="flex flex-col items-center text-center pb-24 border-b border-white/10"
+        >
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight text-balance">
+            Your Journey to Radiant Skin Starts Here.
+          </h2>
+          <p className="mt-6 max-w-lg text-sm md:text-base text-white/70 leading-relaxed">
+            Join the MIMIbeauty inner circle for early access to drops, exclusive rituals, and quiet skincare education.
           </p>
-          <p className="mt-8 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">ESTD · 2026</p>
-        </div>
-        {groups.map((g) => (
-          <div key={g.title}>
-            <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-gold">{g.title}</h4>
-            <ul className="space-y-3 text-sm">
-              {g.links.map(([label, to]) => (
-                <li key={label}>
-                  <Link to={to} className="text-foreground/70 transition hover:text-foreground">{label}</Link>
+          
+          <div className="mt-10 flex w-full max-w-md flex-col sm:flex-row gap-3 relative group">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full flex-1 rounded-full border border-white/20 bg-transparent px-6 py-4 text-sm text-white placeholder:text-white/50 outline-none transition-all duration-400 focus:border-gold focus:ring-1 focus:ring-gold"
+            />
+            <button className="relative overflow-hidden rounded-full bg-gold px-8 py-4 text-sm font-medium text-white transition-all duration-400 hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:scale-105 active:scale-95 group-button">
+              <span className="relative z-10">Subscribe</span>
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 hover:translate-x-full" />
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Footer Layout (4 Columns) */}
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={stagger}
+          className="grid gap-16 py-24 md:grid-cols-2 lg:grid-cols-4"
+        >
+          {/* Column 1 - Brand */}
+          <motion.div variants={fadeUp} className="flex flex-col">
+            <div className="flex items-center gap-3">
+              <img src={assets.logo} alt="MIMIbeauty" className="h-12 w-12 rounded-full object-cover shadow-sm" />
+              <span className="font-display text-3xl tracking-tight text-white">MIMI<span className="text-gold italic">beauty</span></span>
+            </div>
+            <p className="mt-6 text-sm text-white/70 leading-relaxed max-w-xs">
+              Ritualistic skincare crafted in small batches. Botanical actives, clinical results, quiet luxury.
+            </p>
+            <div className="mt-8 flex gap-4 text-white/40">
+              <div className="flex flex-col items-center gap-1"><ShieldCheck className="h-5 w-5" /><span className="text-[9px] uppercase tracking-widest">Tested</span></div>
+              <div className="flex flex-col items-center gap-1"><Leaf className="h-5 w-5" /><span className="text-[9px] uppercase tracking-widest">Vegan</span></div>
+              <div className="flex flex-col items-center gap-1"><Rabbit className="h-5 w-5" /><span className="text-[9px] uppercase tracking-widest">Cruelty-free</span></div>
+            </div>
+            <p className="mt-10 text-[11px] uppercase tracking-[0.3em] font-semibold text-gold">ESTD. 2026</p>
+          </motion.div>
+
+          {/* Column 2 - Shop */}
+          <motion.div variants={fadeUp}>
+            <h4 className="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-white/90">Shop</h4>
+            <ul className="space-y-4 text-sm">
+              {shopLinks.map(([label, to]) => (
+                <li key={label} className="group flex w-max items-center">
+                  <Link to={to} className="relative text-white/70 transition-all duration-400 hover:text-white group-hover:translate-x-2">
+                    {label}
+                    <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-gold transition-all duration-400 group-hover:w-full" />
+                  </Link>
                 </li>
               ))}
             </ul>
+          </motion.div>
+
+          {/* Column 3 - Company */}
+          <motion.div variants={fadeUp}>
+            <h4 className="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-white/90">Company</h4>
+            <ul className="space-y-4 text-sm">
+              {companyLinks.map(([label, to]) => (
+                <li key={label} className="group flex w-max items-center">
+                  <Link to={to} className="relative text-white/70 transition-all duration-400 hover:text-white group-hover:translate-x-2">
+                    {label}
+                    <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-gold transition-all duration-400 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Column 4 - Support & Social */}
+          <motion.div variants={fadeUp}>
+            <h4 className="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-white/90">Support</h4>
+            <ul className="space-y-4 text-sm mb-12">
+              {supportLinks.map(([label, to]) => (
+                <li key={label} className="group flex w-max items-center">
+                  <Link to={to} className="relative text-white/70 transition-all duration-400 hover:text-white group-hover:translate-x-2">
+                    {label}
+                    <span className="absolute -bottom-1 left-0 h-[1px] w-0 bg-gold transition-all duration-400 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            
+            <div className="flex flex-wrap gap-3">
+              {[Instagram, Facebook, Tiktok, Pinterest, Youtube].map((Icon, i) => (
+                <a key={i} className="grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white/70 transition-all duration-400 hover:scale-110 hover:border-gold hover:text-gold hover:shadow-[0_0_15px_rgba(212,175,55,0.4)]" href="#" aria-label="Social link">
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Bottom Bar */}
+        <motion.div 
+          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 1 }}
+          className="flex flex-col items-center justify-between gap-6 border-t border-white/10 py-8 md:flex-row"
+        >
+          <p className="text-[11px] text-white/50">
+            © 2026 Mimi Beauty. All Rights Reserved.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 text-[11px] text-white/50">
+            <Link to="/privacy" className="transition-colors hover:text-gold">Privacy Policy</Link>
+            <Link to="/terms" className="transition-colors hover:text-gold">Terms of Service</Link>
+            <Link to="/cookies" className="transition-colors hover:text-gold">Cookies</Link>
           </div>
-        ))}
-        <div>
-          <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-gold">Newsletter</h4>
-          <p className="mb-4 text-sm text-muted-foreground">Rituals, drops, and quiet things. No noise.</p>
-          <form className="flex overflow-hidden rounded-full border border-border bg-background">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="w-full bg-transparent px-4 py-3 text-sm outline-none"
-            />
-            <button className="bg-gold px-5 text-sm font-medium text-background transition hover:bg-gold-soft">Join</button>
-          </form>
-          <div className="mt-6 flex gap-3">
-            {[Instagram, Facebook, Music2].map((I, i) => (
-              <a key={i} className="grid h-10 w-10 place-items-center rounded-full border border-border transition hover:border-gold hover:text-gold" href="#" aria-label="social">
-                <I className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-border/60 py-6 text-center text-xs text-muted-foreground">
-        © 2026 MIMIbeauty. Crafted with intention.
+          <p className="text-[11px] text-white/40 italic">
+            Designed with elegance.
+          </p>
+        </motion.div>
       </div>
     </footer>
   );

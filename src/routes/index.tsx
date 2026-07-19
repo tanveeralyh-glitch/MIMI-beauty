@@ -36,7 +36,6 @@ function Home() {
       <QuizPreview />
 
       <Instagram />
-      <Blog />
       <Newsletter />
     </>
   );
@@ -511,19 +510,23 @@ function Instagram() {
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
       <SectionHeader eyebrow="@mimibeauty" title="Rituals, in the wild." />
-      <div className="mt-14 grid grid-cols-2 gap-2 md:grid-cols-4">
+      <div className="mt-14 grid grid-cols-2 items-center gap-6 md:grid-cols-4 md:gap-8">
         {imgs.map((src, i) => (
           <motion.a
             key={i}
             href="#"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: i * 0.04, duration: 0.6 }}
-            className={`group relative overflow-hidden rounded-xl ${i % 5 === 0 ? "aspect-[3/4] md:row-span-2" : "aspect-square"}`}
+            transition={{ delay: i * 0.1, duration: 0.8 }}
+            className={`block relative overflow-hidden bg-secondary/10 shadow-sm ${
+              i % 4 === 0 ? "aspect-[2/3] rounded-t-[100px] rounded-b-2xl md:-translate-y-8" :
+              i % 4 === 1 ? "aspect-square rounded-full" :
+              i % 4 === 2 ? "aspect-[3/4] rounded-3xl md:translate-y-12" :
+              "aspect-[4/5] rounded-br-[80px] rounded-tl-[80px] rounded-tr-2xl rounded-bl-2xl"
+            }`}
           >
-            <img src={src} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" />
-            <div className="absolute inset-0 bg-foreground/40 opacity-0 transition group-hover:opacity-100" />
+            <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
           </motion.a>
         ))}
       </div>
@@ -571,9 +574,9 @@ function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, delay: i * 0.06 }}
-              className="group overflow-hidden rounded-2xl border border-border bg-background hover-lift"
+              className="group flex flex-col"
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-[3/4] overflow-hidden rounded-none bg-secondary/20">
                 <img 
                   src={[
                     "https://images.unsplash.com/photo-1611078449921-2a134a413d42?auto=format&fit=crop&q=80", 
@@ -581,11 +584,11 @@ function Blog() {
                     "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80"
                   ][i]} 
                   alt="" 
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105" 
+                  className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-105" 
                   loading="lazy" 
                 />
               </div>
-              <div className="p-6">
+              <div className="pt-6">
                 <p className="text-[11px] uppercase tracking-[0.3em] text-gold">{p.tag}</p>
                 <h3 className="mt-3 font-display text-2xl">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
@@ -604,16 +607,16 @@ function Blog() {
 function Newsletter() {
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
-      <div className="relative overflow-hidden rounded-3xl bg-foreground p-10 text-background md:p-20 grain">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-gold/40 blur-3xl" />
-        <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-gold/30 blur-3xl" />
+      <div className="relative overflow-hidden rounded-3xl bg-secondary/50 p-10 text-foreground md:p-20 grain">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-gold/20 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
         <div className="relative grid gap-8 md:grid-cols-2 md:items-center">
           <div>
             <p className="text-[11px] uppercase tracking-[0.4em] text-gold">The Letter</p>
             <h2 className="mt-4 font-display text-5xl md:text-6xl leading-[1.05] tracking-tight text-balance">
               Slow drops, quiet news.
             </h2>
-            <p className="mt-4 max-w-md text-background/70">
+            <p className="mt-4 max-w-md text-muted-foreground">
               Occasional letters on ritual, ingredients, and new arrivals. Never noise.
             </p>
           </div>
@@ -621,7 +624,7 @@ function Newsletter() {
             <input
               type="email"
               placeholder="your@email.com"
-              className="w-full flex-1 rounded-full border border-background/20 bg-background/10 px-6 py-4 text-sm text-background placeholder:text-background/50 outline-none focus:border-gold"
+              className="w-full flex-1 rounded-full border border-border bg-background/50 px-6 py-4 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-gold"
             />
             <button className="rounded-full bg-gold px-8 py-4 text-sm font-medium text-background transition hover:bg-gold-soft">
               Subscribe
