@@ -55,9 +55,9 @@ export function Header() {
       >
         <div className="mx-auto grid max-w-[1400px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 py-4 md:py-5">
           <Link to="/" className="flex items-center gap-2">
-            <img src={assets.logo} alt="MIMIbeauty" className="h-9 w-9 rounded-full object-cover" />
-            <span className="hidden font-display text-xl tracking-wider md:block">
-              MIMI<span className="text-gold">beauty</span>
+            <img src={assets.logo} alt="MIMI BEAUTY" className="h-9 w-9 rounded-full object-cover" />
+            <span className="font-display text-lg tracking-[0.2em] md:text-xl">
+              MIMI <span className="text-gold">BEAUTY</span>
             </span>
           </Link>
 
