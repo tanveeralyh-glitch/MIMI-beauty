@@ -511,8 +511,27 @@ function Blog() {
   return (
     <section className="border-y border-border/60 bg-secondary/40 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6">
-        <div className="flex items-end justify-between">
-          <SectionHeader eyebrow="Journal" title="Read, slowly." />
+        <div className="mx-auto max-w-3xl text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="text-[11px] uppercase tracking-[0.5em] text-gold"
+          >
+            — The Journal —
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, ease: [0.2, 0.7, 0.2, 1] }}
+            className="mt-6 font-script text-[clamp(4rem,10vw,8rem)] leading-[0.9] text-gold"
+          >
+            Read, slowly.
+          </motion.h2>
+          <motion.div
+            initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="mx-auto mt-6 h-px w-32 origin-left bg-gold/60"
+          />
         </div>
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {posts.map((p, i) => (
