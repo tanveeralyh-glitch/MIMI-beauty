@@ -34,7 +34,7 @@ function Home() {
       <Testimonials />
       <VideoSection />
       <QuizPreview />
-      <CollectionsGrid />
+
       <Instagram />
       <Blog />
       <Newsletter />
