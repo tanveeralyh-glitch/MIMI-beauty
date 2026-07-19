@@ -381,7 +381,18 @@ function VideoSection() {
         transition={{ duration: 1 }}
         className="relative aspect-[21/9] overflow-hidden rounded-3xl"
       >
-        <img src={assets.water} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <motion.video
+          src="https://videos.pexels.com/video-files/3181685/3181685-uhd_2560_1440_25fps.mp4"
+          poster={assets.water}
+          autoPlay
+          muted
+          loop
+          playsInline
+          initial={{ scale: 1.15 }}
+          animate={{ scale: [1.15, 1.05, 1.15] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-background/40" />
         <div className="absolute inset-0 grid place-items-center">
           <button className="group relative grid h-24 w-24 place-items-center rounded-full border border-gold/80 bg-background/40 backdrop-blur">
@@ -389,10 +400,16 @@ function VideoSection() {
             <Play className="h-6 w-6 translate-x-0.5 text-gold" />
           </button>
         </div>
-        <div className="absolute bottom-10 left-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="absolute bottom-10 left-10"
+        >
           <p className="text-[11px] uppercase tracking-[0.4em] text-gold">The Ritual · 01</p>
           <h3 className="mt-3 font-display text-4xl md:text-5xl">A morning, illuminated.</h3>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
