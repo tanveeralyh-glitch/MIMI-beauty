@@ -116,21 +116,6 @@ function Hero() {
   );
 }
 
-function Marquee() {
-  const items = ["Rhode-worthy glow", "Clinically balanced", "Made in small batches", "Ceramide barrier", "Vegan & cruelty free", "Dermatologist tested"];
-  return (
-    <div className="border-y border-border/60 bg-secondary/40 py-8 overflow-hidden">
-      <div className="flex animate-marquee gap-16 whitespace-nowrap font-display text-3xl md:text-5xl">
-        {[...items, ...items].map((t, i) => (
-          <span key={i} className="flex items-center gap-16">
-            <span className={i % 2 ? "text-foreground/80" : "italic text-gold"}>{t}</span>
-            <span className="text-gold">✦</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function SectionHeader({ eyebrow, title, kicker }: { eyebrow: string; title: string; kicker?: string }) {
   return (
