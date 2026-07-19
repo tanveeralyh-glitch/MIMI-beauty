@@ -45,7 +45,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative mt-32 overflow-hidden bg-black text-white pt-24 pb-8 transition-colors duration-700">
+    <footer className="relative mt-20 md:mt-32 overflow-hidden bg-black text-white pt-12 md:pt-24 pb-8 transition-colors duration-700">
       {/* Subtle Premium Glow Divider */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent shadow-[0_0_15px_rgba(212,175,55,0.4)]" />
 
@@ -53,9 +53,9 @@ export function Footer() {
         {/* Top CTA Section */}
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-          className="flex flex-col items-center text-center pb-24 border-b border-white/10"
+          className="flex flex-col items-center text-center pb-16 md:pb-24 border-b border-white/10"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight text-balance">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl tracking-tight text-balance">
             Your Journey to Radiant Skin Starts Here.
           </h2>
           <p className="mt-6 max-w-lg text-sm md:text-base text-white/70 leading-relaxed">
@@ -75,16 +75,16 @@ export function Footer() {
           </div>
         </motion.div>
 
-        {/* Footer Layout (4 Columns) */}
+        {/* Footer Layout (3 Columns) */}
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={stagger}
-          className="grid gap-16 py-24 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-12 md:gap-16 py-16 md:py-24 md:grid-cols-2 lg:grid-cols-3"
         >
           {/* Column 1 - Brand */}
           <motion.div variants={fadeUp} className="flex flex-col">
             <div className="flex items-center gap-3">
               <img src={assets.logo} alt="MIMIbeauty" className="h-12 w-12 rounded-full object-cover shadow-sm" />
-              <span className="font-display text-3xl tracking-tight text-white">MIMI<span className="text-gold italic">beauty</span></span>
+              <span className="font-script text-4xl leading-none tracking-tight text-gold">Mimi Beauty.</span>
             </div>
             <p className="mt-6 text-sm text-white/70 leading-relaxed max-w-xs">
               Ritualistic skincare crafted in small batches. Botanical actives, clinical results, quiet luxury.

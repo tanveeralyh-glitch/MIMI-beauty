@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
   ArrowRight, Leaf, ShieldCheck, Sparkles, Truck, Rabbit, Recycle,
@@ -42,75 +42,103 @@ function Home() {
 }
 
 function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 220]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const [activeBanner, setActiveBanner] = useState(0);
+  
+  const banners = [
+    {
+      eyebrow: "ESTD. 2026",
+      title: "Glow begins with a ",
+      italic: "ritual.",
+      description: "Luxury skincare crafted with botanical ingredients and modern science.",
+      image: "/luxury_skincare_hero.png",
+      pan: { x: [0, -15, 0], y: [0, 10, 0] }
+    },
+    {
+      eyebrow: "Skincare Routine",
+      title: "The art of the ",
+      italic: "daily ritual.",
+      description: "A beautiful elegant woman with glowing skin using a luxury skincare product in a modern minimalist bathroom.",
+      image: "/videos/scene_face.png",
+      pan: { x: [0, 15, 0], y: [0, -10, 0] }
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveBanner((prev) => (prev + 1) % banners.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [banners.length]);
 
   return (
-    <section ref={ref} className="relative isolate min-h-[100svh] overflow-hidden">
-      <motion.div style={{ scale }} className="absolute inset-0 -z-10">
-        <img src="/media__1784439898181.jpg" alt="Hero background" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
-      </motion.div>
+    <section className="relative min-h-[90svh] overflow-hidden pt-20 pb-12 flex items-center bg-gradient-to-br from-[#faf9f7] to-white dark:from-background dark:to-background/80">
+      <div className="mx-auto max-w-[1400px] w-full px-6 grid gap-10 md:gap-12 lg:grid-cols-2 lg:items-center relative z-10">
+        
+        {/* Left Side: Text */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`text-${activeBanner}`}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 30 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col items-start pt-6 md:pt-10"
+          >
+            <p className="text-[10px] md:text-sm uppercase tracking-[0.4em] text-gold font-medium mb-4 md:mb-6">
+              {banners[activeBanner].eyebrow}
+            </p>
+            <h1 className="font-display text-[clamp(3.25rem,10vw,6rem)] leading-[1.05] tracking-tight text-foreground text-balance">
+              {banners[activeBanner].title} <span className="text-gold italic font-normal block md:inline">{banners[activeBanner].italic}</span>
+            </h1>
+            <p className="mt-5 md:mt-6 max-w-xl text-lg md:text-2xl text-muted-foreground/80 leading-relaxed">
+              {banners[activeBanner].description}
+            </p>
+            <Link
+              to="/shop"
+              className="mt-8 md:mt-10 inline-flex items-center gap-3 rounded-full bg-foreground px-8 py-4 md:px-10 md:py-5 text-sm md:text-base font-medium text-background transition-all hover:bg-gold hover:shadow-lg hover:shadow-gold/20 active:scale-95"
+            >
+              Explore Collection
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </motion.div>
+        </AnimatePresence>
 
-      {/* soft gold orbs */}
-      <motion.div
-        style={{ y }}
-        className="pointer-events-none absolute right-[-6%] top-[10%] hidden h-[46vh] w-[46vh] rounded-full bg-gradient-to-br from-gold/40 to-transparent blur-3xl md:block"
-      />
-      <motion.div
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -140]) }}
-        className="pointer-events-none absolute left-[-8%] top-[40%] hidden h-[36vh] w-[36vh] rounded-full bg-gradient-to-br from-forest/40 to-transparent blur-3xl lg:block"
-      />
-
-
-      <motion.div
-        style={{ opacity }}
-        className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1400px] flex-col justify-end px-6 pb-24 pt-40 md:justify-center md:pb-32"
-      >
-        <motion.p
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-[11px] uppercase tracking-[0.5em] text-gold"
-        >
-          Estd. 2026 · A ritual of light
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
-          transition={{ duration: 1.2, delay: 0.5, ease: [0.2, 0.7, 0.2, 1] }}
-          className="mt-6 max-w-4xl font-display text-[clamp(3rem,9vw,8rem)] font-medium leading-[0.95] tracking-[-0.03em] text-balance"
-        >
-          Reveal your <em className="text-gold not-italic">natural</em> beauty.
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.9 }}
-          className="mt-8 max-w-xl text-lg text-foreground/80"
-        >
-          Ritualistic skincare crafted from botanical actives and quiet science.
-          Formulated in small batches. Made to be felt.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 1.1 }}
-          className="mt-10 flex flex-wrap gap-3"
-        >
-          <Link to="/shop" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-medium text-background transition hover:bg-gold hover:text-background">
-            Discover the ritual
-            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-          </Link>
-          <Link to="/quiz" className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/30 px-7 py-4 text-sm backdrop-blur transition hover:border-gold hover:text-gold">
-            Take the skin quiz
-          </Link>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 1 }}
-          className="mt-16 hidden items-center gap-2 text-[11px] uppercase tracking-[0.4em] text-muted-foreground md:flex"
-        >
-          <ChevronDown className="h-3 w-3 animate-bounce" /> Scroll
-        </motion.div>
-      </motion.div>
+        {/* Right Side: Image */}
+        <div className="relative aspect-[4/5] lg:aspect-auto h-[55vh] md:h-[65vh] lg:h-[88vh] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-gold/5">
+          <AnimatePresence mode="wait">
+            <motion.img 
+              key={`img-${activeBanner}`}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: [1, 1.15, 1], x: banners[activeBanner].pan.x, y: banners[activeBanner].pan.y }}
+              exit={{ opacity: 0 }}
+              transition={{ 
+                opacity: { duration: 1.2 },
+                scale: { duration: 25, ease: "linear", repeat: Infinity },
+                x: { duration: 25, ease: "linear", repeat: Infinity },
+                y: { duration: 25, ease: "linear", repeat: Infinity }
+              }}
+              src={banners[activeBanner].image}
+              alt="Luxury skincare banner" 
+              className="absolute inset-0 h-[115%] w-[115%] -left-[7.5%] -top-[7.5%] object-cover origin-center"
+            />
+          </AnimatePresence>
+          {/* Soft luxury lighting & glass reflection overlays for premium feel */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
+          <div className="absolute top-0 right-0 h-full w-1/2 bg-gradient-to-l from-white/10 to-transparent mix-blend-overlay pointer-events-none" />
+          
+          {/* Progress Indicators */}
+          <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-20">
+            {banners.map((_, i) => (
+              <button 
+                key={i}
+                onClick={() => setActiveBanner(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${i === activeBanner ? 'w-8 bg-gold' : 'w-2 bg-white/50 hover:bg-white'}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -145,7 +173,8 @@ function SectionHeader({ eyebrow, title, kicker }: { eyebrow: string; title: str
 
 function BestSellers() {
   return (
-    <section className="relative mx-auto max-w-[1400px] px-6 py-24 md:py-32">
+    <section className="py-16 md:py-24">
+      <div className="mx-auto max-w-[1400px] px-6">
       <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
         <div>
           <p className="text-[11px] uppercase tracking-[0.4em] text-gold">Best Sellers</p>
@@ -157,10 +186,11 @@ function BestSellers() {
           Shop all <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
-      <div className="mt-14 grid grid-cols-2 gap-x-4 gap-y-14 md:grid-cols-4 md:gap-x-6">
+      <div className="mt-12 grid grid-cols-1 gap-y-12 md:grid-cols-2 lg:grid-cols-4 md:gap-x-6 md:gap-y-14">
         {products.map((p, i) => (
           <ProductCard key={p.slug} product={p} index={i} />
         ))}
+      </div>
       </div>
     </section>
   );
@@ -177,7 +207,7 @@ const whyItems = [
 
 function WhyChoose() {
   return (
-    <section className="border-y border-border/60 bg-secondary/40 py-24 md:py-32 grain">
+    <section className="relative overflow-hidden bg-[oklch(0.97_0.01_95)] py-16 md:py-24 dark:bg-background/50">
       <div className="mx-auto max-w-[1400px] px-6">
         <SectionHeader eyebrow="Why MIMIbeauty" title="Six promises, kept quietly." />
         <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-3">
@@ -205,7 +235,7 @@ function WhyChoose() {
 
 function Ingredients() {
   return (
-    <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-[1400px] px-6 py-16 md:py-24">
       <SectionHeader eyebrow="Ingredients" title="Molecular poetry." kicker="Every actives dosed at the clinically-effective level. No fillers, no theatre." />
       <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-3">
         {ingredientsShowcase.map((it, i) => (
@@ -252,7 +282,7 @@ function Ingredients() {
 
 function Compare() {
   return (
-    <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-[1400px] px-6 py-16 md:py-24">
       <SectionHeader eyebrow="Proof, not promises" title="Before · After · Always." />
       <BeforeAfter />
     </section>
@@ -314,7 +344,7 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <section className="border-y border-border/60 bg-secondary/40 py-24 md:py-32">
+    <section className="border-y border-border/60 bg-secondary/40 py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-6">
         <SectionHeader eyebrow="Loved worldwide" title="Words from our community." />
         <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -421,7 +451,7 @@ function VideoSection() {
   const scene = cinematicScenes[activeIndex];
 
   return (
-    <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-[1400px] px-6 py-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -566,7 +596,7 @@ function VideoSection() {
 
 function QuizPreview() {
   return (
-    <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-[1400px] px-6 py-16 md:py-24">
       <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-secondary via-background to-secondary p-10 md:p-16">
         <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-gold/20 blur-3xl" />
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
@@ -610,7 +640,7 @@ function CollectionsGrid() {
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
       <SectionHeader eyebrow="Collections" title="Rituals, composed." />
-      <div className="mt-16 grid gap-4 md:grid-cols-6">
+      <div className="mt-12 md:mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {collections.map((c, i) => (
           <motion.div
             key={c.slug}

@@ -55,8 +55,8 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
             </span>
           )}
 
-          {/* Hover action buttons */}
-          <div className="absolute right-3 top-3 z-10 flex flex-col gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          {/* Hover/Touch action buttons - Always visible on mobile, hover on desktop */}
+          <div className="absolute right-3 top-3 z-10 flex flex-col gap-2 opacity-100 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
             {/* Wishlist button */}
             <motion.button
               whileTap={{ scale: 0.85 }}
