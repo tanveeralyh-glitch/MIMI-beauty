@@ -115,7 +115,7 @@ export function Header() {
             className="fixed inset-0 z-[60] bg-background"
           >
             <div className="flex items-center justify-between px-6 py-5">
-              <span className="font-display text-xl tracking-[0.2em]">MIMI <span className="text-gold">BEAUTY</span></span>
+              <span className="font-script text-4xl text-gold">Mimi</span>
               <button onClick={() => setOpen(false)} className="grid h-10 w-10 place-items-center rounded-full">
                 <X className="h-5 w-5" />
               </button>
