@@ -26,8 +26,8 @@ function Home() {
   return (
     <>
       <Hero />
-      <FeaturedCategories />
       <BestSellers />
+      <FeaturedCategories />
       <WhyChoose />
       <Ingredients />
       <Compare />
@@ -52,7 +52,7 @@ function Hero() {
   return (
     <section ref={ref} className="relative isolate min-h-[100svh] overflow-hidden">
       <motion.div style={{ scale }} className="absolute inset-0 -z-10">
-        <img src={assets.water} alt="" className="h-full w-full object-cover" />
+        <img src="/media__1784439898181.jpg" alt="Hero background" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
       </motion.div>
 
@@ -143,7 +143,16 @@ function SectionHeader({ eyebrow, title, kicker }: { eyebrow: string; title: str
 }
 
 function FeaturedCategories() {
-  const catImages = [assets.water, assets.dew, assets.veil, assets.stone, assets.halo, assets.herbe, assets.lineup, assets.dew];
+  const catImages = [
+    "/media__1784439898541.jpg",
+    "/media__1784439898491.jpg",
+    "/media__1784439898596.jpg",
+    "/media__1784439898781.jpg",
+    "/media__1784439898181.jpg",
+    "/media__1784439730149.png",
+    "/media__1784439730167.png",
+    "/media__1784439898541.jpg"
+  ];
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
       <SectionHeader eyebrow="The Wardrobe" title="Curated by ritual" kicker="Every category, considered. Choose the object that will live on your shelf." />
@@ -250,6 +259,18 @@ function Ingredients() {
             transition={{ duration: 0.7, delay: i * 0.05 }}
             className="group relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-secondary to-background p-8"
           >
+            <img 
+              src={[
+                "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1611078449921-2a134a413d42?auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1608248593875-f947e9541da0?auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&q=80"
+              ][i]}
+              alt={it.name}
+              className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40 transition duration-700 group-hover:scale-110 group-hover:opacity-60"
+            />
             <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-gold/20 blur-2xl transition group-hover:bg-gold/40" />
             <motion.div
               animate={{ rotate: [0, 360] }}
@@ -311,9 +332,9 @@ function BeforeAfter() {
       onPointerLeave={() => (draggingRef.current = false)}
       className="relative mt-16 aspect-[16/9] w-full select-none overflow-hidden rounded-3xl border border-border touch-none"
     >
-      <img src={assets.stone} alt="After" className="absolute inset-0 h-full w-full object-cover" />
+      <img src="/after.png" alt="After" className="absolute inset-0 h-full w-full object-cover" />
       <div ref={beforeRef} className="absolute inset-0" style={{ clipPath: "inset(0 50% 0 0)" }}>
-        <img src={assets.lineup} alt="Before" className="absolute inset-0 h-full w-full object-cover grayscale" />
+        <img src="/before.png" alt="Before" className="absolute inset-0 h-full w-full object-cover" />
       </div>
       <div ref={dividerRef} className="absolute inset-y-0 left-1/2 z-10 w-px -translate-x-1/2 bg-gold">
         <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-gold bg-background/80 backdrop-blur cursor-ew-resize">
@@ -544,7 +565,16 @@ function Blog() {
               className="group overflow-hidden rounded-2xl border border-border bg-background hover-lift"
             >
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={[assets.water, assets.stone, assets.lineup][i]} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+                <img 
+                  src={[
+                    "https://images.unsplash.com/photo-1611078449921-2a134a413d42?auto=format&fit=crop&q=80", 
+                    "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80", 
+                    "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80"
+                  ][i]} 
+                  alt="" 
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105" 
+                  loading="lazy" 
+                />
               </div>
               <div className="p-6">
                 <p className="text-[11px] uppercase tracking-[0.3em] text-gold">{p.tag}</p>

@@ -8,14 +8,14 @@ import stoneAsset from "@/assets/stone.asset.json";
 import logoAsset from "@/assets/logo.asset.json";
 
 export const assets = {
-  dew: dewAsset.url,
-  veil: veilAsset.url,
-  herbe: herbeAsset.url,
-  halo: haloAsset.url,
+  dew: "/media__1784439730149.png",
+  veil: "/media__1784439730152.png",
+  herbe: "/media__1784439730167.png",
+  halo: "/media__1784439730231.png",
   lineup: lineupAsset.url,
   water: waterAsset.url,
   stone: stoneAsset.url,
-  logo: logoAsset.url,
+  logo: "/logo.png",
 };
 
 export type Product = {
