@@ -498,7 +498,16 @@ function CollectionsGrid() {
 }
 
 function Instagram() {
-  const imgs = [assets.dew, assets.veil, assets.herbe, assets.halo, assets.lineup, assets.water, assets.stone, assets.dew];
+  const imgs = [
+    "/media__1784439898491.jpg",
+    "/media__1784439898596.jpg",
+    "/media__1784439898541.jpg",
+    "/media__1784439898181.jpg",
+    "/media__1784439898781.jpg",
+    "/media__1784439898491.jpg",
+    "/media__1784439898596.jpg",
+    "/media__1784439898541.jpg"
+  ];
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
       <SectionHeader eyebrow="@mimibeauty" title="Rituals, in the wild." />
