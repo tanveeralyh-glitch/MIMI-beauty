@@ -26,7 +26,6 @@ function Home() {
   return (
     <>
       <Hero />
-      <Marquee />
       <FeaturedCategories />
       <BestSellers />
       <WhyChoose />
