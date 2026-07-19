@@ -375,12 +375,17 @@ function VideoSection() {
         className="relative aspect-[21/9] overflow-hidden rounded-3xl"
       >
         <motion.video
-          src="https://videos.pexels.com/video-files/3181685/3181685-uhd_2560_1440_25fps.mp4"
+          src="https://videos.pexels.com/video-files/7479891/7479891-uhd_2560_1440_25fps.mp4"
           poster={assets.water}
           autoPlay
           muted
           loop
           playsInline
+          initial={{ scale: 1.15 }}
+          animate={{ scale: [1.15, 1.05, 1.15] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
           initial={{ scale: 1.15 }}
           animate={{ scale: [1.15, 1.05, 1.15] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
