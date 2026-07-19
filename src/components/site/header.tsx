@@ -54,10 +54,10 @@ export function Header() {
         className="sticky top-0 z-40 border-b backdrop-blur-xl"
       >
         <div className="mx-auto grid max-w-[1400px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 py-4 md:py-5">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={assets.logo} alt="MIMI BEAUTY" className="h-9 w-9 rounded-full object-cover" />
-            <span className="font-display text-lg tracking-[0.2em] md:text-xl">
-              MIMI <span className="text-gold">BEAUTY</span>
+          <Link to="/" className="flex items-center gap-3">
+            <img src={assets.logo} alt="Mimi" className="h-10 w-10 rounded-full object-cover" />
+            <span className="font-script text-4xl leading-none text-gold md:text-5xl">
+              Mimi
             </span>
           </Link>
 
