@@ -386,11 +386,6 @@ function VideoSection() {
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           className="absolute inset-0 h-full w-full object-cover"
         />
-          initial={{ scale: 1.15 }}
-          animate={{ scale: [1.15, 1.05, 1.15] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-background/40" />
         <div className="absolute inset-0 grid place-items-center">
           <button className="group relative grid h-24 w-24 place-items-center rounded-full border border-gold/80 bg-background/40 backdrop-blur">
