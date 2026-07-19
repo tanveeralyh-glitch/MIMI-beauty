@@ -344,7 +344,7 @@ function Testimonials() {
   return (
     <section className="border-y border-border/60 bg-secondary/40 py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6">
-        <SectionHeader eyebrow="Loved worldwide" title="From ritual to obsession." />
+        <SectionHeader eyebrow="Loved worldwide" title="Words from our community." />
         <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t, i) => (
             <motion.blockquote
