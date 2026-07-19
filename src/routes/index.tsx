@@ -143,6 +143,7 @@ function SectionHeader({ eyebrow, title, kicker }: { eyebrow: string; title: str
 }
 
 function FeaturedCategories() {
+  const catImages = [assets.water, assets.dew, assets.veil, assets.stone, assets.halo, assets.herbe, assets.lineup, assets.dew];
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
       <SectionHeader eyebrow="The Wardrobe" title="Curated by ritual" kicker="Every category, considered. Choose the object that will live on your shelf." />
@@ -154,12 +155,18 @@ function FeaturedCategories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: i * 0.05 }}
-            whileHover={{ y: -6, rotateX: 6, rotateY: -4 }}
-            className="group relative aspect-square overflow-hidden rounded-2xl border border-border bg-secondary/50 p-6 text-left [transform-style:preserve-3d]"
+            whileHover={{ y: -6 }}
+            className="group relative aspect-square overflow-hidden rounded-2xl border border-border bg-secondary/50 p-6 text-left"
           >
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-transparent to-gold/10 opacity-0 transition group-hover:opacity-100" />
-            <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">0{i + 1}</p>
-            <p className="mt-auto flex h-full items-end font-display text-2xl md:text-3xl">{c}</p>
+            <img
+              src={catImages[i % catImages.length]}
+              alt=""
+              className="absolute inset-0 -z-10 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background/85 via-background/30 to-background/10 transition group-hover:from-background/70" />
+            <p className="text-[11px] uppercase tracking-[0.3em] text-gold">0{i + 1}</p>
+            <p className="mt-auto flex h-full items-end font-display text-2xl md:text-3xl text-foreground">{c}</p>
             <ArrowRight className="absolute bottom-6 right-6 h-4 w-4 -translate-x-2 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100 text-gold" />
           </motion.button>
         ))}
@@ -167,6 +174,7 @@ function FeaturedCategories() {
     </section>
   );
 }
+
 
 function BestSellers() {
   return (
