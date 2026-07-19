@@ -9,9 +9,6 @@ import { assets } from "@/lib/products";
 const nav = [
   { to: "/", label: "Home" },
   { to: "/shop", label: "Shop" },
-  { to: "/collections", label: "Collections" },
-  { to: "/ingredients", label: "Ingredients" },
-  { to: "/quiz", label: "Skin Quiz" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];
