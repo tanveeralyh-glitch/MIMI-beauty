@@ -40,13 +40,13 @@ function Shop() {
     <>
       <section className="mx-auto max-w-[1400px] px-6 pt-24 pb-10 md:pt-32">
         <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="text-[11px] uppercase tracking-[0.4em] text-gold">The Wardrobe</motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 20, filter: "blur(8px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0)" }} transition={{ duration: 0.9 }} className="mt-3 font-display text-[clamp(2.5rem,7vw,6rem)] leading-[1] tracking-tight">
+        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }} className="mt-3 font-display text-[clamp(2.5rem,7vw,6rem)] leading-[1] tracking-tight">
           Shop the ritual
         </motion.h1>
         <p className="mt-4 max-w-lg text-muted-foreground">Four objects. Endless combinations. Every formula clinically dosed and small-batch bottled.</p>
       </section>
 
-      <section className="sticky top-[73px] z-30 border-y border-border/60 bg-background/80 backdrop-blur-xl">
+      <section className="sticky top-[73px] z-30 border-y border-border/60 bg-background/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-3 px-6 py-4">
           <div className="flex flex-1 items-center gap-2 rounded-full border border-border bg-secondary/40 px-4 py-2">
             <Search className="h-4 w-4 text-muted-foreground" />

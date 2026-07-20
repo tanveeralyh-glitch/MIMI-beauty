@@ -38,7 +38,7 @@ function Quiz() {
 
       <AnimatePresence mode="wait">
         {!done ? (
-          <motion.div key={step} initial={{ opacity: 0, y: 30, filter: "blur(8px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0)" }} exit={{ opacity: 0, y: -20, filter: "blur(8px)" }} transition={{ duration: 0.6 }} className="mt-12">
+          <motion.div key={step} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.45 }} className="mt-12">
             <p className="text-sm text-muted-foreground">Question {step + 1} of {steps.length}</p>
             <h2 className="mt-3 font-display text-4xl md:text-5xl leading-tight">{steps[step].q}</h2>
             <div className="mt-10 grid gap-3 md:grid-cols-2">

@@ -32,7 +32,7 @@ export default function About() {
         </div>
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-[11px] uppercase tracking-[0.4em] text-gold">Our story</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0)" }} transition={{ duration: 1.1 }} className="mt-4 max-w-3xl font-display text-[clamp(3rem,8vw,7rem)] leading-[0.95] tracking-tight text-balance">
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} className="mt-4 max-w-3xl font-display text-[clamp(3rem,8vw,7rem)] leading-[0.95] tracking-tight text-balance">
             A quiet obsession with skin.
           </motion.h1>
         </div>
