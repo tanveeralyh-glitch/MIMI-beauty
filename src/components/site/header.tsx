@@ -50,7 +50,7 @@ function IconButton({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className={`group relative grid h-10 w-10 place-items-center text-foreground/70 transition-colors duration-300 hover:text-gold ${className}`}
+      className={`group relative grid h-11 w-11 place-items-center text-foreground/70 transition-colors duration-300 hover:text-gold ${className}`}
     >
       {children}
       <span className="pointer-events-none absolute inset-0 rounded-full opacity-0 ring-1 ring-gold/30 transition-opacity duration-300 group-hover:opacity-100" />
@@ -96,11 +96,11 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen || searchOpen ? "hidden" : "";
+    document.body.style.overflow = mobileOpen || searchOpen || wishlistOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileOpen, searchOpen]);
+  }, [mobileOpen, searchOpen, wishlistOpen]);
 
   useEffect(() => {
     if (searchOpen) {
@@ -155,7 +155,7 @@ export function Header() {
     <>
       {/* Announcement marquee */}
       <div className="relative z-50 overflow-hidden border-b border-gold/20 bg-foreground text-background">
-        <div className="flex animate-marquee whitespace-nowrap py-2 text-[10px] uppercase tracking-[0.32em] md:text-[11px]">
+        <div className="flex animate-marquee whitespace-nowrap py-2 text-[11px] uppercase tracking-[0.32em] md:text-[11px]">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex shrink-0 gap-16 px-8">
               <span>Complimentary shipping over $75</span>
@@ -178,15 +178,15 @@ export function Header() {
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <div className="relative mx-auto grid h-[4.25rem] max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-5 md:h-[4.75rem] md:px-8">
+        <div className="relative mx-auto grid h-[4.25rem] max-w-[1400px] grid-cols-[auto_1fr_auto] items-center gap-2 px-4 sm:px-5 md:h-[4.75rem] md:grid-cols-[1fr_auto_1fr] md:gap-4 md:px-8">
           {/* Logo — left */}
           <Link
             to="/"
             onClick={closeOverlays}
-            className="group z-10 flex items-center gap-2.5 justify-self-start"
+            className="group z-10 flex min-w-0 max-w-[58vw] items-center gap-2 justify-self-start sm:max-w-none sm:gap-2.5"
           >
             <motion.span
-              className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-full md:h-10 md:w-10"
+              className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full sm:h-9 sm:w-9 md:h-10 md:w-10"
               whileHover={{ scale: 1.06 }}
               transition={{ type: "spring", stiffness: 380, damping: 22 }}
             >
@@ -207,7 +207,7 @@ export function Header() {
                 transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
               />
             </motion.span>
-            <span className="font-script text-[1.85rem] leading-none tracking-tight text-gold md:text-[2.15rem]">
+            <span className="truncate font-script text-[clamp(1.2rem,4.2vw,2.15rem)] leading-none tracking-tight text-gold">
               <span className="inline-block transition-transform duration-500 group-hover:-translate-y-px">
                 Mimi Beauty.
               </span>
@@ -322,7 +322,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
-              className="ml-1 grid h-10 w-10 place-items-center text-foreground/80 transition-colors hover:text-gold lg:hidden"
+              className="ml-1 grid h-11 w-11 place-items-center text-foreground/80 transition-colors hover:text-gold lg:hidden"
               aria-label="Open menu"
             >
               <Menu className="h-5 w-5 stroke-[1.35]" />
@@ -407,7 +407,7 @@ export function Header() {
       <AnimatePresence>
         {searchOpen && (
           <motion.div
-            className="fixed inset-0 z-[70] flex items-start justify-center px-4 pt-[12vh] md:pt-[18vh]"
+            className="fixed inset-0 z-[70] flex items-start justify-center px-4 pt-[8vh] md:pt-[18vh]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -478,7 +478,7 @@ export function Header() {
                   ))
                 )}
               </div>
-              <div className="flex items-center justify-between border-t border-border/50 px-5 py-3 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              <div className="flex items-center justify-between border-t border-border/50 px-5 py-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">
                 <span>⌘K to search</span>
                 <Link
                   to="/shop"
@@ -575,7 +575,7 @@ export function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35 }}
-              className="relative flex items-center justify-center gap-6 border-t border-gold/20 px-6 py-8"
+              className="relative flex items-center justify-center gap-2 border-t border-gold/20 px-6 py-6 sm:gap-4"
             >
               <button
                 type="button"
@@ -583,7 +583,7 @@ export function Header() {
                   setMobileOpen(false);
                   setSearchOpen(true);
                 }}
-                className="text-foreground/60 transition-colors hover:text-gold"
+                className="grid h-11 w-11 place-items-center text-foreground/60 transition-colors hover:text-gold"
                 aria-label="Search"
               >
                 <Search className="h-5 w-5 stroke-[1.35]" />
@@ -594,12 +594,12 @@ export function Header() {
                   setMobileOpen(false);
                   setWishlistOpen(true);
                 }}
-                className="relative text-foreground/60 transition-colors hover:text-gold"
+                className="relative grid h-11 w-11 place-items-center text-foreground/60 transition-colors hover:text-gold"
                 aria-label="Wishlist"
               >
                 <Heart className="h-5 w-5 stroke-[1.35]" />
                 {wishCount > 0 && (
-                  <span className="absolute -right-2 -top-1.5 grid h-3.5 min-w-3.5 place-items-center rounded-full bg-gold text-[8px] font-semibold text-background">
+                  <span className="absolute right-1 top-1 grid h-3.5 min-w-3.5 place-items-center rounded-full bg-gold text-[8px] font-semibold text-background">
                     {wishCount}
                   </span>
                 )}
@@ -608,7 +608,7 @@ export function Header() {
               <Link
                 to="/collections"
                 onClick={closeOverlays}
-                className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-gold"
+                className="min-h-11 px-2 text-xs uppercase tracking-[0.3em] text-muted-foreground hover:text-gold inline-flex items-center"
               >
                 Collections
               </Link>
@@ -667,7 +667,7 @@ function WishlistPanel({
       }
     >
       <div className="flex items-center justify-between border-b border-gold/20 px-4 py-3">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Wishlist</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-gold">Wishlist</p>
         <button
           type="button"
           onClick={onClose}
@@ -717,7 +717,7 @@ function WishlistPanel({
           <Link
             to="/shop"
             onClick={onClose}
-            className="flex w-full items-center justify-center gap-2 rounded-full border border-gold/40 py-2.5 text-[10px] uppercase tracking-[0.22em] transition-colors hover:border-gold hover:bg-gold/10"
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-gold/40 py-2.5 text-xs uppercase tracking-[0.22em] transition-colors hover:border-gold hover:bg-gold/10"
           >
             Continue shopping
           </Link>

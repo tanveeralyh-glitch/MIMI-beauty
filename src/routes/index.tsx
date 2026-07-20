@@ -77,7 +77,7 @@ function BestSellers() {
       <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
         <div>
           <p className="text-[11px] uppercase tracking-[0.4em] text-gold">Best Sellers</p>
-          <h2 className="mt-3 font-display text-5xl md:text-6xl leading-[1.05] tracking-tight text-balance">
+          <h2 className="mt-3 font-display text-3xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-balance">
             Loved into permanence.
           </h2>
         </div>
@@ -109,7 +109,7 @@ function WhyChoose() {
     <section className="relative overflow-hidden bg-[oklch(0.97_0.01_95)] py-16 md:py-24 dark:bg-background/50">
       <div className="mx-auto max-w-[1400px] px-6">
         <SectionHeader eyebrow="Why MIMIbeauty" title="Six promises, kept quietly." />
-        <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
           {whyItems.map((it, i) => (
             <motion.div
               key={it.title}
@@ -117,7 +117,7 @@ function WhyChoose() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.05 }}
-              className="group relative rounded-2xl border border-border bg-background/60 p-8 backdrop-blur transition hover:border-gold/60 hover:shadow-[0_20px_60px_-25px_rgba(0,0,0,0.35)]"
+              className="group relative rounded-2xl border border-border bg-background/60 p-5 backdrop-blur transition hover:border-gold/60 hover:shadow-[0_20px_60px_-25px_rgba(0,0,0,0.35)] md:p-8"
             >
               <div className="grid h-11 w-11 place-items-center rounded-full border border-border transition group-hover:border-gold group-hover:text-gold">
                 <it.icon className="h-4 w-4" />
@@ -228,12 +228,12 @@ function Testimonials() {
 function QuizPreview() {
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-16 md:py-24">
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-secondary via-background to-secondary p-10 md:p-16">
+      <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-secondary via-background to-secondary p-6 md:p-10 lg:p-16">
         <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-gold/15" />
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div>
             <p className="text-[11px] uppercase tracking-[0.4em] text-gold">Skin Quiz · 60 seconds</p>
-            <h2 className="mt-4 font-display text-5xl md:text-6xl leading-tight text-balance">
+            <h2 className="mt-4 font-display text-3xl md:text-5xl lg:text-6xl leading-tight text-balance">
               Your ritual, <em className="text-gold">designed for you</em>.
             </h2>
             <p className="mt-4 max-w-md text-muted-foreground">
@@ -366,14 +366,14 @@ function Blog() {
 function Newsletter() {
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
-      <div className="relative overflow-hidden rounded-3xl bg-secondary/50 p-10 text-foreground md:p-20">
+      <div className="relative overflow-hidden rounded-3xl bg-secondary/50 p-6 text-foreground md:p-10 lg:p-20">
         {/* Soft glow — opacity only, no live filter animation */}
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-gold/15" />
         <div className="pointer-events-none absolute -right-24 -bottom-24 h-72 w-72 rounded-full bg-gold/10" />
         <div className="relative grid gap-8 md:grid-cols-2 md:items-center">
           <div>
             <p className="text-[11px] uppercase tracking-[0.4em] text-gold">The Letter</p>
-            <h2 className="mt-4 font-display text-5xl md:text-6xl leading-[1.05] tracking-tight text-balance">
+            <h2 className="mt-4 font-display text-3xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-balance">
               Slow drops, quiet news.
             </h2>
             <p className="mt-4 max-w-md text-muted-foreground">

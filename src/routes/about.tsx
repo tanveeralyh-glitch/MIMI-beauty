@@ -25,20 +25,20 @@ const timeline = [
 export default function About() {
   return (
     <>
-      <section className="relative isolate overflow-hidden pt-32 pb-24">
+      <section className="relative isolate overflow-hidden pt-20 pb-16 md:pt-32 md:pb-24">
         <div className="absolute inset-0 -z-10">
           <img src={assets.stone} alt="" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
         </div>
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-[11px] uppercase tracking-[0.4em] text-gold">Our story</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} className="mt-4 max-w-3xl font-display text-[clamp(3rem,8vw,7rem)] leading-[0.95] tracking-tight text-balance">
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} className="mt-4 max-w-3xl font-display text-[clamp(2.25rem,8vw,7rem)] leading-[0.95] tracking-tight text-balance">
             A quiet obsession with skin.
           </motion.h1>
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-6 py-24">
+      <section className="mx-auto max-w-3xl px-6 py-16 md:py-24">
         <p className="font-display text-2xl leading-relaxed md:text-3xl">
           MIMIbeauty was born from a simple question: what if skincare felt as considered as the ritual around it? Every object we make is designed to slow you down — to
           make the two minutes at the sink feel like the best minutes of the day.
@@ -49,7 +49,7 @@ export default function About() {
         </p>
       </section>
 
-      <section className="border-t border-border/60 bg-secondary/40 py-24">
+      <section className="border-t border-border/60 bg-secondary/40 py-16 md:py-24">
         <div className="mx-auto max-w-[1400px] px-6">
           <h2 className="font-display text-4xl md:text-5xl">Values, quietly held.</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -58,7 +58,7 @@ export default function About() {
               { t: "Botanical craft", b: "Cold-pressed. Wild-harvested. Traceable to the field." },
               { t: "Objects that last", b: "Refillable glass, replaceable pumps, no plastic sleeves." },
             ].map((v, i) => (
-              <motion.div key={v.t} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-2xl border border-border bg-background p-8">
+              <motion.div key={v.t} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-2xl border border-border bg-background p-5 md:p-8">
                 <p className="text-[11px] uppercase tracking-[0.3em] text-gold">0{i + 1}</p>
                 <h3 className="mt-4 font-display text-2xl">{v.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{v.b}</p>

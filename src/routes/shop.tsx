@@ -46,13 +46,13 @@ function Shop() {
         <p className="mt-4 max-w-lg text-muted-foreground">Four objects. Endless combinations. Every formula clinically dosed and small-batch bottled.</p>
       </section>
 
-      <section className="sticky top-[73px] z-30 border-y border-border/60 bg-background/90 backdrop-blur-md">
+      <section className="sticky top-[68px] z-30 border-y border-border/60 bg-background/90 backdrop-blur-md md:top-[76px]">
         <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-3 px-6 py-4">
-          <div className="flex flex-1 items-center gap-2 rounded-full border border-border bg-secondary/40 px-4 py-2">
+          <div className="flex flex-1 items-center gap-2 rounded-full border border-border bg-secondary/40 px-4 py-2.5">
             <Search className="h-4 w-4 text-muted-foreground" />
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search products…" className="w-full bg-transparent text-sm outline-none" />
           </div>
-          <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)} className="rounded-full border border-border bg-secondary/40 px-4 py-2 text-sm">
+          <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)} className="rounded-full border border-border bg-secondary/40 px-4 py-2.5 text-sm">
             <option value="featured">Featured</option>
             <option value="price-asc">Price · Low</option>
             <option value="price-desc">Price · High</option>
@@ -61,7 +61,7 @@ function Shop() {
         </div>
         <div className="mx-auto flex max-w-[1400px] gap-2 overflow-x-auto px-6 pb-4 text-xs">
           {chips.map((c) => (
-            <button key={c} onClick={() => setCat(c)} className={`shrink-0 rounded-full border px-4 py-1.5 uppercase tracking-widest transition ${cat === c ? "border-gold bg-gold text-background" : "border-border hover:border-gold/60"}`}>{c}</button>
+            <button key={c} onClick={() => setCat(c)} className={`shrink-0 rounded-full border px-4 py-2.5 uppercase tracking-widest transition ${cat === c ? "border-gold bg-gold text-background" : "border-border hover:border-gold/60"}`}>{c}</button>
           ))}
         </div>
       </section>

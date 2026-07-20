@@ -38,7 +38,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         {/* Premium typographic masthead */}
         <div className="border-b border-white/[0.08] py-16 md:py-24">
-          <p className="text-center text-[10px] uppercase tracking-[0.45em] text-[#C9A86A]">
+          <p className="text-center text-xs uppercase tracking-[0.45em] text-[#C9A86A]">
             MIMIbeauty · Est. 2026
           </p>
           <h2 className="mt-6 text-center font-display text-[clamp(3.5rem,14vw,11rem)] font-normal leading-[0.85] tracking-[-0.04em] text-white">
@@ -58,7 +58,7 @@ export function Footer() {
         </div>
 
         {/* Link columns — type-led, minimal */}
-        <div className="grid gap-12 py-14 md:grid-cols-12 md:gap-8 md:py-20">
+        <div className="grid gap-8 py-14 md:grid-cols-12 md:gap-8 md:py-20">
           <div className="md:col-span-5">
             <p className="font-script text-3xl text-[#C9A86A]">Mimi Beauty.</p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/40">
@@ -76,7 +76,7 @@ export function Footer() {
               />
               <button
                 type="submit"
-                className="shrink-0 text-[10px] uppercase tracking-[0.25em] text-[#C9A86A] transition-colors hover:text-white"
+                className="shrink-0 text-xs uppercase tracking-[0.25em] text-[#C9A86A] transition-colors hover:text-white"
               >
                 Join
               </button>
@@ -84,7 +84,7 @@ export function Footer() {
           </div>
 
           <nav className="md:col-span-2" aria-label="Shop">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/35">Shop</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/35">Shop</p>
             <ul className="mt-5 space-y-3">
               {shop.map((l) => (
                 <li key={l.label}>
@@ -100,7 +100,7 @@ export function Footer() {
           </nav>
 
           <nav className="md:col-span-2" aria-label="House">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/35">House</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/35">House</p>
             <ul className="mt-5 space-y-3">
               {house.map((l) => (
                 <li key={l.label}>
@@ -116,7 +116,7 @@ export function Footer() {
           </nav>
 
           <div className="md:col-span-3 md:text-right">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/35">Follow</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/35">Follow</p>
             <div className="mt-5 flex gap-4 md:justify-end">
               {[
                 { Icon: Instagram, label: "Instagram" },
@@ -128,7 +128,7 @@ export function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="text-white/40 transition-colors hover:text-[#C9A86A]"
+                  className="grid h-11 w-11 place-items-center text-white/40 transition-colors hover:text-[#C9A86A]"
                 >
                   <Icon className="h-4 w-4" strokeWidth={1.4} />
                 </a>

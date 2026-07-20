@@ -17,13 +17,13 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   return (
     <>
-      <section className="mx-auto max-w-[1400px] px-6 pt-32 pb-16">
+      <section className="mx-auto max-w-[1400px] px-6 pt-20 pb-10 md:pt-32 md:pb-16">
         <p className="text-[11px] uppercase tracking-[0.4em] text-gold">Say hello</p>
         <h1 className="mt-4 font-display text-[clamp(3rem,7vw,6rem)] leading-[1] tracking-tight">Let's talk skin.</h1>
         <p className="mt-4 max-w-lg text-muted-foreground">Our concierge team replies within 24 hours. For urgent matters call our Paris studio directly.</p>
       </section>
 
-      <section className="mx-auto max-w-[1400px] px-6 pb-24 grid gap-10 md:grid-cols-[1fr_1.2fr]">
+      <section className="mx-auto max-w-[1400px] px-6 pb-16 grid gap-10 md:pb-24 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-6">
           {[
             { icon: MapPin, t: "Studio", b: "12 rue de Sévigné, Paris 75004" },
@@ -38,7 +38,7 @@ function Contact() {
               </div>
             </motion.div>
           ))}
-          <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-border">
+          <div className="aspect-video overflow-hidden rounded-2xl border border-border md:aspect-[4/3]">
             <iframe
               title="MIMIbeauty studio"
               className="h-full w-full"
@@ -47,7 +47,7 @@ function Contact() {
           </div>
         </div>
 
-        <form className="space-y-4 rounded-3xl border border-border p-8 md:p-10">
+        <form className="space-y-4 rounded-3xl border border-border p-5 md:p-8 lg:p-10">
           <div className="grid gap-4 md:grid-cols-2">
             <Field label="First name" />
             <Field label="Last name" />

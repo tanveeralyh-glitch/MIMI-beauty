@@ -115,7 +115,7 @@ function IngredientCard({
 
 export function IngredientsSection() {
   return (
-    <section className="section-cv relative overflow-hidden bg-[#050505] py-28 md:py-40">
+    <section className="section-cv relative overflow-hidden bg-[#050505] py-16 md:py-28 lg:py-40">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"

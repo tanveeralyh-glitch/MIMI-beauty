@@ -56,9 +56,9 @@ export function CartDrawer() {
                         </div>
                         <div className="mt-3 flex items-center justify-between">
                           <div className="flex items-center gap-2 rounded-full border border-border px-1">
-                            <button onClick={() => setQty(product.slug, qty - 1)} className="grid h-7 w-7 place-items-center"><Minus className="h-3 w-3" /></button>
+                            <button onClick={() => setQty(product.slug, qty - 1)} className="grid h-9 w-9 min-h-[44px] min-w-[44px] place-items-center"><Minus className="h-3 w-3" /></button>
                             <span className="w-6 text-center text-sm">{qty}</span>
-                            <button onClick={() => setQty(product.slug, qty + 1)} className="grid h-7 w-7 place-items-center"><Plus className="h-3 w-3" /></button>
+                            <button onClick={() => setQty(product.slug, qty + 1)} className="grid h-9 w-9 min-h-[44px] min-w-[44px] place-items-center"><Plus className="h-3 w-3" /></button>
                           </div>
                           <p className="text-sm font-medium">${(product.price * qty).toFixed(2)}</p>
                         </div>

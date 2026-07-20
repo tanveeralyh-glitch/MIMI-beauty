@@ -142,7 +142,7 @@ function RitualCard({
 
 export function RitualsGallery() {
   return (
-    <section id="rituals" className="section-cv relative overflow-hidden bg-[#050505] py-40 md:py-[160px]">
+    <section id="rituals" className="section-cv relative overflow-hidden bg-[#050505] py-20 md:py-40">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"

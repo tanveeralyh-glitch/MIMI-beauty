@@ -287,11 +287,11 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <motion.div className="absolute inset-0" style={{ background: glowBackground }} />
         <div
-          className="absolute -left-24 top-1/4 h-[320px] w-[320px] rounded-full opacity-80"
+          className="absolute -left-24 top-1/4 h-[200px] w-[200px] rounded-full opacity-80 md:h-[320px] md:w-[320px]"
           style={{ background: `${GOLD}14` }}
         />
         <div
-          className="absolute -right-16 bottom-0 h-[280px] w-[280px] rounded-full"
+          className="absolute -right-16 bottom-0 h-[180px] w-[180px] rounded-full md:h-[280px] md:w-[280px]"
           style={{ background: `${GOLD}10` }}
         />
         <Particles />
