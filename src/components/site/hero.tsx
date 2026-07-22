@@ -28,7 +28,7 @@ const features = [
 ] as const;
 
 const FILM = [
-  { src: "/videos/hero-openair.png", caption: "Open air · Golden hour" },
+  { src: "/hero_dew_girls.jpg", caption: "The Ritual · Pure Radiance" },
   { src: "/videos/scene_hands.png", caption: "Product in hand · Ritual" },
   { src: "/videos/hero-openair-2.png", caption: "Nature · Natural glow" },
   { src: "/videos/scene_face.png", caption: "Slow beauty · Skin" },
