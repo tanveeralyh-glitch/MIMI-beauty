@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Youtube } from "lucide-react";
+import { Instagram, Facebook, Youtube, Check } from "lucide-react";
 import type { SVGProps } from "react";
 
 const Tiktok = (props: SVGProps<SVGSVGElement>) => (
@@ -27,6 +28,19 @@ const legal = [
 ];
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [joined, setJoined] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setJoined(true);
+    setTimeout(() => {
+      setJoined(false);
+      setEmail("");
+    }, 3000);
+  };
+
   return (
     <footer className="relative overflow-hidden bg-[#050505] text-white">
       {/* Hairline gold rule */}
@@ -66,19 +80,24 @@ export function Footer() {
             </p>
             <form
               className="mt-8 flex max-w-sm border-b border-white/15 pb-2"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubscribe}
             >
               <input
+                required
                 type="email"
-                placeholder="Email for quiet news"
-                className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/30"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={joined ? "Added to the list" : "Email for quiet news"}
+                disabled={joined}
+                className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/30 disabled:text-gold"
                 aria-label="Email"
               />
               <button
                 type="submit"
-                className="shrink-0 text-xs uppercase tracking-[0.25em] text-[#C9A86A] transition-colors hover:text-white"
+                disabled={joined}
+                className="shrink-0 text-xs uppercase tracking-[0.25em] text-[#C9A86A] transition-colors hover:text-white flex items-center gap-1.5"
               >
-                Join
+                {joined ? <><Check className="h-3 w-3 text-gold" /> Subscribed</> : "Join"}
               </button>
             </form>
           </div>
