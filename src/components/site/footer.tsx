@@ -116,17 +116,22 @@ export function Footer() {
           </nav>
 
           <div className="md:col-span-3 md:text-right">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/35">Follow</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/35">Contact & Follow</p>
+            <p className="mt-4 text-sm font-light text-white/60">
+              Direct Care: <a href="tel:03274984584" className="hover:text-[#C9A86A] transition-colors">03274984584</a>
+            </p>
             <div className="mt-5 flex gap-4 md:justify-end">
               {[
-                { Icon: Instagram, label: "Instagram" },
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: Tiktok, label: "TikTok" },
-                { Icon: Youtube, label: "YouTube" },
-              ].map(({ Icon, label }) => (
+                { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/mimibeauty.pk?igsh=MTBmMHB3NGVyZ2Iydw==" },
+                { Icon: Facebook, label: "Facebook", href: "#" },
+                { Icon: Tiktok, label: "TikTok", href: "#" },
+                { Icon: Youtube, label: "YouTube", href: "#" },
+              ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={label}
                   className="grid h-11 w-11 place-items-center text-white/40 transition-colors hover:text-[#C9A86A]"
                 >

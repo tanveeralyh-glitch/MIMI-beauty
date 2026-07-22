@@ -74,7 +74,7 @@ function Contact() {
                 {[
                   { icon: MapPin, title: "Our Paris Studio", detail: "12 rue de Sévigné, Paris 75004" },
                   { icon: Mail, title: "Digital Correspondence", detail: "concierge@mimibeauty.com" },
-                  { icon: Phone, title: "Direct Care Line", detail: "+33 1 42 00 00 00" },
+                  { icon: Phone, title: "Direct Care Line", detail: "03274984584" },
                 ].map((c, i) => (
                   <motion.div 
                     key={c.title} 
