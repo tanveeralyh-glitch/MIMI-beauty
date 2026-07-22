@@ -28,10 +28,9 @@ const features = [
 ] as const;
 
 const FILM = [
-  { src: "/hero_dew_girls.jpg", caption: "The Ritual · Pure Radiance" },
-  { src: "/videos/scene_hands.png", caption: "Product in hand · Ritual" },
-  { src: "/videos/hero-openair-2.png", caption: "Nature · Natural glow" },
-  { src: "/videos/scene_face.png", caption: "Slow beauty · Skin" },
+  { src: "/hero_dew_girl_left.jpg", caption: "The Ritual · Pure Radiance" },
+  { src: "/hero_dew_girl_right.jpg", caption: "Slow Beauty · Skin" },
+  { src: "/hero_dew_collection.jpg", caption: "The Collection · Complete Care" },
 ] as const;
 
 function fadeUp(delay = 0) {
