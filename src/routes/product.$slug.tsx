@@ -351,7 +351,7 @@ function ProductPage() {
                 initial={{ opacity: 0, y: 30 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} 
-                className="mt-12 rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 shadow-2xl backdrop-blur-3xl"
+                className="mt-12 rounded-[2rem] border border-white/10 dark:border-white/10 bg-white/[0.02] dark:bg-white/[0.02] p-8 shadow-2xl backdrop-blur-3xl"
               >
                 <div className="flex items-end justify-between border-b border-white/10 pb-8">
                   <div className="flex items-baseline gap-4">
