@@ -43,8 +43,8 @@ export const products: Product[] = [
   {
     slug: "dew",
     name: "Dew",
-    tagline: "A Daily Ritual for Balanced, Healthy-Looking Skin",
-    category: "Serum",
+    tagline: "Barrier Repair Face Serum",
+    category: "SERUM",
     collection: "Glow",
     price: 3500,
     originalPrice: 4500,
@@ -73,8 +73,8 @@ export const products: Product[] = [
   {
     slug: "veil",
     name: "Veil",
-    tagline: "A Lightweight Finish. Everyday Protection.",
-    category: "Hair",
+    tagline: "Post Wash Leave-In Serum",
+    category: "HAIR",
     collection: "Hydration",
     price: 3500,
     originalPrice: 4500,
@@ -102,9 +102,9 @@ export const products: Product[] = [
   },
   {
     slug: "herbe",
-    name: "Herbé",
-    tagline: "Prepare Your Scalp. Nourish Your Hair.",
-    category: "Scalp",
+    name: "Herbè",
+    tagline: "Pre Wash Scalp Treatment",
+    category: "SCALP",
     collection: "Anti Aging",
     price: 4500,
     originalPrice: 5500,
@@ -131,9 +131,9 @@ export const products: Product[] = [
   },
   {
     slug: "halo",
-    name: "Hálo",
-    tagline: "Lightweight Nourishment. Lasting Comfort.",
-    category: "Body",
+    name: "Halò",
+    tagline: "Satin Glow Body Oil",
+    category: "BODY",
     collection: "Glow",
     price: 5000,
     originalPrice: 6500,
@@ -162,28 +162,40 @@ export const products: Product[] = [
 
 export const ingredientsShowcase = [
   {
-    name: "Niacinamide",
-    note: "Evens tone, refines pores, and supports a stronger skin barrier.",
+    name: "Rosehip Oil",
+    note: "Nature’s retinol, rich in antioxidants and essential fatty acids to support smoother, brighter, healthier-looking skin.",
   },
   {
-    name: "Vitamin C",
-    note: "Brightens dullness, protects against oxidative stress, and supports radiance.",
+    name: "Cyperus Rotundus Oil",
+    note: "An antioxidant-rich botanical that helps calm, strengthen, and support the skin’s natural barrier for a balanced complexion.",
   },
   {
-    name: "Retinol",
-    note: "Encourages cell renewal, improves texture, and supports smoother skin.",
+    name: "Argan Oil",
+    note: "Rich in vitamin E and essential fatty acids to deeply nourish, soften, and strengthen the skin for a smooth, healthy-looking glow.",
+  },
+  {
+    name: "Castor Oil",
+    note: "Rich in essential fatty acids to deeply condition the scalp and hair while supporting softer, stronger, healthier-looking strands.",
   },
   {
     name: "Jojoba Oil",
-    note: "Balances oil production, hydrates deeply, and supports a healthy barrier.",
+    note: "Lightweight and fast-absorbing, Jojoba Oil helps smooth, soften, and protect hair while locking in lasting moisture without weighing it down.",
   },
   {
-    name: "Rosehip Oil",
-    note: "Nourishes dry skin, softens texture, and restores a healthy-looking glow.",
+    name: "Vitamin E",
+    note: "An antioxidant-rich vitamin that helps protect, condition, and strengthen hair while enhancing softness, moisture, and natural shine.",
   },
   {
-    name: "Hyaluronic Acid",
-    note: "Draws in lasting hydration for a plumper, softer, more supple finish.",
+    name: "Jaborandi Root Extract",
+    note: "Traditionally valued in botanical hair care to help nourish the scalp and support stronger, healthier-looking hair.",
+  },
+  {
+    name: "Lemongrass Botanical Infusion",
+    note: "An invigorating botanical infusion that helps refresh, rebalance, and purify the scalp for a clean, revitalised feel.",
+  },
+  {
+    name: "Mimi Signature Accord",
+    note: "An exclusive fragrance composition developed to give every formula its distinctive, elegant identity.",
   },
 ];
 

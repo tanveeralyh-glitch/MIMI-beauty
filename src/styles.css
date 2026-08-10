@@ -125,6 +125,7 @@
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
+    font-weight: 500;
     letter-spacing: -0.02em;
   }
   ::selection { background: var(--gold); color: var(--background); }

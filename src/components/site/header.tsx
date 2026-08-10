@@ -165,7 +165,7 @@ export function Header() {
             onClick={closeOverlays}
             className="z-10 justify-self-start no-underline"
           >
-            <img src="/logo.png" alt="Mimi Beauty" className="h-[100px] w-[110px]" />
+            <img src="/logo.png" alt="Mimi Beauty" className="h-[130px] w-[143px] object-contain" />
           </Link>
 
           {/* Desktop nav — center */}
@@ -385,14 +385,14 @@ export function Header() {
                         BODY LAVA COLLECTION
                       </p>
                       <div className="grid grid-cols-4 gap-8">
-                        {["Dewy Bronze", "Golden Glow", "Pearl Radiance", "Rosegold Shimmer"].map(
+                        {["Halò", "Pearl", "Amalfi", "Santorini"].map(
                           (n) => (
                             <Link href="/shop" key={n} className="group text-white">
                               <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
                                 {n}
                               </p>
                               <p className="text-xs text-white/50 mt-2 mb-1">100ml</p>
-                              <p className="text-xs text-white/80">$78</p>
+                              <p className="text-xs text-white/80">Rs. 5000</p>
                             </Link>
                           ),
                         )}
@@ -407,35 +407,19 @@ export function Header() {
                       <div className="grid grid-cols-4 gap-8">
                         <Link href="/shop" className="group text-white">
                           <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
-                            Herbé
-                          </p>
-                          <p className="text-[11px] text-white/60 mt-1">Pre-Wash Hair Oil</p>
-                          <p className="text-xs text-white/50 mt-2 mb-1">50ml</p>
-                          <p className="text-xs text-white/80">$62</p>
-                        </Link>
-                        <Link href="/shop" className="group text-white">
-                          <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
                             Veil
                           </p>
                           <p className="text-[11px] text-white/60 mt-1">Post-Wash Hair Serum</p>
                           <p className="text-xs text-white/50 mt-2 mb-1">30ml</p>
-                          <p className="text-xs text-white/80">$54</p>
+                          <p className="text-xs text-white/80">Rs. 3500</p>
                         </Link>
                         <Link href="/shop" className="group text-white">
                           <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
-                            Nourish
+                            Herbé
                           </p>
-                          <p className="text-[11px] text-white/60 mt-1">Hair Oil</p>
+                          <p className="text-[11px] text-white/60 mt-1">Pre-Wash Hair Oil</p>
                           <p className="text-xs text-white/50 mt-2 mb-1">50ml</p>
-                          <p className="text-xs text-white/80">$58</p>
-                        </Link>
-                        <Link href="/shop" className="group text-white">
-                          <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
-                            Halo Mist
-                          </p>
-                          <p className="text-[11px] text-white/60 mt-1">Hair Perfume</p>
-                          <p className="text-xs text-white/50 mt-2 mb-1">100ml</p>
-                          <p className="text-xs text-white/80">$48</p>
+                          <p className="text-xs text-white/80">Rs. 4500</p>
                         </Link>
                       </div>
                     </div>
@@ -452,31 +436,7 @@ export function Header() {
                           </p>
                           <p className="text-[11px] text-white/60 mt-1">Daily Glow Face Serum</p>
                           <p className="text-xs text-white/50 mt-2 mb-1">30ml</p>
-                          <p className="text-xs text-white/80">$68</p>
-                        </Link>
-                        <Link href="/shop" className="group text-white">
-                          <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
-                            Clarity
-                          </p>
-                          <p className="text-[11px] text-white/60 mt-1">Balancing Face Serum</p>
-                          <p className="text-xs text-white/50 mt-2 mb-1">30ml</p>
-                          <p className="text-xs text-white/80">$68</p>
-                        </Link>
-                        <Link href="/shop" className="group text-white">
-                          <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
-                            Restore
-                          </p>
-                          <p className="text-[11px] text-white/60 mt-1">Barrier Repair Serum</p>
-                          <p className="text-xs text-white/50 mt-2 mb-1">30ml</p>
-                          <p className="text-xs text-white/80">$68</p>
-                        </Link>
-                        <Link href="/shop" className="group text-white">
-                          <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
-                            Radiance
-                          </p>
-                          <p className="text-[11px] text-white/60 mt-1">Brightening Face Serum</p>
-                          <p className="text-xs text-white/50 mt-2 mb-1">30ml</p>
-                          <p className="text-xs text-white/80">$68</p>
+                          <p className="text-xs text-white/80">Rs. 3500</p>
                         </Link>
                       </div>
                     </div>
@@ -645,7 +605,7 @@ export function Header() {
                 onClick={closeOverlays}
                 className="no-underline"
               >
-                <img src="/logo.png" alt="Mimi Beauty" className="h-[100px] w-[110px]" />
+                <img src="/logo.png" alt="Mimi Beauty" className="h-[120px] w-[132px] object-contain" />
               </Link>
               <button
                 type="button"

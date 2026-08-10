@@ -15,7 +15,6 @@ import { assets, products } from "@/lib/products";
 import { ProductCard } from "@/components/site/product-card";
 import { Hero } from "@/components/site/hero";
 import { IngredientsSection } from "@/components/site/ingredients-section";
-import { RitualsGallery } from "@/components/site/rituals-gallery";
 import Link from "next/link";
 
 export default function Home() {
@@ -28,8 +27,6 @@ export default function Home() {
       <Compare />
       <Testimonials />
       <QuizPreview />
-
-      <RitualsGallery />
       <Newsletter />
     </>
   );
@@ -96,29 +93,33 @@ function BestSellers() {
 const whyItems = [
   {
     icon: ShieldCheck,
-    title: "Dermatologist tested",
-    body: "Every formula clinically evaluated for sensitive skin.",
+    title: "Dermatologically Tested",
+    body: "Every formula evaluated for skin compatibility.",
   },
   {
     icon: Rabbit,
-    title: "Cruelty free",
-    body: "Never tested on animals. Certified by Leaping Bunny.",
+    title: "Cruelty Free",
+    body: "Never tested on animals. Always made with compassion.",
   },
-  { icon: Leaf, title: "100% vegan", body: "Plant-based actives. No compromise on efficacy." },
+  {
+    icon: Leaf,
+    title: "Botanical Actives",
+    body: "Powered by concentrated plant-derived ingredients.",
+  },
   {
     icon: Sparkles,
-    title: "Botanical actives",
-    body: "Wild-harvested, cold-pressed, and clinically dosed.",
+    title: "Purposefully Formulated",
+    body: "Every ingredient selected with a clear purpose.",
   },
   {
     icon: Recycle,
-    title: "Sustainable packaging",
-    body: "Refillable glass. Post-consumer recycled cartons.",
+    title: "Non-Comedogenic",
+    body: "Won't clog pores or leave skin congested.",
   },
   {
     icon: Truck,
-    title: "Complimentary shipping",
-    body: "Free carbon-neutral delivery on orders over $75.",
+    title: "Fast Absorbing",
+    body: "Lightweight dry oils that absorb in seconds.",
   },
 ];
 
