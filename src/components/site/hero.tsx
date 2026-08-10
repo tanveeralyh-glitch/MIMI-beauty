@@ -352,16 +352,7 @@ export function Hero() {
             </MagneticAction>
           </motion.div>
 
-          <motion.div {...fadeUp(0.4)} className="mt-10 flex items-center gap-3">
-            <div className="flex items-center gap-1" aria-label="5 star rating">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-3.5 w-3.5 fill-[#D4AF37] text-gold" strokeWidth={0} />
-              ))}
-            </div>
-            <p className="text-[12px] tracking-wide text-white/80">
-              Trusted by 25,000+ Happy Customers
-            </p>
-          </motion.div>
+
 
           <motion.ul
             {...fadeUp(0.48)}
