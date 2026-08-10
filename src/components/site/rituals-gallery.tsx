@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+import Link from "next/link";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRef, type MouseEvent } from "react";
@@ -97,8 +98,7 @@ function RitualCard({
     >
       <Link
         ref={ref}
-        to="/product/$slug"
-        params={{ slug: item.slug }}
+        href={`/product/${item.slug}`}
         onMouseMove={onMove}
         className="ritual-card group relative block h-full min-h-[280px] overflow-hidden rounded-[28px]"
       >
@@ -123,14 +123,14 @@ function RitualCard({
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/75 via-black/10 to-transparent"
+          className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-background/75 via-background/10 to-transparent"
         />
 
         <div className="absolute inset-0 z-30 flex flex-col justify-end p-6 md:p-8">
           <div className="translate-y-0 opacity-100 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
             <p className="font-display text-2xl text-white md:text-3xl">{item.name}</p>
             <p className="mt-1 max-w-xs text-sm text-white/65">{item.description}</p>
-            <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-[#C9A86A]">
+            <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-gold">
               Discover Ritual <ArrowRight className="h-3.5 w-3.5" />
             </span>
           </div>
@@ -142,7 +142,10 @@ function RitualCard({
 
 export function RitualsGallery() {
   return (
-    <section id="rituals" className="section-cv relative overflow-hidden bg-[#050505] py-20 md:py-40">
+    <section
+      id="rituals"
+      className="section-cv relative overflow-hidden bg-background py-20 md:py-40"
+    >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -158,7 +161,7 @@ export function RitualsGallery() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[11px] font-medium uppercase tracking-[0.4em] text-[#C9A86A]"
+            className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold"
           >
             Rituals
           </motion.p>
@@ -167,16 +170,17 @@ export function RitualsGallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75, ease }}
-            className="mt-5 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-white"
+            className="mt-5 font-display text-[clamp(3rem,6vw,5rem)] leading-[1.05] tracking-tight text-[#F6F2EB]"
+            style={{ fontFamily: "var(--font-cormorant)" }}
           >
-            Rituals, in the Wild.
+            Rituals, <em className="italic text-gold">in the Wild.</em>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08, duration: 0.7, ease }}
-            className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-white/50"
+            className="mx-auto mt-6 max-w-md text-[16px] leading-relaxed text-white/80 font-light"
           >
             Experience skincare as a daily ritual, inspired by nature and crafted with science.
           </motion.p>
