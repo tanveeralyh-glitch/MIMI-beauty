@@ -25,7 +25,7 @@ const rituals = [
   {
     src: "/media__1784439898781.jpg",
     name: "Herbé",
-    description: "Scalp ritual, rooted in botanicals.",
+    description: "Scalp care, rooted in botanicals.",
     slug: "herbe",
     className: "min-h-[320px] aspect-[4/5] md:-translate-y-4",
   },
@@ -53,7 +53,7 @@ const rituals = [
   {
     src: "/media__1784439898181.jpg",
     name: "The Wardrobe",
-    description: "Four formulas. Endless rituals.",
+    description: "Four formulas. Endless possibilities.",
     slug: "dew",
     className: "md:col-span-2 min-h-[220px] aspect-[21/9]",
   },
@@ -131,7 +131,7 @@ function RitualCard({
             <p className="font-display text-2xl text-white md:text-3xl">{item.name}</p>
             <p className="mt-1 max-w-xs text-sm text-white/65">{item.description}</p>
             <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-gold">
-              Discover Ritual <ArrowRight className="h-3.5 w-3.5" />
+              Discover More <ArrowRight className="h-3.5 w-3.5" />
             </span>
           </div>
         </div>
@@ -163,7 +163,7 @@ export function RitualsGallery() {
             viewport={{ once: true }}
             className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold"
           >
-            Rituals
+            Collections
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -173,7 +173,7 @@ export function RitualsGallery() {
             className="mt-5 font-display text-[clamp(3rem,6vw,5rem)] leading-[1.05] tracking-tight text-[#F6F2EB]"
             style={{ fontFamily: "var(--font-cormorant)" }}
           >
-            Rituals, <em className="italic text-gold">in the Wild.</em>
+            Beauty, <em className="italic text-gold">in the Wild.</em>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 14 }}
@@ -182,7 +182,7 @@ export function RitualsGallery() {
             transition={{ delay: 0.08, duration: 0.7, ease }}
             className="mx-auto mt-6 max-w-md text-[16px] leading-relaxed text-white/80 font-light"
           >
-            Experience skincare as a daily ritual, inspired by nature and crafted with science.
+            Experience skincare inspired by nature and crafted with science.
           </motion.p>
         </div>
 

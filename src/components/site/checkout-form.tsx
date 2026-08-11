@@ -127,8 +127,8 @@ Street Address: ${customerInfo.address}
    Color: ${product.collection}
    Size: ${product.size}
    Quantity: ${qty}
-   Unit Price: $${(product.price / 100).toFixed(2)}
-   Item Total: $${(totalPrice / 100).toFixed(2)}
+   Unit Price: PKR ${(product.price / 100).toFixed(2)}
+   Item Total: PKR ${(totalPrice / 100).toFixed(2)}
 
 `;
     });
@@ -137,11 +137,11 @@ Street Address: ${customerInfo.address}
 
 💰 Order Summary
 
-Subtotal: $${subtotalInDollars.toFixed(2)}
-Shipping: $${shippingInDollars.toFixed(2)}
-Discount: $${discountInDollars.toFixed(2)}
-Tax: $${taxInDollars.toFixed(2)}
-Grand Total: $${grandTotalInDollars.toFixed(2)}
+Subtotal: PKR ${subtotalInDollars.toFixed(2)}
+Shipping: PKR ${shippingInDollars.toFixed(2)}
+Discount: PKR ${discountInDollars.toFixed(2)}
+Tax: PKR ${taxInDollars.toFixed(2)}
+Grand Total: PKR ${grandTotalInDollars.toFixed(2)}
 
 ━━━━━━━━━━━━━━━━━━
 
@@ -196,7 +196,7 @@ Please confirm my order.`;
         onClick={() => setShowForm(true)}
         className="w-full rounded-full bg-gold py-3.5 text-sm font-medium tracking-wide text-background transition hover:bg-gold-soft"
       >
-        Checkout · ${(subtotal / 100).toFixed(2)}
+        Checkout · PKR {(subtotal / 100).toFixed(2)}
       </button>
     );
   }
@@ -334,19 +334,19 @@ Please confirm my order.`;
       <div className="border-t pt-3 space-y-1">
         <div className="flex justify-between text-xs">
           <span className="text-muted-foreground">Subtotal</span>
-          <span>${(subtotal / 100).toFixed(2)}</span>
+          <span>PKR {(subtotal / 100).toFixed(2)}</span>
         </div>
         <div className="flex justify-between text-xs">
           <span className="text-muted-foreground">Shipping</span>
-          <span>$0.00</span>
+          <span>PKR 0.00</span>
         </div>
         <div className="flex justify-between text-xs">
           <span className="text-muted-foreground">Tax (10%)</span>
-          <span>${((subtotal * 0.1) / 100).toFixed(2)}</span>
+          <span>PKR {((subtotal * 0.1) / 100).toFixed(2)}</span>
         </div>
         <div className="flex justify-between text-sm font-bold">
           <span>Total</span>
-          <span>${((subtotal * 1.1) / 100).toFixed(2)}</span>
+          <span>PKR {((subtotal * 1.1) / 100).toFixed(2)}</span>
         </div>
       </div>
 

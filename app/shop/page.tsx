@@ -61,10 +61,11 @@ export default function Shop() {
               </div>
               <button 
                 onClick={() => setShowFilters(!showFilters)} 
-                className={`flex h-12 items-center justify-center gap-2 rounded-full border px-5 text-xs font-semibold uppercase tracking-wider transition ${showFilters ? "border-gold bg-gold text-black" : "border-white/10 bg-white/[0.02] text-white hover:border-white/30"}`}
+                className={`flex h-12 shrink-0 items-center justify-center gap-2 rounded-full border px-3 sm:px-5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider transition ${showFilters ? "border-gold bg-gold text-black" : "border-white/10 bg-white/[0.02] text-white hover:border-white/30"}`}
               >
                 <SlidersHorizontal className="h-3.5 w-3.5" />
-                <span>Categories</span>
+                <span className="hidden sm:inline">Categories</span>
+                <span className="inline sm:hidden">Filter</span>
               </button>
             </div>
 
@@ -120,7 +121,7 @@ export default function Shop() {
             <p className="text-lg text-foreground/40 font-light">No products match this ritual — yet.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-x-6 gap-y-16 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-x-6 gap-y-16 md:grid-cols-3 lg:grid-cols-4">
             {filtered.map((p, i) => (
               <ProductCard key={p.slug} product={p} index={i} />
             ))}

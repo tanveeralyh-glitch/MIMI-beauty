@@ -239,6 +239,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   const [activeTab, setActiveTab] = useState<string>("ingredients");
   const [active, setActive] = useState(0);
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [isDescExpanded, setIsDescExpanded] = useState(false);
   const wishlisted = has(product.slug);
   
   const gallery = product.gallery?.length ? product.gallery : [product.image, product.hoverImage].filter(Boolean);
@@ -254,7 +255,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-gold/30">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground selection:bg-gold/30">
       
       {/* Background ambient lighting */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -335,9 +336,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                 </ul>
               </AccordionItem>
               
-              <AccordionItem title="The Ritual" open={activeTab === "directions"} onClick={() => setActiveTab(activeTab === "directions" ? "" : "directions")}>
-                <p className="text-lg leading-loose text-foreground/80">{product.directions}</p>
-              </AccordionItem>
+
             </motion.div>
           </div>
 
@@ -364,7 +363,27 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   <span className="text-xs uppercase tracking-[0.2em] text-foreground/60">{product.rating} <span className="mx-1">·</span> {product.reviews} reviews</span>
                 </div>
 
-                <p className="mt-10 text-base leading-relaxed text-foreground/70 md:text-lg">{product.description}</p>
+                <div className="mt-10">
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isDescExpanded ? "auto" : "5.5rem" }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative overflow-hidden"
+                  >
+                    <div className="text-base leading-relaxed text-foreground/70 md:text-lg whitespace-pre-wrap">
+                      {product.description}
+                    </div>
+                    {!isDescExpanded && (
+                      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+                    )}
+                  </motion.div>
+                  <button
+                    onClick={() => setIsDescExpanded(!isDescExpanded)}
+                    className="mt-4 flex w-max items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-gold transition-colors hover:text-white"
+                  >
+                    {isDescExpanded ? "READ LESS ↑" : "READ MORE →"}
+                  </button>
+                </div>
               </motion.div>
 
               {/* Glassmorphism Purchase Panel */}
@@ -376,9 +395,9 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
               >
                 <div className="flex items-end justify-between border-b border-white/10 pb-8">
                   <div className="flex items-baseline gap-4">
-                    <span className="font-display text-5xl tracking-tight">${product.price}</span>
+                    <span className="font-display text-5xl tracking-tight">Rs. {product.price}</span>
                     {product.originalPrice > product.price && (
-                      <span className="text-xl text-foreground/40 line-through">${product.originalPrice}</span>
+                      <span className="text-xl text-foreground/40 line-through">Rs. {product.originalPrice}</span>
                     )}
                   </div>
                   <span className="text-xs uppercase tracking-[0.2em] text-foreground/50">{product.size}</span>

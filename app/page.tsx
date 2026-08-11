@@ -42,7 +42,7 @@ function BottomFeatureBar() {
   return (
     <div className="border-t border-gold/30 bg-[#1A271D] py-16 md:py-20">
       <div className="mx-auto max-w-[1400px] px-6">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4 md:gap-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-8">
           {features.map((f, i) => (
             <div key={i} className="flex flex-col items-center text-center md:items-start md:text-left">
               <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 text-gold mb-5">
@@ -101,7 +101,7 @@ function BestSellers() {
               CUSTOMER FAVORITES
             </p>
             <h2 
-              className="mt-5 text-5xl md:text-7xl lg:text-[80px] font-medium leading-[1.1] text-[#F6F2EB]"
+              className="mt-5 text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-medium leading-[1.1] text-[#F6F2EB]"
               style={{ fontFamily: "var(--font-cormorant)" }}
             >
               Skincare that <em className="italic text-gold">stays with you.</em>
@@ -239,7 +239,7 @@ function WhyChoose() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.05 }}
-              className="group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-2xl border border-gold/20 bg-[#121A15] p-8 md:p-10 transition-colors hover:border-gold/50"
+              className="group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-2xl border border-gold/20 bg-[#121A15] p-6 sm:p-8 md:p-10 transition-colors hover:border-gold/50"
             >
               <div className="absolute bottom-0 right-0 h-40 w-24 opacity-20 transition-opacity duration-500 group-hover:opacity-40 pointer-events-none text-gold">
                 <FloralDecoration index={i} />
@@ -343,7 +343,7 @@ function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="glass rounded-2xl p-7"
+              className="glass rounded-2xl p-5 sm:p-7"
             >
               <div className="flex gap-0.5 text-gold">
                 {Array.from({ length: 5 }).map((_, s) => <Star key={s} className="h-3.5 w-3.5 fill-gold" />)}

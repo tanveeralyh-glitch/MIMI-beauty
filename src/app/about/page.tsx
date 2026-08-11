@@ -21,7 +21,7 @@ const timeline = [
   },
   {
     year: "2027",
-    title: "Worldwide Rituals",
+    title: "Worldwide Expansion",
     label: "Refillable luxury glass packaging launches globally.",
   },
 ];
@@ -77,7 +77,7 @@ export default function About() {
               transition={{ duration: 1, delay: 0.4 }}
               className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-foreground/70"
             >
-              We design slow, ritualistic skincare formulated to integrate seamlessly into your
+              We design intentional skincare formulated to integrate seamlessly into your
               daily space. Crafting botanically-infused, clinically-proven formulas in small
               batches.
             </motion.p>
@@ -256,7 +256,7 @@ export default function About() {
               <h2 className="mt-6 font-display text-4xl md:text-6xl">Our journey.</h2>
               <p className="mt-6 text-foreground/50 max-w-sm font-light leading-relaxed">
                 From a small design and chemistry studio to a globally recognized standard for
-                ritualistic care.
+                intentional care.
               </p>
             </div>
           </div>

@@ -114,7 +114,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
             {product.category}
           </p>
           <h3
-            className="mt-1 font-display text-[34px] leading-none text-[#F5F2EC]"
+            className="mt-1 font-display text-[28px] sm:text-[34px] leading-none text-[#F5F2EC] break-words"
             style={{ fontFamily: "var(--font-cormorant)" }}
           >
             {product.name}

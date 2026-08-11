@@ -237,7 +237,7 @@ const testimonials = [
     name: "Yuki T.",
     city: "Tokyo",
     quote:
-      "Every detail feels intentional. The packaging, the ritual, the results. Rhode meets Aesop.",
+      "Every detail feels intentional. The packaging, the care, the results. Rhode meets Aesop.",
   },
   {
     name: "Chloé D.",
@@ -291,7 +291,7 @@ function QuizPreview() {
               Skin Quiz · 60 seconds
             </p>
             <h2 className="mt-4 font-display text-3xl md:text-5xl lg:text-6xl leading-tight text-balance">
-              Your ritual, <em className="text-gold">designed for you</em>.
+              Your routine, <em className="text-gold">designed for you</em>.
             </h2>
             <p className="mt-4 max-w-md text-muted-foreground">
               Four gentle questions. A personalised routine built by dermatologists, delivered
@@ -305,7 +305,7 @@ function QuizPreview() {
             </Link>
           </div>
           <div className="space-y-3">
-            {["Skin type", "Concerns", "Sensitivity", "Ritual time"].map((step, i) => (
+            {["Skin type", "Concerns", "Sensitivity", "Routine time"].map((step, i) => (
               <motion.div
                 key={step}
                 initial={{ opacity: 0, x: 30 }}
@@ -343,7 +343,7 @@ function Newsletter() {
               Slow drops, quiet news.
             </h2>
             <p className="mt-4 max-w-md text-muted-foreground">
-              Occasional letters on ritual, ingredients, and new arrivals. Never noise.
+              Occasional letters on skincare, ingredients, and new arrivals. Never noise.
             </p>
           </div>
           <form className="flex flex-col gap-3 md:flex-row" onSubmit={(e) => e.preventDefault()}>

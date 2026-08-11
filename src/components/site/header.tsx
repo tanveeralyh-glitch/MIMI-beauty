@@ -158,14 +158,29 @@ export function Header() {
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <div className="relative mx-auto grid h-[120px] max-w-[1400px] grid-cols-[auto_1fr_auto] items-center gap-2 px-4 sm:px-5 md:grid-cols-[1fr_auto_1fr] md:gap-4 md:px-8">
+        <div className="group relative flex overflow-hidden border-b border-gold/20 bg-[#070b09] py-2.5 text-[9px] font-medium uppercase tracking-[0.25em] text-[#C9A86A] sm:text-[10px]">
+          <div className="flex animate-marquee whitespace-nowrap will-change-transform hover:[animation-play-state:paused]">
+            {[...Array(12)].map((_, i) => (
+              <div key={i} className="flex items-center space-x-4 px-2">
+                <span>FIRST 100 CUSTOMERS</span>
+                <span className="text-[#C9A86A]/50">•</span>
+                <span>10% OFF</span>
+                <span className="text-[#C9A86A]/50">•</span>
+                <span>LIMITED LAUNCH OFFER</span>
+                <span className="text-[#C9A86A]/50">•</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative mx-auto grid h-[100px] md:h-[120px] max-w-[1400px] grid-cols-[auto_1fr_auto] items-center gap-2 px-3 sm:px-5 md:grid-cols-[1fr_auto_1fr] md:gap-4 md:px-8">
           {/* Logo — left */}
           <Link
             href="/"
             onClick={closeOverlays}
             className="z-10 justify-self-start no-underline"
           >
-            <img src="/logo.png" alt="Mimi Beauty" className="h-[130px] w-[143px] object-contain" />
+            <img src="/logo.png" alt="Mimi Beauty" className="h-[90px] md:h-[130px] max-w-[110px] sm:max-w-none object-contain" />
           </Link>
 
           {/* Desktop nav — center */}
@@ -528,7 +543,7 @@ export function Header() {
                   ref={searchRef}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search the ritual…"
+                  placeholder="Search products…"
                   className="w-full bg-transparent font-display text-xl outline-none placeholder:text-muted-foreground/50 md:text-2xl"
                 />
                 <button
@@ -562,7 +577,7 @@ export function Header() {
                         <p className="font-display text-lg">{p.name}</p>
                         <p className="truncate text-xs text-muted-foreground">{p.tagline}</p>
                       </div>
-                      <span className="text-sm text-gold">${p.price}</span>
+                      <span className="text-sm text-gold">Rs. {p.price}</span>
                     </Link>
                   ))
                 )}
@@ -636,7 +651,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     onClick={closeOverlays}
-                    className="block font-display text-4xl tracking-tight text-foreground/90 transition-colors hover:text-gold sm:text-5xl"
+                    className="block font-display text-3xl tracking-tight text-foreground/90 transition-colors hover:text-gold sm:text-5xl"
                   >
                     {item.label}
                   </Link>
@@ -769,7 +784,7 @@ function WishlistPanel({
       <div className="max-h-72 overflow-y-auto">
         {list.length === 0 ? (
           <p className="px-4 py-10 text-center text-sm text-muted-foreground">
-            Your wishlist awaits its first ritual.
+            Your wishlist awaits its first product.
           </p>
         ) : (
           list.map((p) => (
@@ -785,7 +800,7 @@ function WishlistPanel({
                 <img src={p.image} alt="" className="h-12 w-12 object-cover" />
                 <div className="min-w-0">
                   <p className="truncate font-display text-base">{p.name}</p>
-                  <p className="text-xs text-gold">${p.price}</p>
+                  <p className="text-xs text-gold">Rs. {p.price}</p>
                 </div>
               </Link>
               <button
