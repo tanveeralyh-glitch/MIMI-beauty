@@ -7,7 +7,7 @@ import { useRef, type MouseEvent } from "react";
 const ease = [0.22, 1, 0.36, 1] as const;
 const GOLD = "#C9A86A";
 
-const rituals = [
+const collections = [
   {
     src: "/media__1784439898596.jpg",
     name: "Dew",
@@ -59,12 +59,12 @@ const rituals = [
   },
 ] as const;
 
-function RitualCard({
+function CollectionCard({
   item,
   index,
   forceClass,
 }: {
-  item: (typeof rituals)[number];
+  item: (typeof collections)[number];
   index: number;
   forceClass?: string;
 }) {
@@ -100,7 +100,7 @@ function RitualCard({
         ref={ref}
         href={`/product/${item.slug}`}
         onMouseMove={onMove}
-        className="ritual-card group relative block h-full min-h-[280px] overflow-hidden rounded-[28px]"
+        className="collection-card group relative block h-full min-h-[280px] overflow-hidden rounded-[28px]"
       >
         <motion.div
           aria-hidden
@@ -140,10 +140,10 @@ function RitualCard({
   );
 }
 
-export function RitualsGallery() {
+export function CollectionsGallery() {
   return (
     <section
-      id="rituals"
+      id="collections"
       className="section-cv relative overflow-hidden bg-background py-20 md:py-40"
     >
       <div
@@ -187,15 +187,15 @@ export function RitualsGallery() {
         </div>
 
         <div className="mt-20 hidden gap-5 md:mt-24 md:grid md:grid-cols-4 md:gap-6">
-          {rituals.map((item, i) => (
-            <RitualCard key={`${item.src}-${i}`} item={item} index={i} />
+          {collections.map((item, i) => (
+            <CollectionCard key={`${item.src}-${i}`} item={item} index={i} />
           ))}
         </div>
 
         <div className="mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {rituals.map((item, i) => (
+          {collections.map((item, i) => (
             <div key={`m-${item.src}-${i}`} className="w-[78vw] shrink-0 snap-center">
-              <RitualCard item={item} index={i} forceClass="aspect-[3/4] min-h-[360px]" />
+              <CollectionCard item={item} index={i} forceClass="aspect-[3/4] min-h-[360px]" />
             </div>
           ))}
         </div>

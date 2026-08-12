@@ -463,7 +463,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                 <span className="h-[1px] w-8 bg-gold" />
                 <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold">Explore</p>
               </div>
-              <h2 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl">Ritual companions</h2>
+
             </div>
             <Link href="/shop" className="group flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-foreground/60 transition hover:text-white">
               View Collection 

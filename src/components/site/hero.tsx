@@ -273,8 +273,8 @@ export function Hero() {
     [mx, my],
   );
 
-  const scrollToRituals = () => {
-    document.getElementById("rituals")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToCollections = () => {
+    document.getElementById("collections")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const btnPrimary =
@@ -347,7 +347,7 @@ export function Hero() {
               SHOP COLLECTION
               <ArrowRight className="h-4 w-4" />
             </MagneticLink>
-            <MagneticAction onClick={scrollToRituals} className={btnSecondary}>
+            <MagneticAction onClick={scrollToCollections} className={btnSecondary}>
               EXPLORE PRODUCTS
             </MagneticAction>
           </motion.div>

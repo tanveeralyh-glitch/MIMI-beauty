@@ -326,7 +326,7 @@ function BeforeAfter() {
 const testimonials = [
   { name: "Amelia R.", city: "New York", quote: "The Dew serum genuinely changed my skin. Two weeks in, my barrier feels rebuilt. It's the first product I've re-ordered twice." },
   { name: "Sofia L.", city: "Milan", quote: "Hálo is the most beautiful body oil I've ever owned. The fragrance is subtle and the shine is unreal." },
-  { name: "Yuki T.", city: "Tokyo", quote: "Every detail feels intentional. The packaging, the ritual, the results. Rhode meets Aesop." },
+  { name: "Yuki T.", city: "Tokyo", quote: "Every detail feels intentional. The packaging, the collection, the results. Rhode meets Aesop." },
   { name: "Chloé D.", city: "Paris", quote: "Herbé transformed my scalp. My hair grows faster and shinier. This brand is quietly extraordinary." },
 ];
 
@@ -365,7 +365,7 @@ function Testimonials() {
 
 const posts = [
   { title: "The barrier repair diary", excerpt: "How ceramides rebuild the moisture barrier in 28 days.", tag: "Journal" },
-  { title: "On slow beauty", excerpt: "Why the ritual matters as much as the formula.", tag: "Philosophy" },
+  { title: "On slow beauty", excerpt: "Why the collection matters as much as the formula.", tag: "Philosophy" },
   { title: "A guide to layering", excerpt: "The right order for serums, oils, and moisturisers.", tag: "How-to" },
 ];
 
