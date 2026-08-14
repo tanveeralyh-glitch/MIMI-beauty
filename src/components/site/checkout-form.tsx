@@ -6,7 +6,7 @@ import type { CartLine } from "@/lib/cart";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const WHATSAPP_NUMBER = "923274984584"; // Using the phone number from footer (03274984584)
+const WHATSAPP_NUMBER = "923239847938"; // Using the phone number from footer (03239847938)
 
 interface CustomerInfo {
   fullName: string;

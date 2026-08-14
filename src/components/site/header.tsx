@@ -158,29 +158,18 @@ export function Header() {
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <div className="group relative flex overflow-hidden border-b border-gold/20 bg-[#070b09] py-2.5 text-[9px] font-medium uppercase tracking-[0.25em] text-[#C9A86A] sm:text-[10px]">
-          <div className="flex animate-marquee whitespace-nowrap will-change-transform hover:[animation-play-state:paused]">
-            {[...Array(12)].map((_, i) => (
-              <div key={i} className="flex items-center space-x-4 px-2">
-                <span>FIRST 100 CUSTOMERS</span>
-                <span className="text-[#C9A86A]/50">•</span>
-                <span>10% OFF</span>
-                <span className="text-[#C9A86A]/50">•</span>
-                <span>LIMITED LAUNCH OFFER</span>
-                <span className="text-[#C9A86A]/50">•</span>
-              </div>
-            ))}
-          </div>
-        </div>
 
         <div className="relative mx-auto grid h-[100px] md:h-[120px] max-w-[1400px] grid-cols-[auto_1fr_auto] items-center gap-2 px-3 sm:px-5 md:grid-cols-[1fr_auto_1fr] md:gap-4 md:px-8">
           {/* Logo — left */}
           <Link
             href="/"
             onClick={closeOverlays}
-            className="z-10 justify-self-start no-underline"
+            className="z-10 justify-self-start no-underline flex items-center gap-2"
           >
-            <img src="/logo.png" alt="Mimi Beauty" className="h-[90px] md:h-[130px] max-w-[110px] sm:max-w-none object-contain" />
+            <img src="/logo.png" alt="Mimi Beauty" className="h-[70px] md:h-[100px] max-w-[90px] sm:max-w-none object-contain" />
+            <span className="font-['Playfair_Display'] text-2xl sm:text-3xl font-medium tracking-wide text-foreground mt-1">
+              Mimi<span className="italic text-gold font-light">Beauty</span>
+            </span>
           </Link>
 
           {/* Desktop nav — center */}

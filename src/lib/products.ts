@@ -18,6 +18,14 @@ export const assets = {
   logo: "/logo.png",
 };
 
+export type ProductTheme = {
+  bg: string;         // page background color
+  accent: string;     // accent / highlight color
+  accentMuted: string; // muted accent for borders / subtle elements
+  surface: string;    // card / panel surface color
+  glow: string;       // rgba glow color for decorative blobs
+};
+
 export type Product = {
   slug: string;
   name: string;
@@ -34,9 +42,11 @@ export type Product = {
   benefits: string[];
   ingredients: string[];
   directions: string;
+  storageCaution?: string;
   skinType: string[];
   description: string;
   gallery: string[];
+  theme: ProductTheme;
 };
 
 export const products: Product[] = [
@@ -54,6 +64,13 @@ export const products: Product[] = [
     gallery: [assets.halo, assets.water, assets.lineup, assets.stone],
     rating: 4.9,
     reviews: 428,
+    theme: {
+      bg: "#0E0E0E",
+      accent: "#C9A86A",
+      accentMuted: "rgba(201,168,106,0.15)",
+      surface: "rgba(255,255,255,0.03)",
+      glow: "rgba(201,168,106,0.06)",
+    },
     benefits: [
       "Lightweight, fast-absorbing dry oil formula",
       "Helps maintain balanced hydration",
@@ -66,9 +83,10 @@ export const products: Product[] = [
     ],
     ingredients: ["Niacinamide 5%", "Hyaluronic Acid", "Ceramides", "Squalane"],
     directions: "Apply 3–4 drops to clean skin, morning and night. Follow with moisturizer.",
+    storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
     skinType: ["All", "Dry", "Sensitive"],
     description:
-      "Healthy skin begins with balance. When skin becomes dehydrated or repeatedly stripped of moisture, it often responds by producing excess oil in an effort to protect itself. Over time, this imbalance can leave your complexion feeling dry, congested, oily, or more prone to visible blemishes.\n\nDEW is designed to help restore that balance. Powered by a carefully curated blend of botanical oils that work in harmony with the skin's natural barrier, its lightweight formula absorbs effortlessly to replenish moisture, reinforce barrier function, and leave skin feeling soft, comfortable, and naturally radiant without a heavy or greasy finish.\n\nA resilient skin barrier is the foundation of calm, balanced skin. By helping strengthen and support the skin's natural protective barrier, DEW encourages a complexion that feels less reactive and better able to maintain lasting hydration and comfort over time.\n\nRather than simply providing temporary hydration, DEW works alongside your skin to support long-term balance, resilience, and everyday radiance.\n\nSimple. Effective. Intentionally balanced.",
+      "A lightweight face serum that restores moisture, repairs skin barrier, leaves your skin soft, smooth, naturally radiant and blemish free.",
   },
   {
     slug: "veil",
@@ -84,6 +102,13 @@ export const products: Product[] = [
     gallery: [assets.veil, assets.lineup, assets.water, assets.stone],
     rating: 4.8,
     reviews: 312,
+    theme: {
+      bg: "#1A1008",
+      accent: "#C4956A",
+      accentMuted: "rgba(196,149,106,0.15)",
+      surface: "rgba(196,149,106,0.04)",
+      glow: "rgba(196,149,106,0.07)",
+    },
     benefits: [
       "Lightweight, fast-absorbing dry oil formula",
       "Helps protect against everyday heat styling",
@@ -96,9 +121,10 @@ export const products: Product[] = [
     ],
     ingredients: ["Argan Oil", "Silk Proteins", "Vitamin E", "Camellia"],
     directions: "Warm 2–3 drops between palms and glide through damp or dry lengths.",
+    storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
     skinType: ["All hair types"],
     description:
-      "The care your hair receives after cleansing is just as important as the care it receives before. Freshly washed hair is more vulnerable to moisture loss, frizz, and heat damage. VEIL Post-Wash Hair Serum is formulated to nourish and protect every strand while enhancing softness, smoothness, and natural shine without weighing it down.\n\nIts lightweight dry oil formula absorbs effortlessly into damp or dry hair, smoothing the hair cuticle while creating a breathable protective layer around each strand to help shield against everyday heat styling. The result is hair that feels silky, polished, beautifully manageable, and refreshed with every application, turning your routine into an indulgent sensory experience. Designed for every hair texture, VEIL enhances your hair's natural character rather than masking it, leaving curls defined, waves soft and bouncy, and straight hair sleek with a luminous, healthy-looking finish.\n\nA simple finishing treatment for hair that feels nourished, protected, and effortlessly refined.",
+      "A lightweight glossy finish serum that smooths cuticles, softens hair, enhances natural shine and keeps frizz under control without weighing hair down.\nSuitable for straight/wavy and curly hair.",
   },
   {
     slug: "herbe",
@@ -114,6 +140,13 @@ export const products: Product[] = [
     gallery: [assets.herbe, assets.stone, assets.water, assets.lineup],
     rating: 4.9,
     reviews: 271,
+    theme: {
+      bg: "#0C1410",
+      accent: "#7AAB6E",
+      accentMuted: "rgba(122,171,110,0.15)",
+      surface: "rgba(122,171,110,0.04)",
+      glow: "rgba(122,171,110,0.07)",
+    },
     benefits: [
       "Nourishes the scalp before cleansing",
       "Helps replenish moisture before shampooing",
@@ -123,11 +156,22 @@ export const products: Product[] = [
       "Suitable for all hair types",
       "Crafted with carefully selected botanical ingredients"
     ],
-    ingredients: ["Rosemary", "Peptides", "Tea Tree", "Green Tea"],
-    directions: "Massage into dry scalp. Leave 10 minutes before cleansing.",
+    ingredients: [
+      "Rice Bran Oil",
+      "Caprylic/Capric Triglyceride",
+      "Simmondsia Chinensis Seed Oil",
+      "Pycnogenol",
+      "Microphyllus Leaf Extract",
+      "Argania Spinosa Seed Oil",
+      "Rosa Canina Seed Oil",
+      "Polysorbate 80",
+      "Tocopherol"
+    ],
+    directions: "Apply directly, using dropper to scalp and massage gently using fingertips. Leave on for at least 30 mins or overnight. Wash thoroughly with mild shampoo. Use 1–2 times per week.",
+    storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
     skinType: ["Sensitive scalp", "Oily"],
     description:
-      "Healthy hair begins with a healthy scalp. Repeated shampooing after conventional scalp treatments to remove product build-up can leave the scalp feeling stripped of its natural oils, making it more prone to dryness and discomfort. HERBÈ Pre-Wash Scalp Treatment helps replenish moisture before cleansing, creating the ideal foundation for a healthier scalp and softer, stronger-looking hair.\n\nPowered by a carefully selected blend of botanical oils and plant extracts, its lightweight formula helps nourish the scalp, condition the hair, and prepare both scalp and hair before cleansing without leaving behind a heavy or greasy feel. Applied before shampooing, HERBÈ transforms wash day into a simple step of intentional care, leaving the scalp feeling refreshed while hair feels softer, smoother, healthier, and easier to manage after every wash.",
+      "A nourishing pre-wash treatment that restores scalp pH, activates lazy hair follicles, cleanses scalp and leaves scalp deeply nourished, dandruff free with visibly smooth and healthy hair.",
   },
   {
     slug: "halo",
@@ -143,6 +187,13 @@ export const products: Product[] = [
     gallery: [assets.dew, assets.water, assets.lineup, assets.stone],
     rating: 5.0,
     reviews: 542,
+    theme: {
+      bg: "#150C0D",
+      accent: "#B5717A",
+      accentMuted: "rgba(181,113,122,0.15)",
+      surface: "rgba(181,113,122,0.04)",
+      glow: "rgba(181,113,122,0.08)",
+    },
     benefits: [
       "Lightweight, fast-absorbing dry oil formula",
       "Deeply nourishes without feeling greasy",
@@ -154,9 +205,10 @@ export const products: Product[] = [
     ],
     ingredients: ["Rosehip", "Vitamin C", "Jojoba", "Rose Absolute"],
     directions: "Mist onto damp skin after bathing. Massage in circular motions.",
+    storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
     skinType: ["All"],
     description:
-      "Healthy skin deserves more than surface hydration. While many body moisturisers create a temporary layer that can feel heavy or sticky, HÁLO Body Oil is crafted with a carefully balanced blend of botanical oils that absorb beautifully into the skin, delivering lasting nourishment without residue.\n\nIts lightweight dry oil texture helps replenish moisture, support the skin's natural barrier, and leave skin feeling soft, supple, and comfortably hydrated with a natural, healthy glow.\n\nWhether applied after showering, following shaving or waxing, or whenever your skin needs extra care, HÁLO melts effortlessly into the skin, providing lasting comfort and a silky finish that never feels greasy.\n\nA simple daily routine for skin that feels nourished, balanced, and beautifully radiant.",
+      "A nourishing body oil that melts into the skin, it deeply moisturises, reduces hair growth, leaves skin silky-smooth, and naturally luminous without a greasy finish.",
   },
 ];
 
