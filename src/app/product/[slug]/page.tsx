@@ -115,7 +115,7 @@ function MagneticButton({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      style={{ x: mouseXSpring, y: mouseYSpring, ...style }}
+      style={{ x: mouseXSpring, y: mouseYSpring, ...style } as React.CSSProperties & { x: typeof mouseXSpring; y: typeof mouseYSpring }}
       className={`group relative overflow-hidden transition-all duration-300 ${className}`}
     >
       <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-[1.5s] ease-in-out group-hover:translate-x-[150%]" />
