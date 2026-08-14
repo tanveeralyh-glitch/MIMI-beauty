@@ -86,6 +86,7 @@ function MagneticButton({
   children,
   onClick,
   className,
+  style,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
