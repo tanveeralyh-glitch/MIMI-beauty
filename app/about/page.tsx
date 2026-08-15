@@ -81,8 +81,9 @@ export default function About() {
               <span className="h-[1px] w-8 bg-gold" />
               <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold">About Us</p>
             </div>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
-              At Mimi Beauty, we believe skincare should feel effortless, luxurious, and inspired by nature.
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.15] tracking-tight">
+              At Mimi Beauty,<br />
+              we believe skincare should feel effortless, luxurious, and inspired by nature.
             </h2>
           </motion.div>
           

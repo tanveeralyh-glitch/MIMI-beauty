@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-const SESSION_KEY = "mimi_popup_dismissed_v3";
+const SESSION_KEY = "mimi_popup_dismissed_v4";
 
 export function PromotionalPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ export function PromotionalPopup() {
         // sessionStorage unavailable (e.g. SSR safety)
         setIsOpen(true);
       }
-    }, 1400);
+    }, 800);
     return () => clearTimeout(t);
   }, []);
 
@@ -84,8 +84,8 @@ export function PromotionalPopup() {
               <div
                 className="relative rounded-sm"
                 style={{
-                  background: "linear-gradient(145deg, #1a0d0a, #130c09, #1c0f0b)",
-                  boxShadow: "0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(166,130,80,0.35), inset 0 0 0 1px rgba(253,245,230,0.04)",
+                  background: "linear-gradient(160deg, #0e1a12 0%, #0a1209 50%, #111a0f 100%)",
+                  boxShadow: "0 30px 80px rgba(0,0,0,0.75), 0 0 0 1px rgba(166,130,80,0.32), inset 0 0 0 1px rgba(253,245,230,0.04)",
                 }}
               >
                 {/* Outer gold border */}
@@ -222,7 +222,7 @@ export function PromotionalPopup() {
                       lineHeight: "1.7",
                     }}
                   >
-                    Be among the first to experience<br />the Mimi Beauty ritual.
+                    Be among the first to experience<br />the world of Mimi Beauty.
                   </p>
 
                   {/* CTA — luxury outlined button */}
