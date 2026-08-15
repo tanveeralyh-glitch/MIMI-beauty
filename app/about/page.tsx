@@ -70,7 +70,7 @@ export default function About() {
 
       {/* Philosophy Statement */}
       <section className="relative z-10 mx-auto max-w-[1800px] px-6 lg:px-12 xl:px-20 py-24 md:py-36 border-t border-white/5">
-        <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr] items-start">
+        <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr] items-start lg:items-start">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

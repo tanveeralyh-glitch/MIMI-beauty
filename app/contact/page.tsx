@@ -223,7 +223,7 @@ export default function ContactPage() {
             }}
             className="contact-grid"
           >
-            {/* ══════════ LEFT COLUMN ══════════ */}
+            {/* ══════════ LEFT COLUMN - TEXT FIRST ON MOBILE ══════════ */}
             <motion.div
               variants={fadeUp}
               custom={0}
