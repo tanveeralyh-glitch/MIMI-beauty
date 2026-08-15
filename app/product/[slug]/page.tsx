@@ -182,20 +182,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
           {/* Left: Cinematic Stage */}
           <div className="relative px-6 lg:pl-12 xl:pl-20">
             <CinematicStage image={gallery[active]} accent={theme.accent} glow={theme.glow} />
-            <div className="mt-8 flex justify-center gap-4">
-              {gallery.map((src, i) => (
-                <button key={i} onClick={() => setActive(i)}
-                  className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-300"
-                  style={{ backgroundColor: "rgba(0,0,0,0.4)", borderColor: active === i ? `${theme.accent}80` : "rgba(255,255,255,0.08)" }}>
-                  <img src={src} className="h-full w-full object-contain p-2 mix-blend-screen opacity-80" alt="" />
-                  {active === i && (
-                    <motion.div layoutId="active-thumb-border" className="absolute inset-0 rounded-2xl border-2"
-                      style={{ borderColor: theme.accent, boxShadow: `0 0 15px ${theme.accentMuted}` }}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }} />
-                  )}
-                </button>
-              ))}
-            </div>
+
 
             {/* Accordions on left */}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.4 }} className="mt-16 pb-16">
@@ -229,6 +216,18 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   ))}
                 </ul>
               </AccordionItem>
+
+              {product.directions && (
+                <AccordionItem title="Directions" open={activeTab === "directions"} onClick={() => setActiveTab(activeTab === "directions" ? "" : "directions")} accent={theme.accent}>
+                  <p className="text-lg text-white/75 leading-relaxed whitespace-pre-wrap">{product.directions}</p>
+                </AccordionItem>
+              )}
+
+              {product.storageCaution && (
+                <AccordionItem title="Storage & Caution" open={activeTab === "storage"} onClick={() => setActiveTab(activeTab === "storage" ? "" : "storage")} accent={theme.accent}>
+                  <p className="text-lg text-white/75 leading-relaxed whitespace-pre-wrap">{product.storageCaution}</p>
+                </AccordionItem>
+              )}
             </motion.div>
           </div>
 
@@ -242,15 +241,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
               <h1 className="mt-6 font-display text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-tight text-white">{product.name}</h1>
               <p className="mt-4 text-lg text-white/60 md:text-xl">{product.tagline}</p>
 
-              <div className="mt-8 flex items-center gap-3">
-                <div className="flex gap-1">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4" strokeWidth={1}
-                      style={{ color: i < Math.round(product.rating) ? theme.accent : "rgba(255,255,255,0.15)", fill: i < Math.round(product.rating) ? theme.accent : "transparent" }} />
-                  ))}
-                </div>
-                <span className="text-xs uppercase tracking-[0.2em] text-white/50">{product.rating} · {product.reviews} reviews</span>
-              </div>
+
 
               <div className="mt-10">
                 <div className="text-base leading-relaxed text-white/65 md:text-lg whitespace-pre-wrap">{product.description}</div>

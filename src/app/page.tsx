@@ -109,7 +109,7 @@ const whyItems = [
   {
     icon: Sparkles,
     title: "Purposefully Formulated",
-    body: "Every ingredient selected with a clear purpose.",
+    body: "Every ingredient is selected with a clear purpose.",
   },
   {
     icon: Recycle,

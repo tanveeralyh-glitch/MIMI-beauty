@@ -8,6 +8,7 @@ import { Footer } from "@/components/site/footer";
 import { CartDrawer } from "@/components/site/cart-drawer";
 import { LoadingScreen } from "@/components/site/loading-screen";
 import { ScrollProgress } from "@/components/site/scroll-progress";
+import { PromotionalPopup } from "@/components/ui/promotional-popup";
 import { type ReactNode, useState } from "react";
 
 export default function Providers({ children }: { children: ReactNode }) {
@@ -26,6 +27,7 @@ export default function Providers({ children }: { children: ReactNode }) {
             </main>
             <Footer />
             <CartDrawer />
+            <PromotionalPopup />
           </WishlistProvider>
         </CartProvider>
       </ThemeProvider>

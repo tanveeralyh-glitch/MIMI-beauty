@@ -13,6 +13,7 @@ import { ProductCard } from "@/components/site/product-card";
 import { Hero } from "@/components/site/hero";
 import { IngredientsSection } from "@/components/site/ingredients-section";
 import { NewsletterSection } from "@/components/site/newsletter-section";
+import { TestimonialsCarousel } from "@/components/site/testimonials-carousel";
 
 
 
@@ -25,7 +26,7 @@ export default function Home() {
       <WhyChoose />
       <IngredientsSection />
       <Compare />
-      <Testimonials />
+      <TestimonialsCarousel />
       <NewsletterSection />
     </>
   );
@@ -189,8 +190,8 @@ const whyItems = [
   { icon: ShieldCheck, title: "Dermatologically Tested", body: "Every formula evaluated for skin compatibility." },
   { icon: Rabbit, title: "Cruelty Free", body: "Never tested on animals.\nAlways made with compassion." },
   { icon: Leaf, title: "Botanical Actives", body: "Powered by concentrated plant-derived ingredients." },
-  { icon: Sparkles, title: "Purposefully Formulated", body: "Every ingredient selected with a clear purpose." },
-  { icon: Recycle, title: "Non-Comedogenic", body: "Won’t clog pores or leave skin congested." },
+  { icon: Sparkles, title: "Purposefully Formulated", body: "Every ingredient is selected with a clear purpose." },
+  { icon: Recycle, title: "Non-Comedogenic", body: "Say No to Clogged Pores & Congested Skin." },
   { icon: Truck, title: "Fast Absorbing", body: "Lightweight dry oils that absorb in seconds." },
 ];
 
@@ -330,43 +331,6 @@ function BeforeAfter() {
   );
 }
 
-const testimonials = [
-  { name: "Amelia R.", city: "New York", quote: "The Dew serum genuinely changed my skin. Two weeks in, my barrier feels rebuilt. It's the first product I've re-ordered twice." },
-  { name: "Sofia L.", city: "Milan", quote: "Hálo is the most beautiful body oil I've ever owned. The fragrance is subtle and the shine is unreal." },
-  { name: "Yuki T.", city: "Tokyo", quote: "Every detail feels intentional. The packaging, the collection, the results. Rhode meets Aesop." },
-  { name: "Chloé D.", city: "Paris", quote: "Herbé transformed my scalp. My hair grows faster and shinier. This brand is quietly extraordinary." },
-];
-
-function Testimonials() {
-  return (
-    <section className="border-y border-border/60 bg-secondary/40 py-16 md:py-24">
-      <div className="mx-auto max-w-[1400px] px-6">
-        <SectionHeader eyebrow="Loved worldwide" title="Words from our community." />
-        <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {testimonials.map((t, i) => (
-            <motion.blockquote
-              key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="glass rounded-2xl p-5 sm:p-7"
-            >
-              <div className="flex gap-0.5 text-gold">
-                {Array.from({ length: 5 }).map((_, s) => <Star key={s} className="h-3.5 w-3.5 fill-gold" />)}
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-foreground/85">"{t.quote}"</p>
-              <footer className="mt-6">
-                <p className="font-display text-lg">{t.name}</p>
-                <p className="text-xs text-muted-foreground">{t.city}</p>
-              </footer>
-            </motion.blockquote>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 
 

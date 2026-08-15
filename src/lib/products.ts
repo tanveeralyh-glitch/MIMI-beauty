@@ -81,9 +81,15 @@ export const products: Product[] = [
       "Suitable for daily morning and evening use",
       "Crafted with carefully selected botanical ingredients"
     ],
-    ingredients: ["Niacinamide 5%", "Hyaluronic Acid", "Ceramides", "Squalane"],
-    directions: "Apply 3–4 drops to clean skin, morning and night. Follow with moisturizer.",
-    storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
+    ingredients: [
+      "Cyprus Rotundus Root Oil",
+      "Simmondsia Chinensis Seed Oil",
+      "Argania Spinosa Seed Oil",
+      "Rosa Canina Seed Oil",
+      "Tocopherol"
+    ],
+    directions: "After washing your face, apply 2–3 drops to clean, damp skin. Gently spread evenly over the face and neck until fully absorbed. Use morning and night for best results.",
+    storageCaution: "Store in cool, dry place.\nFor external use only.\nAvoid direct eye contact.",
     skinType: ["All", "Dry", "Sensitive"],
     description:
       "A lightweight face serum that restores moisture, repairs skin barrier, leaves your skin soft, smooth, naturally radiant and blemish free.",
@@ -119,9 +125,15 @@ export const products: Product[] = [
       "Designed for all hair types and textures",
       "Crafted with carefully selected botanical ingredients"
     ],
-    ingredients: ["Argan Oil", "Silk Proteins", "Vitamin E", "Camellia"],
-    directions: "Warm 2–3 drops between palms and glide through damp or dry lengths.",
-    storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
+    ingredients: [
+      "Caprylic/Capric Triglyceride",
+      "Simmondsia Chinensis Seed Oil",
+      "Nutgrass Tuber Oil",
+      "Argania Spinosa Seed Oil",
+      "Fragrance/Parfum"
+    ],
+    directions: "Apply 2–3 drops to wet hair after washing. Spread evenly through the mid-length to ends. For curly/wavy hair, use a comb for even distribution. Do not rinse. Towel dry only, then style as desired.",
+    storageCaution: "Store in cool, dry place.\nFor external use only.\nAvoid direct eye contact.",
     skinType: ["All hair types"],
     description:
       "A lightweight glossy finish serum that smooths cuticles, softens hair, enhances natural shine and keeps frizz under control without weighing hair down.\nSuitable for straight/wavy and curly hair.",
@@ -203,9 +215,18 @@ export const products: Product[] = [
       "Suitable for everyday use",
       "Crafted with carefully selected botanical ingredients"
     ],
-    ingredients: ["Rosehip", "Vitamin C", "Jojoba", "Rose Absolute"],
-    directions: "Mist onto damp skin after bathing. Massage in circular motions.",
-    storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
+    ingredients: [
+      "Caprylic/Capric Triglyceride",
+      "Simmondsia Chinensis Seed Oil",
+      "Argania Spinosa Seed Oil",
+      "Rosa Canina Seed Oil",
+      "Cyperus Rotundus Root Oil",
+      "Tocopherol",
+      "Fragrance/Parfum",
+      "Mica"
+    ],
+    directions: "For best results, apply to clean, wet/damp skin for best absorption. If applying to dry skin, use a few pumps and massage well until fully absorbed. Use daily for soft, radiant and nourished skin.",
+    storageCaution: "Store in cool, dry place.\nFor external use only.\nAvoid direct eye contact.",
     skinType: ["All"],
     description:
       "A nourishing body oil that melts into the skin, it deeply moisturises, reduces hair growth, leaves skin silky-smooth, and naturally luminous without a greasy finish.",

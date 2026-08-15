@@ -167,8 +167,8 @@ export function Header() {
             className="z-10 justify-self-start no-underline flex items-center gap-2"
           >
             <img src="/logo.png" alt="Mimi Beauty" className="h-[70px] md:h-[100px] max-w-[90px] sm:max-w-none object-contain" />
-            <span className="font-['Playfair_Display'] text-2xl sm:text-3xl font-medium tracking-wide text-foreground mt-1">
-              Mimi<span className="italic text-gold font-light">Beauty</span>
+            <span style={{ fontFamily: "'Cinzel', serif", fontWeight: 500, letterSpacing: "0.08em" }} className="text-2xl sm:text-3xl tracking-wide text-foreground mt-1">
+              Mimi<span className="text-gold">Beauty</span>
             </span>
           </Link>
 
@@ -182,7 +182,7 @@ export function Header() {
                 >
                   <button
                     type="button"
-                    className="group relative flex items-center gap-1 py-2 text-[12px] font-medium uppercase tracking-[0.22em] text-foreground/75 transition-colors hover:text-foreground"
+                    className="group relative flex items-center gap-1 py-2 text-[12px] font-medium uppercase tracking-[0.22em] text-foreground/75 transition-colors hover:text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}
                     aria-expanded={megaOpen}
                     onClick={() => setMegaOpen((v) => !v)}
                   >
@@ -197,6 +197,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
                   className={`group relative py-2 text-[12px] font-medium uppercase tracking-[0.22em] transition-colors hover:text-foreground ${
                     pathname === item.href ? "text-foreground" : "text-foreground/75"
                   }`}
