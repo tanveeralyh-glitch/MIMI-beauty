@@ -80,17 +80,17 @@ export function Footer() {
 
       <div className="relative z-10 flex flex-col pt-4 md:pt-10">
         {/* Top Masthead */}
-        <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-start px-6 text-left md:px-10 pb-28 md:pb-40">
+        <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-start px-6 text-left md:px-10 pb-16 sm:pb-24 md:pb-40">
           <Link href="/" className="no-underline">
-            <h2 className="text-[2.75rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] leading-[0.85] tracking-tight text-[#F5F2EC]">
+            <h2 className="text-[2rem] sm:text-[2.75rem] md:text-[6rem] lg:text-[8rem] leading-[0.85] tracking-tight text-[#F5F2EC]">
               Mimi<span className="italic text-[#C9A86A]">Beauty</span>
             </h2>
           </Link>
-          <p className="mt-8 text-[16px] leading-relaxed text-[#F5F2EC] opacity-90">
+          <p className="mt-6 sm:mt-8 text-[14px] sm:text-[16px] leading-relaxed text-[#F5F2EC] opacity-90">
             Botanical skincare. Clinical actives. Quiet luxury.
           </p>
 
-          <div className="mt-14 flex flex-col items-start gap-5">
+          <div className="mt-8 sm:mt-14 flex flex-col items-start gap-4 sm:gap-5">
             {/* Botanical Icon */}
             <svg
               width="24"
@@ -122,24 +122,24 @@ export function Footer() {
         {/* Footer Navigation Section */}
         <div className="border-t border-[#C9A86A]/20 bg-[#0A100C]/80 backdrop-blur-sm">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-            <div className="grid gap-12 py-16 md:grid-cols-12 md:gap-0">
+            <div className="grid gap-8 py-12 sm:py-16 md:grid-cols-12 md:gap-0">
               {/* Newsletter Section */}
               <div className="md:col-span-4 md:pr-12">
                 <Link href="/" className="no-underline">
                   <p
-                    className="text-3xl text-[#C9A86A]"
+                    className="text-2xl sm:text-3xl text-[#C9A86A]"
                     style={{ fontFamily: "var(--font-script, cursive)" }}
                   >
                     Mimi Beauty.
                   </p>
                 </Link>
-                <p className="mt-5 max-w-xs text-[13px] leading-relaxed text-[#D8D2C8] opacity-80">
+                <p className="mt-4 sm:mt-5 max-w-xs text-[12px] sm:text-[13px] leading-relaxed text-[#D8D2C8] opacity-80">
                   Small-batch formulas for the considered.
                   <br />
                   Never noise — only beauty.
                 </p>
                 <form
-                  className="mt-8 flex w-full max-w-sm overflow-hidden rounded-[4px] border border-[#C9A86A]/30 bg-transparent transition-colors focus-within:border-[#C9A86A]"
+                  className="mt-6 sm:mt-8 flex w-full max-w-sm overflow-hidden rounded-[4px] border border-[#C9A86A]/30 bg-transparent transition-colors focus-within:border-[#C9A86A]"
                   onSubmit={handleSubscribe}
                 >
                   <input
@@ -149,13 +149,13 @@ export function Footer() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email for quiet news"
                     disabled={joined}
-                    className="flex-1 min-w-0 bg-transparent px-4 py-3 text-xs text-[#F5F2EC] outline-none placeholder:text-[#F5F2EC]/40 disabled:text-[#C9A86A]"
+                    className="flex-1 min-w-0 bg-transparent px-3 sm:px-4 py-2.5 sm:py-3 text-[11px] sm:text-xs text-[#F5F2EC] outline-none placeholder:text-[#F5F2EC]/40 disabled:text-[#C9A86A]"
                     aria-label="Email"
                   />
                   <button
                     type="submit"
                     disabled={joined}
-                    className="shrink-0 bg-[#C9A86A] px-4 sm:px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#0A100C] transition-colors hover:bg-[#F5F2EC]"
+                    className="shrink-0 bg-[#C9A86A] px-3 sm:px-4 sm:px-6 py-2.5 sm:py-3 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-[#0A100C] transition-colors hover:bg-[#F5F2EC]"
                   >
                     {joined ? "JOINED" : "JOIN"}
                   </button>
@@ -170,12 +170,12 @@ export function Footer() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A86A]">
                   SHOP
                 </p>
-                <ul className="mt-6 space-y-4">
+                <ul className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
                   {shop.map((l) => (
                     <li key={l.label}>
                       <Link
                         href={l.href}
-                        className="text-[14px] text-[#F5F2EC] transition-colors hover:text-[#C9A86A]"
+                        className="text-[13px] sm:text-[14px] text-[#F5F2EC] transition-colors hover:text-[#C9A86A]"
                       >
                         {l.label}
                       </Link>
@@ -192,12 +192,12 @@ export function Footer() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A86A]">
                   HOUSE
                 </p>
-                <ul className="mt-6 space-y-4">
+                <ul className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
                   {house.map((l) => (
                     <li key={l.label}>
                       <Link
                         href={l.href}
-                        className="text-[14px] text-[#F5F2EC] transition-colors hover:text-[#C9A86A]"
+                        className="text-[13px] sm:text-[14px] text-[#F5F2EC] transition-colors hover:text-[#C9A86A]"
                       >
                         {l.label}
                       </Link>
@@ -214,13 +214,13 @@ export function Footer() {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A86A]">
                   CONTACT & FOLLOW
                 </p>
-                <p className="mt-6 text-[13px] text-[#F5F2EC]">
+                <p className="mt-4 sm:mt-6 text-[12px] sm:text-[13px] text-[#F5F2EC]">
                   Direct Care:{" "}
                   <a href="tel:03239847938" className="hover:text-[#C9A86A] transition-colors">
                     03239847938
                   </a>
                 </p>
-                <div className="mt-6 flex gap-4">
+                <div className="mt-4 sm:mt-6 flex gap-3 sm:gap-4">
                   {[
                     {
                       Icon: Instagram,
@@ -237,22 +237,22 @@ export function Footer() {
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                       aria-label={label}
-                      className="grid h-8 w-8 place-items-center text-[#C9A86A] transition-colors hover:text-white"
+                      className="grid h-7 w-7 sm:h-8 sm:w-8 place-items-center text-[#C9A86A] transition-colors hover:text-white"
                     >
-                      <Icon className="h-4 w-4" strokeWidth={1.5} />
+                      <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={1.5} />
                     </a>
                   ))}
                 </div>
-                <p className="mt-8 text-[12px] text-[#D8D2C8] opacity-80">
+                <p className="mt-6 sm:mt-8 text-[11px] sm:text-[12px] text-[#D8D2C8] opacity-80">
                   Dermatologically tested · Vegan · Cruelty free
                 </p>
               </div>
             </div>
 
             {/* Colophon */}
-            <div className="flex flex-col items-center justify-between gap-4 border-t border-[#C9A86A]/20 py-8 text-[11px] text-[#D8D2C8] opacity-70 md:flex-row">
+            <div className="flex flex-col items-center justify-between gap-3 sm:gap-4 border-t border-[#C9A86A]/20 py-6 sm:py-8 text-[10px] sm:text-[11px] text-[#D8D2C8] opacity-70 md:flex-row">
               <p>© {new Date().getFullYear()} Mimi Beauty. All rights reserved.</p>
-              <div className="flex gap-6">
+              <div className="flex gap-4 sm:gap-6">
                 <a href="#" className="transition-colors hover:text-[#C9A86A]">
                   Privacy
                 </a>
@@ -261,7 +261,7 @@ export function Footer() {
                   Terms
                 </a>
               </div>
-              <p className="tracking-[0.2em] uppercase text-[#C9A86A]">DESIGNED WITH ELEGANCE</p>
+              <p className="tracking-[0.2em] text-[9px] sm:text-[10px] uppercase text-[#C9A86A]">DESIGNED WITH ELEGANCE</p>
             </div>
           </div>
         </div>

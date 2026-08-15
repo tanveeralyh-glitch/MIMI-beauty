@@ -87,7 +87,7 @@ export default function About() {
             </h2>
           </motion.div>
           
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -95,10 +95,15 @@ export default function About() {
             className="space-y-8 text-lg md:text-xl text-foreground/80 leading-relaxed font-light"
           >
             <p>
+              We design healing skincare that heals, repairs<br className="hidden md:block" />
+              and is intentional. It integrates seamlessly<br className="hidden md:block" />
+              into your daily space.
+            </p>
+            <p>
               Created in Pakistan, our collection is thoughtfully formulated with naturally derived ingredients to nourish your skin with lightweight, fast-absorbing care. Every product is designed to fit seamlessly into your daily collection while delivering effective, uncompromising results.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
-              As one of the first local brands to introduce a complete head-to-toe range of specialized dry oils, we’re redefining modern skincare with formulas crafted for face, body, hair, and intimate areas.
+              As one of the first local brands to introduce a complete head-to-toe range of specialized dry oils, we're redefining modern skincare with formulas crafted for face, body, hair, and intimate areas.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
               Our products are free from sulphates, parabens, silicones, and harsh synthetic additives because we believe what you leave out is just as important as what you put in.

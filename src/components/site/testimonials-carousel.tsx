@@ -40,30 +40,30 @@ const CARDS = [...testimonials, ...testimonials];
 function ReviewCard({ t }: { t: typeof testimonials[0] }) {
   return (
     <div
-      className="relative flex-none w-[88vw] sm:w-[420px] md:w-[460px] flex flex-col rounded-2xl border border-[#C9A86A]/18 bg-[#0B1510] px-7 pt-8 pb-7 shadow-[0_8px_48px_-12px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-[#C9A86A]/38"
+      className="relative flex-none w-[82vw] sm:w-[420px] md:w-[460px] flex flex-col rounded-2xl border border-[#C9A86A]/18 bg-[#0B1510] px-5 pt-6 pb-5 sm:px-7 sm:pt-8 sm:pb-7 shadow-[0_8px_48px_-12px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-[#C9A86A]/38"
       style={{ backdropFilter: "blur(8px)" }}
     >
       {/* Gold top accent line */}
-      <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/40 to-transparent" />
+      <div className="absolute top-0 left-5 right-5 sm:left-8 sm:right-8 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/40 to-transparent" />
 
       {/* Stars */}
-      <div className="flex gap-1 mb-5">
+      <div className="flex gap-1 mb-4 sm:mb-5">
         {Array.from({ length: t.stars }).map((_, i) => (
-          <Star key={i} className="h-3.5 w-3.5 fill-[#C9A86A] text-[#C9A86A]" />
+          <Star key={i} className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-[#C9A86A] text-[#C9A86A]" />
         ))}
       </div>
 
       {/* Quote */}
-      <p className="flex-1 text-[15px] leading-[1.75] text-[#F5F2EC]/80 font-light italic mb-8">
+      <p className="flex-1 text-[14px] sm:text-[15px] leading-[1.65] sm:leading-[1.75] text-[#F5F2EC]/80 font-light italic mb-6 sm:mb-8">
         "{t.quote}"
       </p>
 
       {/* Footer */}
-      <div className="pt-5 border-t border-[#C9A86A]/12 flex flex-col gap-1">
-        <p className="font-display text-[18px] tracking-wide text-[#F5F2EC]">
+      <div className="pt-4 sm:pt-5 border-t border-[#C9A86A]/12 flex flex-col gap-1">
+        <p className="font-display text-[16px] sm:text-[18px] tracking-wide text-[#F5F2EC]">
           {t.name}
         </p>
-        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C9A86A]/75">
+        <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C9A86A]/75">
           {t.product}
         </p>
       </div>
