@@ -230,15 +230,9 @@ export default function BundlesPage() {
         </div>
 
         {/* Content Overlay */}
-        <div className="absolute inset-0 w-full h-full bg-[#FAF8F3]/0">
+        <div className="absolute inset-0 w-full h-full">
           <div className="mx-auto max-w-[1400px] h-full px-6 flex items-center justify-end">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease }}
-              className="max-w-md md:max-w-lg lg:pr-16 text-left"
-            >
+            <div className="max-w-md md:max-w-lg lg:pr-16 text-left">
               <h2 className="text-[#2C2C2C] mb-6" style={{ fontFamily: "Cinzel", fontWeight: "500", fontSize: "clamp(3rem, 6vw, 4.5rem)", lineHeight: "0.95" }}>
                 Made for You
               </h2>
@@ -255,7 +249,7 @@ export default function BundlesPage() {
               >
                 BUILD YOUR SET
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
