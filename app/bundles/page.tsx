@@ -222,7 +222,7 @@ export default function BundlesPage() {
       <section className="px-6 pb-16 md:pb-24" aria-labelledby="custom-bundle-title">
         <div className="mx-auto max-w-[1400px]">
           <div
-            className="relative min-h-[300px] overflow-hidden bg-[#EDE6DA] bg-cover bg-[left_center] md:min-h-[360px] md:bg-[length:68%_100%] md:bg-no-repeat"
+            className="relative min-h-[300px] overflow-hidden bg-[#EDE6DA] bg-cover bg-center bg-no-repeat md:min-h-[360px]"
             style={{
               backgroundImage:
                 "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0imuFsCYDAmPEFw2WU4RFHSkaxWo6c.png)",
