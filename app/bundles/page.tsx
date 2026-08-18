@@ -218,41 +218,6 @@ export default function BundlesPage() {
         </div>
       </section>
 
-      {/* Made for You Banner Section */}
-      <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full">
-          <img
-            src="/10_made_for_you_banner.jpg"
-            alt="Made for You Background"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Content Overlay */}
-        <div className="absolute inset-0 w-full h-full">
-          <div className="mx-auto max-w-[1400px] h-full px-6 flex items-center justify-end">
-            <div className="max-w-md md:max-w-lg lg:pr-16 text-left">
-              <h2 className="text-[#2C2C2C] mb-6" style={{ fontFamily: "Cinzel", fontWeight: "500", fontSize: "clamp(3rem, 6vw, 4.5rem)", lineHeight: "0.95" }}>
-                Made for You
-              </h2>
-              <p className="text-xl md:text-2xl text-[#2C2C2C] mb-2" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
-                Can't find the perfect set?
-              </p>
-              <p className="text-lg md:text-xl text-[#2C2C2C] mb-10" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
-                Create your own bundle and get 10% off.
-              </p>
-              <Link
-                href="/bundles"
-                className="inline-flex items-center justify-center border border-[#2C2C2C] bg-transparent px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] text-[#2C2C2C] transition-all duration-300 hover:bg-[#2C2C2C] hover:text-white"
-                style={{ fontFamily: "Montserrat", fontWeight: "500" }}
-              >
-                BUILD YOUR SET
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
     </div>
   );
