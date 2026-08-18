@@ -11,8 +11,12 @@ import { ScrollProgress } from "@/components/site/scroll-progress";
 import { PromotionalPopup } from "@/components/ui/promotional-popup";
 import { type ReactNode, useState } from "react";
 
+import { usePathname } from "next/navigation";
+
 export default function Providers({ children }: { children: ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
+  const pathname = usePathname();
+  const isBundlesPage = pathname === "/bundles";
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -21,11 +25,11 @@ export default function Providers({ children }: { children: ReactNode }) {
           <WishlistProvider>
             <LoadingScreen />
             <ScrollProgress />
-            <Header />
+            {!isBundlesPage && <Header />}
             <main className="min-h-screen">
               {children}
             </main>
-            <Footer />
+            {!isBundlesPage && <Footer />}
             <CartDrawer />
             <PromotionalPopup />
           </WishlistProvider>

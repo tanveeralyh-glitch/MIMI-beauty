@@ -133,10 +133,8 @@ export function Footer() {
                     Mimi Beauty.
                   </p>
                 </Link>
-                <p className="mt-4 sm:mt-5 max-w-xs text-[12px] sm:text-[13px] leading-relaxed text-[#D8D2C8] opacity-80">
-                  Small-batch formulas for the considered.
-                  <br />
-                  Never noise — only beauty.
+                <p className="mt-4 sm:mt-5 max-w-xs text-[11px] sm:text-[12px] leading-relaxed text-[#D8D2C8] opacity-70">
+                  Tested in small batches to ensure quality.
                 </p>
                 <form
                   className="mt-6 sm:mt-8 flex w-full max-w-sm overflow-hidden rounded-[4px] border border-[#C9A86A]/30 bg-transparent transition-colors focus-within:border-[#C9A86A]"

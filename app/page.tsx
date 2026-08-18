@@ -218,7 +218,15 @@ function WhyChoose() {
             Skincare that's simple,<br />
             <em className="italic text-gold">Effective, and made for you.</em>
           </motion.h2>
-          
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mx-auto max-w-2xl mt-6 text-[16px] md:text-[20px] leading-relaxed text-[#D8D2C8] opacity-85"
+          >
+            We make clean, high-performance skincare, free from harmful chemicals and is skin compatible.
+          </motion.p>
+
           <div className="flex items-center justify-center gap-4 my-10">
              <svg width="40" height="12" viewBox="0 0 40 12" fill="none" className="text-gold">
                <path d="M10 6H30" stroke="currentColor" strokeWidth="0.5"/>
@@ -229,38 +237,6 @@ function WhyChoose() {
              </svg>
           </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mx-auto max-w-2xl mt-6 text-[16px] md:text-[20px] leading-relaxed text-[#D8D2C8] opacity-85"
-          >
-            Each formula is crafted with intention,<br className="hidden md:block" />
-            to repair skin and hair from within.<br className="hidden md:block" />
-            Our results don't vanish when your bottle<br className="hidden md:block" />
-            finishes.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="mx-auto max-w-2xl mt-8"
-          >
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold mb-4">
-              Factory
-            </p>
-            <p className="text-[15px] md:text-[17px] leading-relaxed text-[#D8D2C8] opacity-80">
-              Tested in small batches to ensure quality.
-            </p>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="mx-auto max-w-2xl mt-8 text-[16px] md:text-[20px] leading-relaxed text-[#D8D2C8] opacity-85"
-          >
-            Four products — Every formula clinically tested<br />
-            and small batch bottled.
-          </motion.p>
         </div>
 
         <div className="mt-20 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

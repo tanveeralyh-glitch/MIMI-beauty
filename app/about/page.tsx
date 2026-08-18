@@ -46,10 +46,10 @@ export default function About() {
             <motion.p
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-foreground/70"
+              transition={{ duration: 1, delay: 0.55 }}
+              className="mt-5 max-w-xl text-lg md:text-xl leading-relaxed text-foreground/70"
             >
-              We design slow, intentional skincare formulated to integrate seamlessly into your daily space. Crafting botanically-infused, clinically-proven formulas in small batches.
+              We design skincare that feels, repairs, and is intentional. It integrates seamlessly into your daily space.
             </motion.p>
           </div>
         </div>

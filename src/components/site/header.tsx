@@ -24,6 +24,7 @@ import { collections, products } from "@/lib/products";
 const nav = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Products", mega: true },
+  { href: "/bundles", label: "Bundles" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
