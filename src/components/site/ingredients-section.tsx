@@ -144,9 +144,7 @@ export function IngredientsSection() {
             className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.1] tracking-tight text-[#F5F2EC]"
             style={{ fontFamily: "var(--font-cormorant, serif)" }}
           >
-            Nature, Perfected
-            <br className="hidden md:block" />
-            <em className="italic text-gold">by Formulation</em>
+            Each formula is crafted with intention, <span className="text-gold">to repair, give, and care from within.</span>
           </motion.h2>
 
           <div className="flex items-center justify-center gap-4 my-8">
@@ -166,9 +164,7 @@ export function IngredientsSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mx-auto max-w-2xl text-[16px] md:text-[20px] leading-relaxed text-[#D8D2C8] opacity-90"
           >
-            Every ingredient is carefully selected to
-            <br className="hidden md:block" />
-            nourish, strengthen, and support healthy skin and hair.
+            Our results don’t vanish when your bottle finishes.
           </motion.p>
         </div>
 
