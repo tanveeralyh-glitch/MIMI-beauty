@@ -218,6 +218,42 @@ export default function BundlesPage() {
         </div>
       </section>
 
+      {/* Make Your Own Bundle CTA */}
+      <section className="px-6 pb-16 md:pb-24" aria-labelledby="custom-bundle-title">
+        <div className="mx-auto max-w-[1400px]">
+          <div
+            className="relative min-h-[220px] overflow-hidden bg-[#EDE6DA] bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bM7qeUPFYZRKS36cA7UObkK8oCUtXT.png)",
+            }}
+          >
+            <div className="flex min-h-[220px] items-center justify-end px-8 py-10 sm:px-16 md:px-24">
+              <div className="max-w-sm text-center text-[#2C2C2C] sm:text-left">
+                <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.28em] text-[#8A755B]">
+                  Your ritual, your way
+                </p>
+                <h2
+                  id="custom-bundle-title"
+                  className="text-3xl leading-tight sm:text-4xl"
+                  style={{ fontFamily: "Cinzel", fontWeight: "500" }}
+                >
+                  Make your own bundle
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-[#5C5C5C]" style={{ fontFamily: "Montserrat" }}>
+                  Choose the essentials that make you feel most like yourself.
+                </p>
+                <Link
+                  href="/shop"
+                  className="mt-5 inline-flex border border-[#2C2C2C] px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#2C2C2C] transition-colors hover:bg-[#2C2C2C] hover:text-[#FAF8F3]"
+                >
+                  Build your bundle
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   );
