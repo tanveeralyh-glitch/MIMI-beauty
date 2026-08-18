@@ -222,13 +222,13 @@ export default function BundlesPage() {
       <section className="px-6 pb-16 md:pb-24" aria-labelledby="custom-bundle-title">
         <div className="mx-auto max-w-[1400px]">
           <div
-            className="relative min-h-[220px] overflow-hidden bg-[#EDE6DA] bg-cover bg-center"
+            className="relative min-h-[300px] overflow-hidden bg-[#EDE6DA] bg-cover bg-[left_center] md:min-h-[360px] md:bg-[length:68%_100%] md:bg-no-repeat"
             style={{
               backgroundImage:
-                "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bM7qeUPFYZRKS36cA7UObkK8oCUtXT.png)",
+                "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0imuFsCYDAmPEFw2WU4RFHSkaxWo6c.png)",
             }}
           >
-            <div className="flex min-h-[220px] items-center justify-end px-8 py-10 sm:px-16 md:px-24">
+            <div className="flex min-h-[300px] items-center justify-end px-8 py-10 sm:px-16 md:min-h-[360px] md:px-24">
               <div className="max-w-sm text-center text-[#2C2C2C] sm:text-left">
                 <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.28em] text-[#8A755B]">
                   Your ritual, your way
