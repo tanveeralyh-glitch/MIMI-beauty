@@ -245,35 +245,39 @@ export default function BundlesPage() {
       {/* Make Your Own Bundle CTA */}
       <section className="px-6 pb-16 md:pb-24" aria-labelledby="custom-bundle-title">
         <div className="mx-auto max-w-[1400px]">
-          <div
-            className="relative min-h-[400px] overflow-hidden bg-[#EDE6DA] bg-cover bg-center bg-no-repeat md:min-h-[500px]"
-            style={{
-              backgroundImage:
-                "url(/make-your-own-bundle-bg.png)",
-            }}
-          >
-            <div className="flex min-h-[400px] items-center justify-end px-8 py-12 sm:px-16 md:min-h-[500px] md:px-24 md:py-16">
-              <div className="max-w-md text-center text-[#2C2C2C] sm:text-left">
-                <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.28em] text-[#8A755B]">
-                  Your ritual, your way
-                </p>
-                <h2
-                  id="custom-bundle-title"
-                  className="text-3xl leading-tight sm:text-4xl md:text-5xl"
-                  style={{ fontFamily: "Cinzel", fontWeight: "500" }}
-                >
-                  MIMI's Edits
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-[#5C5C5C]" style={{ fontFamily: "Montserrat" }}>
-                  Choose the essentials that make you feel most like yourself.
-                </p>
-                <Link
-                  href="/shop"
-                  className="mt-5 inline-flex border border-[#2C2C2C] px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#2C2C2C] transition-colors hover:bg-[#2C2C2C] hover:text-[#FAF8F3]"
-                >
-                  Build your bundle
-                </Link>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-lg bg-[#FAF6F0] shadow-xl border border-gold/10">
+            {/* Left - Elegant Beauty Still Life Image */}
+            <div className="relative order-2 md:order-1 aspect-[4/3] md:aspect-auto min-h-[350px] md:min-h-[500px] overflow-hidden">
+              <img
+                src="/mimis_edits_editorial.jpg"
+                alt="Mimi's Edits Collection"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Right - Text and CTA */}
+            <div className="flex flex-col justify-center items-center md:items-start px-8 py-12 sm:px-12 md:px-20 lg:px-24 text-center md:text-left text-[#2A2A2A] order-1 md:order-2">
+              <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8C765C]" style={{ fontFamily: "Montserrat" }}>
+                YOUR RITUAL, YOUR WAY
+              </p>
+              <h2
+                id="custom-bundle-title"
+                className="text-3xl leading-tight sm:text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] font-light tracking-wide mb-6"
+                style={{ fontFamily: "Cinzel" }}
+              >
+                MIMI’S EDITS
+              </h2>
+              <p className="text-sm leading-relaxed text-[#5C5C5C] max-w-sm mb-8" style={{ fontFamily: "Montserrat", fontWeight: "300" }}>
+                Choose the essentials that make you feel most like yourself.
+              </p>
+              <Link
+                href="/shop"
+                className="inline-flex border border-[#2A2A2A] px-8 py-4 text-[10px] font-bold uppercase tracking-[0.25em] text-[#2A2A2A] transition-all duration-300 hover:bg-[#2A2A2A] hover:text-[#FAF6F0] hover:tracking-[0.28em]"
+                style={{ fontFamily: "Montserrat" }}
+              >
+                BUILD YOUR BUNDLE
+              </Link>
             </div>
           </div>
         </div>

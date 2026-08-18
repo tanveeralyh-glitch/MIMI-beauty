@@ -140,10 +140,10 @@ export function NewsletterSection() {
           </p>
 
           <form
-            className="mt-10 flex w-full max-w-md items-center gap-4 overflow-hidden rounded-[8px] border border-white/10 bg-[#0C120E]/60 p-2 backdrop-blur-sm transition-colors focus-within:border-[#C9A86A]/40"
+            className="mt-10 flex flex-col sm:flex-row w-full max-w-md gap-3 sm:gap-0 sm:items-center sm:overflow-hidden sm:rounded-[8px] sm:border sm:border-white/10 sm:bg-[#0C120E]/60 sm:p-2 sm:backdrop-blur-sm sm:transition-colors sm:focus-within:border-[#C9A86A]/40"
             onSubmit={handleSubscribe}
           >
-            <div className="flex flex-1 items-center gap-3 pl-3">
+            <div className="flex flex-1 items-center gap-3 pl-3 rounded-[8px] border border-white/10 bg-[#0C120E]/60 p-2 backdrop-blur-sm sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
               <Mail className="h-4 w-4 text-[#C9A86A]/70" />
               <input
                 required
@@ -152,14 +152,14 @@ export function NewsletterSection() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 disabled={joined}
-                className="w-full min-w-0 bg-transparent text-[13px] text-[#F5F2EC] outline-none placeholder:text-[#F5F2EC]/40 disabled:text-[#C9A86A]"
+                className="w-full min-w-0 bg-transparent text-[13px] text-[#F5F2EC] outline-none placeholder:text-[#F5F2EC]/40 disabled:text-[#C9A86A] py-2 sm:py-0"
                 aria-label="Email"
               />
             </div>
             <button
               type="submit"
               disabled={joined}
-              className="shrink-0 rounded-[6px] bg-[#C9A86A] px-4 sm:px-6 py-2.5 text-[12px] font-medium text-[#0A100C] transition-colors hover:bg-[#F5F2EC]"
+              className="w-full sm:w-auto shrink-0 rounded-[6px] bg-[#C9A86A] px-4 sm:px-6 py-3 sm:py-2.5 text-[12px] font-medium text-[#0A100C] transition-colors hover:bg-[#F5F2EC]"
             >
               {joined ? "Subscribed" : "Subscribe"}
             </button>

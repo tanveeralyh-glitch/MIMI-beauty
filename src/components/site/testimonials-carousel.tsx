@@ -40,7 +40,7 @@ const CARDS = [...testimonials, ...testimonials];
 function ReviewCard({ t }: { t: typeof testimonials[0] }) {
   return (
     <div
-      className="relative flex-none w-[82vw] sm:w-[420px] md:w-[460px] flex flex-col rounded-2xl border border-[#C9A86A]/18 bg-[#0B1510] px-5 pt-6 pb-5 sm:px-7 sm:pt-8 sm:pb-7 shadow-[0_8px_48px_-12px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-[#C9A86A]/38"
+      className="testimonials-card relative flex-none w-[82vw] sm:w-[420px] md:w-[460px] flex flex-col rounded-2xl border border-[#C9A86A]/18 bg-[#0B1510] px-5 pt-6 pb-5 sm:px-7 sm:pt-8 sm:pb-7 shadow-[0_8px_48px_-12px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-[#C9A86A]/38"
       style={{ backdropFilter: "blur(8px)" }}
     >
       {/* Gold top accent line */}
@@ -80,10 +80,12 @@ export function TestimonialsCarousel() {
   const dragOffset = useRef(0);
 
   const onTouchStart = (e: React.TouchEvent) => {
+    if (window.innerWidth <= 768) return;
     dragStart.current = e.touches[0].clientX;
     setPaused(true);
   };
   const onTouchMove = (e: React.TouchEvent) => {
+    if (window.innerWidth <= 768) return;
     if (dragStart.current === null || !trackRef.current) return;
     const delta = dragStart.current - e.touches[0].clientX;
     dragOffset.current += delta;
@@ -96,6 +98,7 @@ export function TestimonialsCarousel() {
     el.style.animationPlayState = "paused";
   };
   const onTouchEnd = () => {
+    if (window.innerWidth <= 768) return;
     if (trackRef.current) {
       trackRef.current.style.transform = "";
       trackRef.current.style.animationPlayState = "running";
@@ -155,7 +158,7 @@ export function TestimonialsCarousel() {
 
         <div
           ref={trackRef}
-          className="flex gap-6 px-6 pb-4"
+          className="testimonials-track flex gap-6 px-6 pb-4"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
@@ -180,6 +183,19 @@ export function TestimonialsCarousel() {
         @keyframes marqueeScroll {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
+        }
+        @media (max-width: 768px) {
+          .testimonials-track {
+            animation: none !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            width: auto !important;
+            -webkit-overflow-scrolling: touch;
+            cursor: default !important;
+          }
+          .testimonials-card {
+            scroll-snap-align: center !important;
+          }
         }
       `}</style>
     </section>

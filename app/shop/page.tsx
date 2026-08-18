@@ -122,7 +122,7 @@ export default function Shop() {
             <p className="text-lg text-foreground/40 font-light">No products match this collection — yet.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-x-6 gap-y-16 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-16 md:grid-cols-3 lg:grid-cols-4">
             {filtered.map((p, i) => (
               <ProductCard key={p.slug} product={p} index={i} />
             ))}

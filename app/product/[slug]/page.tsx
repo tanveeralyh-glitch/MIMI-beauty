@@ -178,7 +178,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
           </div>
         </div>
 
-        <section className="mx-auto max-w-[1800px] lg:grid lg:grid-cols-[1.5fr_1fr] lg:gap-12 xl:gap-20">
+        <section className="mx-auto max-w-[1800px] flex flex-col lg:grid lg:grid-cols-[1.5fr_1fr] lg:gap-12 xl:gap-20">
           {/* Left: Cinematic Stage - Mobile Second */}
           <div className="relative order-2 px-6 lg:order-1 lg:pl-12 xl:pl-20">
             <CinematicStage image={gallery[active]} accent={theme.accent} glow={theme.glow} />

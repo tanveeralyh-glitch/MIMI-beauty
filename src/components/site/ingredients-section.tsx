@@ -86,7 +86,7 @@ function IngredientCard({ item, index }: { item: (typeof newIngredients)[0]; ind
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay: index * 0.05 }}
     >
-      <div className="group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-2xl border border-gold/20 bg-[#121A15] p-6 transition-colors hover:border-gold/50">
+      <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gold/20 bg-[#121A15] p-6 transition-colors hover:border-gold/50">
         <div className="flex items-start justify-between relative z-10">
           <span className="font-display text-xs tracking-wider text-gold/80">
             {String(index + 1).padStart(2, "0")}
@@ -94,29 +94,33 @@ function IngredientCard({ item, index }: { item: (typeof newIngredients)[0]; ind
           <MoleculeIcon className="h-6 w-6 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
         </div>
 
-        <div className="absolute top-1/2 -translate-y-1/2 -right-4 h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden border border-gold/10 opacity-90 transition-transform duration-700 group-hover:scale-105">
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#121A15] opacity-40 z-10" />
-          <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
-        </div>
-
-        <div className="relative z-10 mt-12 pr-28 md:pr-32">
-          <h3
-            className="text-2xl text-[#F5F2EC] mb-3"
-            style={{ fontFamily: "var(--font-cormorant, serif)" }}
-          >
-            {item.name}
-          </h3>
-          <p className="text-[13px] leading-relaxed text-[#D8D2C8] opacity-80 whitespace-pre-line mb-6">
-            {item.note.split("\n").map((line, idx) => (
-              <span key={idx}>
-                {line}
-                {idx !== item.note.split("\n").length - 1 && <br />}
-              </span>
-            ))}
-          </p>
-          <div className="inline-flex items-center justify-center rounded-full border border-gold/40 px-4 py-1.5 text-[9px] uppercase tracking-[0.2em] text-gold transition-colors group-hover:border-gold">
+        {/* Text Container: Full-width on mobile, right padding on desktop */}
+        <div className="relative z-10 mt-6 md:mt-12 md:pr-32 flex-1 flex flex-col justify-between">
+          <div>
+            <h3
+              className="text-2xl text-[#F5F2EC] mb-3"
+              style={{ fontFamily: "var(--font-cormorant, serif)" }}
+            >
+              {item.name}
+            </h3>
+            <p className="text-[13px] leading-relaxed text-[#D8D2C8] opacity-80 whitespace-pre-line mb-6">
+              {item.note.split("\n").map((line, idx) => (
+                <span key={idx}>
+                  {line}
+                  {idx !== item.note.split("\n").length - 1 && <br />}
+                </span>
+              ))}
+            </p>
+          </div>
+          <div className="self-start inline-flex items-center justify-center rounded-full border border-gold/40 px-4 py-1.5 text-[9px] uppercase tracking-[0.2em] text-gold transition-colors group-hover:border-gold">
             {item.category}
           </div>
+        </div>
+
+        {/* Image Container: Under text on mobile (large/prominent), absolute circular overlapping on desktop */}
+        <div className="mt-6 w-full h-48 md:h-40 md:w-40 rounded-xl md:rounded-full overflow-hidden border border-gold/10 opacity-90 transition-transform duration-700 group-hover:scale-[1.03] md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-4 md:mt-0">
+          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent to-[#121A15] opacity-40 z-10" />
+          <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
         </div>
       </div>
     </motion.div>
