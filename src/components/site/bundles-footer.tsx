@@ -39,7 +39,7 @@ export function BundlesFooter() {
               MIMI
             </Link>
             <p className="mt-6 text-xs leading-relaxed text-[#D8D2C8] opacity-80 font-light" style={{ fontFamily: "Montserrat" }}>
-              Thoughtful beauty rituals for skin, hair, and body. Made to bring you back to yourself.
+              Thoughtful beauty for skin, hair, and body. Made to bring you back to yourself.
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export function BundlesFooter() {
               STAY CONNECTED
             </h2>
             <p className="mt-4 text-xs leading-relaxed text-[#D8D2C8] opacity-80 font-light" style={{ fontFamily: "Montserrat" }}>
-              Notes on beauty, rituals, and the little things that make a difference.
+              Notes on beauty and the little things that make a difference.
             </p>
             <form className="mt-6 flex border-b border-[#C9A86A]/25 pb-1" onSubmit={(event) => event.preventDefault()}>
               <label htmlFor="bundles-email" className="sr-only">Email address</label>
@@ -112,7 +112,7 @@ export function BundlesFooter() {
                 <Facebook className="size-4" />
               </a>
               <a 
-                href="mailto:hello@mimibeauty.com" 
+                href="mailto:rainamalik@mimibeauty.com.pk" 
                 aria-label="Email Mimi Beauty" 
                 className="text-[#D8D2C8]/80 hover:text-[#C9A86A] transition-colors duration-300"
               >

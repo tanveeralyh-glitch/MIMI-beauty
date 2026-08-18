@@ -73,16 +73,15 @@ export function NewsletterSection() {
 
   return (
     <section className="relative w-full overflow-hidden bg-[#111A15] py-20 md:py-32">
-      {/* Background image — DEW serum bottle */}
       <div className="absolute inset-0 z-0">
-        {/* Base image — positioned right */}
         <img
           src="/dew-serum-hero.jpg"
           alt="Mimi Beauty DEW Radiant Glow Facial Serum"
           className="h-full w-full object-cover object-center"
           style={{ filter: "brightness(0.75) saturate(0.85) sepia(0.18)" }}
+          loading="lazy"
+          decoding="async"
         />
-        {/* Solid dark block on the far left — ensures text area is pitch dark */}
         <div
           className="absolute inset-0 z-10"
           style={{
@@ -90,7 +89,6 @@ export function NewsletterSection() {
               "linear-gradient(to right, #08100b 0%, #08100b 30%, rgba(8,16,11,0.82) 48%, rgba(8,16,11,0.3) 65%, rgba(8,16,11,0.0) 80%)",
           }}
         />
-        {/* Top vignette */}
         <div
           className="absolute inset-0 z-10"
           style={{
@@ -98,7 +96,6 @@ export function NewsletterSection() {
               "linear-gradient(to bottom, rgba(8,16,11,0.7) 0%, transparent 25%, transparent 70%, rgba(8,16,11,0.75) 100%)",
           }}
         />
-        {/* Warm amber glow around bottle area (right center) */}
         <div
           className="absolute inset-0 z-10"
           style={{
@@ -166,31 +163,31 @@ export function NewsletterSection() {
           </form>
 
           {/* Features */}
-          <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-6 border-t border-white/10 pt-10">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-[#C9A86A]">
-                <LeafIcon className="h-4 w-4" />
+          <div className="mt-12 grid grid-cols-1 gap-10 border-t border-white/10 pt-10 sm:grid-cols-3 sm:gap-8">
+            <div className="flex flex-col items-center text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C9A86A]/50 text-[#C9A86A]">
+                <LeafIcon className="h-5 w-5" />
               </div>
-              <span className="text-[12px] leading-tight text-[#D8D2C8] opacity-80">
+              <span className="mt-4 text-[12px] leading-tight text-[#D8D2C8] opacity-80">
                 Ingredient
                 <br />
                 Insights
               </span>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-[#C9A86A]">
-                <BottleIcon className="h-4 w-4" />
+            <div className="flex flex-col items-center text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C9A86A]/50 text-[#C9A86A]">
+                <BottleIcon className="h-5 w-5" />
               </div>
-              <span className="text-[12px] leading-tight text-[#D8D2C8] opacity-80">
+              <span className="mt-4 text-[12px] leading-tight text-[#D8D2C8] opacity-80">
                 New Arrivals &<br />
                 Updates
               </span>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-[#C9A86A]">
-                <Heart className="h-4 w-4" strokeWidth={1.5} />
+            <div className="flex flex-col items-center text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C9A86A]/50 text-[#C9A86A]">
+                <Heart className="h-5 w-5" strokeWidth={1.5} />
               </div>
-              <span className="text-[12px] leading-tight text-[#D8D2C8] opacity-80">
+              <span className="mt-4 text-[12px] leading-tight text-[#D8D2C8] opacity-80">
                 Made with
                 <br />
                 Intent

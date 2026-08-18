@@ -234,8 +234,10 @@
   animation: float-y 5.5s ease-in-out infinite;
   will-change: transform;
 }
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce), (max-width: 768px) {
   .hero-float { animation: none; }
+  .hero-particles::before,
+  .hero-particles::after { animation: none; }
 }
 
 /* CSS particle field — 12 dots, transform/opacity only */

@@ -50,6 +50,7 @@ function useMagnetic() {
   const springY = useSpring(y, { stiffness: 260, damping: 24, mass: 0.35 });
 
   const onMove = (e: MouseEvent) => {
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -153,7 +154,10 @@ function HeroVideo({
 
   useEffect(() => {
     if (!active) return;
-    const t = setInterval(() => setScene((s) => (s + 1) % FILM.length), 4200);
+    const t = setInterval(() => {
+      if (document.hidden) return;
+      setScene((s) => (s + 1) % FILM.length);
+    }, 4200);
     return () => clearInterval(t);
   }, [active]);
 

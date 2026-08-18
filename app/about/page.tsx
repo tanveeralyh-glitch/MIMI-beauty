@@ -1,8 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { assets } from "@/lib/products";
-import { ArrowRight, Sparkles, Shield, Leaf, Heart } from "lucide-react";
-import { WhoWeAreCard } from "@/components/site/who-we-are-card";
 
 
 
@@ -64,9 +62,6 @@ export default function About() {
           />
         </div>
       </section>
-
-      {/* Who We Are Editorial Card */}
-      <WhoWeAreCard />
 
       {/* Philosophy Statement */}
       <section className="relative z-10 mx-auto max-w-[1800px] px-6 lg:px-12 xl:px-20 py-24 md:py-36 border-t border-white/5">

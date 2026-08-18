@@ -45,37 +45,7 @@ export function Footer() {
     <footer className="relative w-full bg-[#08140E]">
       {/* ── Masthead background ── */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#08140E]">
-        {/* Base image — bottle right, botanicals left */}
-        <img
-          src="/dew-serum-hero.jpg"
-          alt="MimiBeauty DEW serum"
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{
-            objectPosition: "center 85%",
-            filter: "brightness(0.85) saturate(1.1)",
-          }}
-        />
-
-        {/* Top & bottom subtle vignette to blend edges */}
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(8,20,14,0.4) 0%, rgba(8,20,14,0.0) 25%, rgba(8,20,14,0.0) 75%, #08140E 100%)",
-          }}
-        />
-
-        {/* Left side subtle dark gradient for text legibility */}
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(8,20,14,0.8) 0%, rgba(8,20,14,0.4) 40%, rgba(8,20,14,0.0) 60%)",
-          }}
-        />
-
-        {/* Fallback solid */}
-        <div className="absolute inset-0 bg-[#08140E] -z-10" />
+        <div className="absolute inset-0 bg-[#08140E]" />
       </div>
 
       <div className="relative z-10 flex flex-col pt-4 md:pt-10">

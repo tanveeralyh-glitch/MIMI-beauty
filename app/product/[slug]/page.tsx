@@ -255,9 +255,6 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
               <div className="flex items-end justify-between border-b pb-8" style={{ borderColor: `${theme.accent}15` }}>
                 <div className="flex items-baseline gap-4">
                   <span className="font-display text-5xl tracking-tight text-white">Rs. {product.price}</span>
-                  {product.originalPrice > product.price && (
-                    <span className="text-xl text-white/35 line-through">Rs. {product.originalPrice}</span>
-                  )}
                 </div>
                 <span className="text-xs uppercase tracking-[0.2em] text-white/40">{product.size}</span>
               </div>

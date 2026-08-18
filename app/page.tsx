@@ -14,6 +14,8 @@ import { Hero } from "@/components/site/hero";
 import { IngredientsSection } from "@/components/site/ingredients-section";
 import { NewsletterSection } from "@/components/site/newsletter-section";
 import { TestimonialsCarousel } from "@/components/site/testimonials-carousel";
+import { ReadSlowlySection } from "@/components/site/read-slowly-section";
+import { bundles, BundleCard } from "@/components/site/bundle-card";
 
 
 
@@ -27,6 +29,7 @@ export default function Home() {
       <IngredientsSection />
       <Compare />
       <TestimonialsCarousel />
+      <ReadSlowlySection />
       <NewsletterSection />
     </>
   );
@@ -126,8 +129,8 @@ function BestSellers() {
         </motion.div>
         
         <div className="mt-16 md:mt-20 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((p, i) => (
-            <ProductCard key={p.slug} product={p} index={i} />
+          {bundles.slice(0, 4).map((bundle) => (
+            <BundleCard key={bundle.id} bundle={bundle} />
           ))}
         </div>
       </div>

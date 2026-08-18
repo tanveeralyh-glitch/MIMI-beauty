@@ -1,154 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useCart } from "@/lib/cart";
-import { products, assets } from "@/lib/products";
 import { ShoppingBag, Star } from "lucide-react";
+import { bundles, BundleCard } from "@/components/site/bundle-card";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
-// Exact bundle data from reference
-const bundles = [
-  {
-    id: "bundle-1",
-    name: "Luna Glow Duo",
-    description: "Face and body, your daily glow.",
-    price: 16950,
-    products: ["dew", "halo"],
-    image: "/02_luna_glow_duo.jpg",
-  },
-  {
-    id: "bundle-2",
-    name: "Root to Radiance",
-    description: "Nourish your roots. Shine through.",
-    price: 15950,
-    products: ["veil", "herbe"],
-    image: "/03_root_to_radiance.jpg",
-  },
-  {
-    id: "bundle-3",
-    name: "Radiant You",
-    description: "For skin that glows and hair that flows.",
-    price: 20950,
-    products: ["dew", "veil", "halo"],
-    image: "/04_radiant_you.jpg",
-  },
-  {
-    id: "bundle-4",
-    name: "The Complete Glow",
-    description: "All the essentials. All for you.",
-    price: 27950,
-    products: ["dew", "veil", "herbe", "halo"],
-    image: "/05_complete_glow.jpg",
-  },
-  {
-    id: "bundle-5",
-    name: "Halò Duo",
-    description: "Double the glow, double the glow.",
-    price: 16950,
-    products: ["halo"],
-    image: "/06_halo_duo.jpg",
-  },
-  {
-    id: "bundle-6",
-    name: "Halò Quartet",
-    description: "Four shades. Endless luminosity.",
-    price: 27950,
-    products: ["halo"],
-    image: "/07_halo_quartet.jpg",
-  },
-  {
-    id: "bundle-7",
-    name: "The Everything Set",
-    description: "Seven essentials. One complete you.",
-    price: 36950,
-    products: ["dew", "veil", "herbe", "halo"],
-    image: "/08_everything_set.jpg",
-  },
-];
-
-function BundleCard({ bundle }: { bundle: typeof bundles[0] }) {
-  const { add } = useCart();
-
-  const handleAddToBag = () => {
-    // Create a product-like object for the bundle
-    const bundleProduct = {
-      slug: bundle.id,
-      name: bundle.name,
-      tagline: bundle.description,
-      category: "BUNDLE",
-      collection: "Mimi Sets",
-      price: bundle.price,
-      originalPrice: bundle.price,
-      size: "Bundle",
-      image: bundle.image,
-      hoverImage: bundle.image,
-      rating: 5.0,
-      reviews: 0,
-      benefits: [],
-      ingredients: [],
-      directions: "",
-      skinType: [],
-      description: bundle.description,
-      gallery: [bundle.image],
-      theme: {
-        bg: "#121A15",
-        accent: "#C9A86A",
-        accentMuted: "rgba(201,168,106,0.15)",
-        surface: "rgba(255,255,255,0.03)",
-        glow: "rgba(201,168,106,0.06)",
-      },
-    };
-    
-    // Add the bundle as a single item with its bundle price
-    add(bundleProduct as any, 1, true, bundle.price);
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease }}
-      className="group flex flex-col bg-[#121A15] border border-gold/20 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gold/50"
-    >
-      {/* Image Section */}
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#0A100C]">
-        <img
-          src={bundle.image}
-          alt={bundle.name}
-          className="h-full w-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
-        />
-      </div>
-
-      {/* Content Section */}
-      <div className="flex flex-col p-5 flex-1">
-        <h3 className="text-xl text-[#F5F2EC] mb-2" style={{ fontFamily: "Cinzel", fontWeight: "500" }}>
-          {bundle.name}
-        </h3>
-        <p className="text-sm text-[#D8D2C8] mb-4 leading-relaxed" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
-          {bundle.description}
-        </p>
-
-        {/* Price */}
-        <div className="mt-auto mb-4">
-          <span className="text-lg font-medium text-[#F5F2EC]" style={{ fontFamily: "Montserrat", fontWeight: "500" }}>
-            PKR {bundle.price.toLocaleString()}
-          </span>
-        </div>
-
-        {/* Add to Bag Button */}
-        <button
-          onClick={handleAddToBag}
-          className="w-full border border-gold bg-transparent px-4 py-2.5 text-xs font-medium uppercase tracking-[0.15em] text-gold transition-all duration-300 hover:bg-gold hover:text-background"
-          style={{ fontFamily: "Montserrat", fontWeight: "500" }}
-        >
-          ADD TO BAG
-        </button>
-      </div>
-    </motion.div>
-  );
-}
 
 export default function BundlesPage() {
   return (
@@ -162,7 +18,7 @@ export default function BundlesPage() {
 
       {/* Hero Section - Mimi Sets */}
       <section className="relative overflow-hidden bg-background">
-        <div className="relative mx-auto max-w-[1400px] px-6 py-16 md:py-20">
+        <div className="relative mx-auto max-w-[1400px] px-6 py-16 md:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left - Content */}
             <motion.div
@@ -210,7 +66,7 @@ export default function BundlesPage() {
       </section>
 
       {/* Our Bundles Section */}
-      <section id="bundles" className="relative py-16 md:py-24 bg-background">
+      <section id="bundles" className="relative py-16 md:py-28 bg-background">
         <div className="mx-auto max-w-[1400px] px-6">
           {/* Section Header */}
           <motion.div
@@ -218,7 +74,7 @@ export default function BundlesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease }}
-            className="text-center mb-12"
+            className="text-center mb-14 md:mb-16"
           >
             <h2 className="text-[#F5F2EC] mb-3" style={{ fontFamily: "Cinzel", fontWeight: "500", fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: "0.95" }}>
               Our Bundles
@@ -234,7 +90,7 @@ export default function BundlesPage() {
           </motion.div>
 
           {/* Bundle Cards Grid - 4 per row desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {bundles.map((bundle) => (
               <BundleCard key={bundle.id} bundle={bundle} />
             ))}
@@ -250,7 +106,7 @@ export default function BundlesPage() {
             <div className="relative order-2 md:order-1 aspect-[4/3] md:aspect-auto min-h-[350px] md:min-h-[500px] overflow-hidden">
               <img
                 src="/mimis_edits_editorial.jpg"
-                alt="Mimi's Edits Collection"
+                alt="Mimi's Edit Collection"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent pointer-events-none" />
@@ -266,7 +122,7 @@ export default function BundlesPage() {
                 className="text-3xl leading-tight sm:text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] font-light tracking-wide mb-6"
                 style={{ fontFamily: "Cinzel" }}
               >
-                MIMI’S EDITS
+                MIMI’S EDIT
               </h2>
               <p className="text-sm leading-relaxed text-[#5C5C5C] max-w-sm mb-8" style={{ fontFamily: "Montserrat", fontWeight: "300" }}>
                 Choose the essentials that make you feel most like yourself.

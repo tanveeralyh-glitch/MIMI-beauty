@@ -446,11 +446,6 @@ export default function ProductPage() {
                     <span className="font-display text-5xl tracking-tight text-white">
                       PKR {product.price}
                     </span>
-                    {product.originalPrice > product.price && (
-                      <span className="text-xl text-white/35 line-through">
-                        PKR {product.originalPrice}
-                      </span>
-                    )}
                   </div>
                   <span className="text-xs uppercase tracking-[0.2em] text-white/40">
                     {product.size}

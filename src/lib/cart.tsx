@@ -2,11 +2,22 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Product } from "./products";
 
-export type CartLine = { product: Product; qty: number; isBundle?: boolean; bundlePrice?: number };
+export type CartLine = {
+  product: Product;
+  qty: number;
+  isBundle?: boolean;
+  bundlePrice?: number;
+  giftPackaging?: boolean;
+};
+
+type AddOptions = {
+  openCart?: boolean;
+  giftPackaging?: boolean;
+};
 
 type CartCtx = {
   lines: CartLine[];
-  add: (p: Product, qty?: number, isBundle?: boolean, bundlePrice?: number) => void;
+  add: (p: Product, qty?: number, isBundle?: boolean, bundlePrice?: number, options?: AddOptions) => void;
   remove: (slug: string) => void;
   setQty: (slug: string, qty: number) => void;
   clear: () => void;
@@ -33,7 +44,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [lines]);
 
   const value = useMemo<CartCtx>(() => {
-    const add = (p: Product, qty = 1, isBundle = false, bundlePrice?: number) => {
+    const add = (p: Product, qty = 1, isBundle = false, bundlePrice?: number, options?: AddOptions) => {
+      const giftPackaging = Boolean(options?.giftPackaging);
       setLines((prev) => {
         const idx = prev.findIndex((l) => l.product.slug === p.slug);
         if (idx >= 0) {
@@ -41,9 +53,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
           next[idx] = { ...next[idx], qty: next[idx].qty + qty };
           return next;
         }
-        return [...prev, { product: p, qty, isBundle, bundlePrice }];
+        return [...prev, { product: p, qty, isBundle, bundlePrice, giftPackaging }];
       });
-      setOpen(true);
+      if (options?.openCart !== false) setOpen(true);
     };
     return {
       lines,
@@ -56,7 +68,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
       clear: () => setLines((prev) => (prev.length === 0 ? prev : [])),
       count: lines.reduce((n, l) => n + l.qty, 0),
       subtotal: lines.reduce((n, l) => {
-        // Use bundle price if it's a bundle, otherwise use product price
         const price = l.isBundle && l.bundlePrice ? l.bundlePrice : l.product.price;
         return n + l.qty * price;
       }, 0),

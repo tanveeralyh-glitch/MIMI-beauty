@@ -1,20 +1,11 @@
-import dewAsset from "@/assets/dew.asset.json";
-import veilAsset from "@/assets/veil.asset.json";
-import herbeAsset from "@/assets/herbe.asset.json";
-import haloAsset from "@/assets/halo.asset.json";
-import lineupAsset from "@/assets/lineup.asset.json";
-import waterAsset from "@/assets/water.asset.json";
-import stoneAsset from "@/assets/stone.asset.json";
-import logoAsset from "@/assets/logo.asset.json";
-
 export const assets = {
   dew: "/media__1784439730149.png",
   veil: "/media__1784439730152.png",
   herbe: "/media__1784439730167.png",
   halo: "/media__1784439730231.png",
-  lineup: lineupAsset.url,
-  water: waterAsset.url,
-  stone: stoneAsset.url,
+  lineup: "/hero_dew_collection.jpg",
+  water: "/hero_dew_girl_left.jpg",
+  stone: "/contact_organic_bg.jpg",
   logo: "/logo.png",
 };
 
@@ -235,35 +226,35 @@ export const products: Product[] = [
 
 export const ingredientsShowcase = [
   {
-    name: "Rosehip Oil",
+    name: "Trans-Retinoic Acid",
     note: "Nature’s retinol, rich in antioxidants and essential fatty acids to support smoother, brighter, healthier-looking skin.",
   },
   {
-    name: "Cyperus Rotundus Oil",
+    name: "Alpha Cyperone",
     note: "An antioxidant-rich botanical that helps calm, strengthen, and support the skin’s natural barrier for a balanced complexion.",
   },
   {
-    name: "Argan Oil",
+    name: "Endogenous Squalene",
     note: "Rich in vitamin E and essential fatty acids to deeply nourish, soften, and strengthen the skin for a smooth, healthy-looking glow.",
   },
   {
-    name: "Castor Oil",
+    name: "Ricinoleic Acid",
     note: "Rich in essential fatty acids to deeply condition the scalp and hair while supporting softer, stronger, healthier-looking strands.",
   },
   {
-    name: "Jojoba Oil",
-    note: "Lightweight and fast-absorbing, Jojoba Oil helps smooth, soften, and protect hair while locking in lasting moisture without weighing it down.",
+    name: "Gadoleic Acid",
+    note: "Lightweight and fast-absorbing, Gadoleic Acid helps smooth, soften, and protect hair while locking in lasting moisture without weighing it down.",
   },
   {
-    name: "Vitamin E",
+    name: "Tocotrienols",
     note: "An antioxidant-rich vitamin that helps protect, condition, and strengthen hair while enhancing softness, moisture, and natural shine.",
   },
   {
-    name: "Jaborandi Root Extract",
+    name: "Pilocarpine",
     note: "Traditionally valued in botanical hair care to help nourish the scalp and support stronger, healthier-looking hair.",
   },
   {
-    name: "Lemongrass Botanical Infusion",
+    name: "Citral",
     note: "An invigorating botanical infusion that helps refresh, rebalance, and purify the scalp for a clean, revitalised feel.",
   },
   {

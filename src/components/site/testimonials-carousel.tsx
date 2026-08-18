@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Star } from "lucide-react";
+
+const INTERVAL_MS = 3500;
 
 const testimonials = [
   {
@@ -20,7 +22,7 @@ const testimonials = [
   },
   {
     name: "Meerab Bilal",
-    product: "Full Ritual — Face, Hair & Body",
+    product: "Face, Hair & Body",
     stars: 5,
     quote:
       "I'm genuinely loving these products! The hair serum has made my hair feel so much softer and smoother, while the face serum gives such a fresh, dewy glow — skin bilkul fresh lagti hai. The body oil is honestly my favourite, it leaves the skin super soft and hydrated without that heavy, greasy feeling. And the scent is just next level, noticeable but not overpowering. Packaging is so pretty and gives such a luxurious feel. Overall, I'm really happy with everything and already excited for the next products.",
@@ -34,170 +36,180 @@ const testimonials = [
   },
 ];
 
-// Duplicate for seamless looping
-const CARDS = [...testimonials, ...testimonials];
-
-function ReviewCard({ t }: { t: typeof testimonials[0] }) {
+function Stars({ count }: { count: number }) {
   return (
-    <div
-      className="testimonials-card relative flex-none w-[82vw] sm:w-[420px] md:w-[460px] flex flex-col rounded-2xl border border-[#C9A86A]/18 bg-[#0B1510] px-5 pt-6 pb-5 sm:px-7 sm:pt-8 sm:pb-7 shadow-[0_8px_48px_-12px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-[#C9A86A]/38"
-      style={{ backdropFilter: "blur(8px)" }}
-    >
-      {/* Gold top accent line */}
-      <div className="absolute top-0 left-5 right-5 sm:left-8 sm:right-8 h-px bg-gradient-to-r from-transparent via-[#C9A86A]/40 to-transparent" />
-
-      {/* Stars */}
-      <div className="flex gap-1 mb-4 sm:mb-5">
-        {Array.from({ length: t.stars }).map((_, i) => (
-          <Star key={i} className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-[#C9A86A] text-[#C9A86A]" />
-        ))}
-      </div>
-
-      {/* Quote */}
-      <p className="flex-1 text-[14px] sm:text-[15px] leading-[1.65] sm:leading-[1.75] text-[#F5F2EC]/80 font-light italic mb-6 sm:mb-8">
-        "{t.quote}"
-      </p>
-
-      {/* Footer */}
-      <div className="pt-4 sm:pt-5 border-t border-[#C9A86A]/12 flex flex-col gap-1">
-        <p className="font-display text-[16px] sm:text-[18px] tracking-wide text-[#F5F2EC]">
-          {t.name}
-        </p>
-        <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C9A86A]/75">
-          {t.product}
-        </p>
-      </div>
+    <div className="flex gap-1">
+      {Array.from({ length: count }).map((_, i) => (
+        <Star key={i} className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-[#C9A86A] text-[#C9A86A]" />
+      ))}
     </div>
   );
 }
 
 export function TestimonialsCarousel() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
+  const count = testimonials.length;
+  const [index, setIndex] = useState(0);
+  const dragging = useRef(false);
+  const startX = useRef(0);
+  const pausedRef = useRef(false);
+  const rootRef = useRef<HTMLElement>(null);
+  const timerRef = useRef<number | null>(null);
 
-  // Touch drag support
-  const dragStart = useRef<number | null>(null);
-  const dragOffset = useRef(0);
+  const go = useCallback((next: number) => {
+    setIndex(((next % count) + count) % count);
+  }, [count]);
 
-  const onTouchStart = (e: React.TouchEvent) => {
-    if (window.innerWidth <= 768) return;
-    dragStart.current = e.touches[0].clientX;
-    setPaused(true);
-  };
-  const onTouchMove = (e: React.TouchEvent) => {
-    if (window.innerWidth <= 768) return;
-    if (dragStart.current === null || !trackRef.current) return;
-    const delta = dragStart.current - e.touches[0].clientX;
-    dragOffset.current += delta;
-    dragStart.current = e.touches[0].clientX;
-    // Apply offset via transform relative to current animation position
-    const el = trackRef.current;
-    const computed = getComputedStyle(el).transform;
-    const matrix = new DOMMatrix(computed);
-    el.style.transform = `translateX(${matrix.m41 - delta}px)`;
-    el.style.animationPlayState = "paused";
-  };
-  const onTouchEnd = () => {
-    if (window.innerWidth <= 768) return;
-    if (trackRef.current) {
-      trackRef.current.style.transform = "";
-      trackRef.current.style.animationPlayState = "running";
+  const stopTimer = useCallback(() => {
+    if (timerRef.current != null) {
+      window.clearInterval(timerRef.current);
+      timerRef.current = null;
     }
-    dragStart.current = null;
-    setPaused(false);
+  }, []);
+
+  const startTimer = useCallback(() => {
+    stopTimer();
+    if (pausedRef.current) return;
+    timerRef.current = window.setInterval(() => {
+      if (document.hidden || pausedRef.current) return;
+      setIndex((i) => (i + 1) % count);
+    }, INTERVAL_MS);
+  }, [count, stopTimer]);
+
+  useEffect(() => {
+    startTimer();
+    const onVis = () => {
+      if (document.hidden) stopTimer();
+      else startTimer();
+    };
+    document.addEventListener("visibilitychange", onVis);
+
+    const el = rootRef.current;
+    let io: IntersectionObserver | undefined;
+    if (el && typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          pausedRef.current = !entry.isIntersecting;
+          if (entry.isIntersecting) startTimer();
+          else stopTimer();
+        },
+        { threshold: 0.05 },
+      );
+      io.observe(el);
+    }
+
+    return () => {
+      stopTimer();
+      document.removeEventListener("visibilitychange", onVis);
+      io?.disconnect();
+    };
+  }, [startTimer, stopTimer]);
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    dragging.current = true;
+    startX.current = e.clientX;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    pausedRef.current = true;
+    stopTimer();
+  };
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!dragging.current) return;
+    const delta = e.clientX - startX.current;
+    dragging.current = false;
+    if (Math.abs(delta) > 40) {
+      go(delta < 0 ? index + 1 : index - 1);
+    }
+    pausedRef.current = false;
+    startTimer();
   };
 
   return (
-    <section className="relative border-y border-[#C9A86A]/15 bg-[#07110D] overflow-hidden py-20 md:py-28">
-      {/* Subtle ambient glow */}
+    <section
+      ref={rootRef}
+      className="relative overflow-hidden border-y border-[#C9A86A]/15 bg-[#07110D] py-20 md:py-28"
+    >
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 55% at 50% 50%, rgba(201,168,106,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 55% at 18% 20%, rgba(201,168,106,0.05) 0%, transparent 70%)",
         }}
       />
 
-      {/* Section header */}
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 mb-14 md:mb-20">
-        <div className="flex flex-col gap-4">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6">
+        <div className="mb-12 md:mb-16 max-w-3xl">
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#C9A86A]">
             Community
           </span>
           <h2
-            className="text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] leading-[1.05] tracking-tight text-[#F5F2EC]"
+            className="mt-4 text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] leading-[1.05] tracking-tight text-[#F5F2EC]"
             style={{ fontFamily: "var(--font-cormorant, serif)" }}
           >
             Words from our customers.
           </h2>
-          <div className="flex items-center gap-3 mt-1">
-            <div className="flex gap-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-3.5 w-3.5 fill-[#C9A86A] text-[#C9A86A]" />
-              ))}
-            </div>
+          <div className="mt-4 flex items-center gap-3">
+            <Stars count={5} />
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#F5F2EC]/45">
               5.0 · All verified customers
             </span>
           </div>
         </div>
-      </div>
-
-      {/* Carousel track */}
-      <div
-        className="relative z-10 w-full overflow-hidden"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        {/* Left fade */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10"
-          style={{ background: "linear-gradient(to right, #07110D, transparent)" }} />
-        {/* Right fade */}
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10"
-          style={{ background: "linear-gradient(to left, #07110D, transparent)" }} />
 
         <div
-          ref={trackRef}
-          className="testimonials-track flex gap-6 px-6 pb-4"
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          style={{
-            animationName: "marqueeScroll",
-            animationDuration: "38s",
-            animationTimingFunction: "linear",
-            animationIterationCount: "infinite",
-            animationPlayState: paused ? "paused" : "running",
-            width: "max-content",
-            cursor: "grab",
-          }}
+          className="relative overflow-hidden"
+          onPointerDown={onPointerDown}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          style={{ touchAction: "pan-y" }}
         >
-          {CARDS.map((t, i) => (
-            <ReviewCard key={`${t.name}-${i}`} t={t} />
+          <div
+            className="flex"
+            style={{
+              transform: `translate3d(-${index * 100}%, 0, 0)`,
+              transition: "transform 900ms cubic-bezier(0.22, 1, 0.36, 1)",
+            }}
+          >
+            {testimonials.map((t) => (
+              <article key={t.name} className="relative w-full min-w-0 shrink-0 basis-full">
+                <div className="relative mx-auto max-w-4xl overflow-hidden rounded-sm border border-[#C9A86A]/20 bg-[#0B1510] px-6 py-10 sm:px-12 sm:py-14">
+                  <span
+                    className="pointer-events-none absolute -top-6 left-4 select-none text-[8rem] leading-none text-[#C9A86A]/15 sm:text-[11rem]"
+                    style={{ fontFamily: "var(--font-cormorant, serif)" }}
+                    aria-hidden
+                  >
+                    “
+                  </span>
+                  <div className="relative min-h-[280px] sm:min-h-[240px]">
+                    <Stars count={t.stars} />
+                    <p className="mt-8 text-[17px] sm:text-[22px] md:text-[24px] leading-[1.55] text-[#F5F2EC]/90 font-light italic">
+                      {t.quote}
+                    </p>
+                    <div className="mt-10 border-t border-[#C9A86A]/15 pt-6">
+                      <p className="font-display text-[20px] sm:text-[22px] tracking-wide text-[#F5F2EC]">
+                        {t.name}
+                      </p>
+                      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C9A86A]/75">
+                        {t.product}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 flex items-center justify-center gap-2" aria-hidden>
+          {testimonials.map((t, i) => (
+            <span
+              key={t.name}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === index ? "w-8 bg-[#C9A86A]" : "w-2 bg-[#C9A86A]/30"
+              }`}
+            />
           ))}
         </div>
       </div>
-
-      {/* CSS keyframes injected via style tag */}
-      <style>{`
-        @keyframes marqueeScroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @media (max-width: 768px) {
-          .testimonials-track {
-            animation: none !important;
-            overflow-x: auto !important;
-            scroll-snap-type: x mandatory !important;
-            width: auto !important;
-            -webkit-overflow-scrolling: touch;
-            cursor: default !important;
-          }
-          .testimonials-card {
-            scroll-snap-align: center !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

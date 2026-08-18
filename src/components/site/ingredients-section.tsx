@@ -23,50 +23,50 @@ function MoleculeIcon({ className = "" }: { className?: string }) {
 
 const newIngredients = [
   {
-    name: "Black Seed Oil",
-    note: "Trans-Retinoic Acid — Rosehip\n1. (Natural tretinoin)\n2. Anti-aging",
+    name: "Trans-Retinoic Acid",
+    note: "• Natural tretinoin\n• Anti-aging",
     category: "RENEWAL",
-    image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&q=80",
+    image: "/images/ingredients/retinol.jpg",
   },
   {
-    name: "Cyperus Rotundus Oil",
-    note: "Alpha Cyperone — Cyperus\n1. Rich in antioxidants\n2. Inhibits hair growth and follicle activity",
+    name: "Alpha Cyperone",
+    note: "• Rich in antioxidants\n• Inhibits hair growth and follicle activity",
     category: "SOOTHING",
-    image: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&q=80",
+    image: "/images/ingredients/niacinamide.jpg",
   },
   {
-    name: "Argan Oil",
-    note: "Endogenous Squalene — Argan\n1. Deeply nourishes\n2. Repairs barrier\n3. Softens and strengthens the skin for smooth, healthy-looking glow",
+    name: "Endogenous Squalene",
+    note: "• Deeply nourishes\n• Repairs barrier\n• Softens and strengthens the skin for smooth, healthy-looking glow",
     category: "NOURISHING",
     image: "/images/ingredients/argan.jpg",
   },
   {
-    name: "Castor Oil",
-    note: "Ricinoleic Acid:\n1. Protect hair follicle environment\n2. Antimicrobial\n3. Blood circulation stimulation",
+    name: "Ricinoleic Acid",
+    note: "• Protect hair follicle environment\n• Antimicrobial\n• Blood circulation stimulation",
     category: "CONDITIONING",
     image: "/images/ingredients/castor.jpg",
   },
   {
-    name: "Jojoba Oil",
-    note: "Gadoleic Acid — Jojoba\n1. Skin sebum biomimicry\n2. Lightweight\n3. Fast absorbing\n4. Helps protect skin from oxidative stress",
+    name: "Gadoleic Acid",
+    note: "• Skin sebum biomimicry\n• Lightweight\n• Fast absorbing\n• Helps protect skin from oxidative stress",
     category: "BALANCING",
     image: "/images/ingredients/jojoba.jpg",
   },
   {
-    name: "Vitamin E",
-    note: "Tocotrienols:\n1. Protects scalp from oxidative stress\n2. Hair cuticle protection\n3. Prevents water loss from scalp and hair strands",
+    name: "Tocotrienols",
+    note: "• Protects scalp from oxidative stress\n• Hair cuticle protection\n• Prevents water loss from scalp and hair strands",
     category: "ANTIOXIDANT",
-    image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80",
+    image: "/dew-serum-hero.jpg",
   },
   {
-    name: "Jaborandi Root Extract",
-    note: "Pilocarpine:\n1. Stimulates scalp microcirculation\n2. Revitalizes follicles\n3. Prevents premature hair fall",
+    name: "Pilocarpine",
+    note: "• Stimulates scalp microcirculation\n• Revitalizes follicles\n• Prevents premature hair fall",
     category: "STRENGTHENING",
     image: "/images/ingredients/jaborandi.jpg",
   },
   {
-    name: "Lemongrass Botanical Infusion",
-    note: "Citral:\n1. Anti dandruff\n2. Sebum regulation and deep cleansing\n3. Reduces scalp inflammation",
+    name: "Citral",
+    note: "• Anti dandruff\n• Sebum regulation and deep cleansing\n• Reduces scalp inflammation",
     category: "PURIFYING",
     image: "/images/ingredients/lemongrass.jpg",
   },
@@ -120,7 +120,7 @@ function IngredientCard({ item, index }: { item: (typeof newIngredients)[0]; ind
         {/* Image Container: Under text on mobile (large/prominent), absolute circular overlapping on desktop */}
         <div className="mt-6 w-full h-48 md:h-40 md:w-40 rounded-xl md:rounded-full overflow-hidden border border-gold/10 opacity-90 transition-transform duration-700 group-hover:scale-[1.03] md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-4 md:mt-0">
           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent to-[#121A15] opacity-40 z-10" />
-          <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+          <img src={item.image} alt={item.name} className="h-full w-full object-cover" loading="lazy" decoding="async" />
         </div>
       </div>
     </motion.div>

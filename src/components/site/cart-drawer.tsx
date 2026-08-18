@@ -54,7 +54,7 @@ export function CartDrawer() {
                 </div>
               ) : (
                 <ul className="space-y-6">
-                  {lines.map(({ product, qty, isBundle, bundlePrice }) => (
+                  {lines.map(({ product, qty, isBundle, bundlePrice, giftPackaging }) => (
                     <li key={product.slug} className="flex gap-4">
                       <div className="h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-secondary">
                         <img
@@ -68,6 +68,9 @@ export function CartDrawer() {
                           <div className="min-w-0">
                             <p className="truncate font-display text-lg">{product.name}</p>
                             <p className="text-xs text-muted-foreground">{product.tagline}</p>
+                            {giftPackaging && (
+                              <p className="mt-1 text-[11px] tracking-wide text-gold">Gift packaging included</p>
+                            )}
                           </div>
                           <button
                             onClick={() => remove(product.slug)}

@@ -120,10 +120,10 @@ Street Address: ${customerInfo.address}
 `;
 
     lines.forEach((line: CartLine, index: number) => {
-      const { product, qty, isBundle, bundlePrice } = line;
+      const { product, qty, isBundle, bundlePrice, giftPackaging } = line;
       const unitPrice = isBundle && bundlePrice ? bundlePrice : product.price;
       const totalPrice = unitPrice * qty;
-      message += `• ${index + 1}. ${product.name}
+      message += `• ${index + 1}. ${product.name}${giftPackaging ? " (Gift Packaging)" : ""}
    Variant: ${product.size}
    Color: ${product.collection}
    Size: ${product.size}

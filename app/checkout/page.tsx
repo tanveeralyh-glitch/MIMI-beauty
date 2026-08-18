@@ -82,9 +82,9 @@ export default function CheckoutPage() {
     message += `🛒 *Order Items*\n\n`;
 
     lines.forEach((line, index) => {
-      const { product, qty, isBundle, bundlePrice } = line;
+      const { product, qty, isBundle, bundlePrice, giftPackaging } = line;
       const unitPrice = isBundle && bundlePrice ? bundlePrice : product.price;
-      message += `• ${index + 1}. ${product.name}\n`;
+      message += `• ${index + 1}. ${product.name}${giftPackaging ? " (Gift Packaging)" : ""}\n`;
       message += `   Quantity: ${qty}\n`;
       message += `   Unit Price: PKR ${unitPrice.toLocaleString()}\n`;
       message += `   Item Total: PKR ${(unitPrice * qty).toLocaleString()}\n\n`;
@@ -291,7 +291,7 @@ export default function CheckoutPage() {
                 
                 <div className="space-y-4 mb-6 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
                   {lines.map((line) => {
-                    const { product, qty, isBundle, bundlePrice } = line;
+                    const { product, qty, isBundle, bundlePrice, giftPackaging } = line;
                     const unitPrice = isBundle && bundlePrice ? bundlePrice : product.price;
                     return (
                       <div key={line.product.slug} className="flex gap-4">
@@ -301,6 +301,9 @@ export default function CheckoutPage() {
                         <div className="flex-1 flex flex-col justify-center">
                           <p className="text-[#F8F4ED] font-display text-lg leading-tight">{line.product.name}</p>
                           <p className="text-xs text-[#B8B5AC] mt-1">Qty: {line.qty}</p>
+                          {giftPackaging && (
+                            <p className="text-[11px] text-[#D4B483] mt-1">Gift packaging included</p>
+                          )}
                         </div>
                         <div className="flex items-center">
                           <p className="text-[#F8F4ED] text-sm">PKR {(unitPrice * qty).toLocaleString()}</p>
