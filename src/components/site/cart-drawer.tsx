@@ -54,7 +54,7 @@ export function CartDrawer() {
                 </div>
               ) : (
                 <ul className="space-y-6">
-                  {lines.map(({ product, qty }) => (
+                  {lines.map(({ product, qty, isBundle, bundlePrice }) => (
                     <li key={product.slug} className="flex gap-4">
                       <div className="h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-secondary">
                         <img
@@ -92,7 +92,7 @@ export function CartDrawer() {
                               <Plus className="h-3 w-3" />
                             </button>
                           </div>
-                          <p className="text-sm font-medium">PKR {((product.price * qty) / 100).toFixed(2)}</p>
+                          <p className="text-sm font-medium">PKR {((isBundle && bundlePrice ? bundlePrice : product.price) * qty).toLocaleString()}</p>
                         </div>
                       </div>
                     </li>
@@ -104,7 +104,7 @@ export function CartDrawer() {
               <div className="border-t border-border px-6 py-5">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-medium">PKR {(subtotal / 100).toFixed(2)}</span>
+                  <span className="font-medium">PKR {subtotal.toLocaleString()}</span>
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">
                   Shipping and taxes calculated at checkout.
@@ -115,7 +115,7 @@ export function CartDrawer() {
                     onClick={() => setOpen(false)}
                     className="w-full rounded-full bg-gold py-3.5 text-center text-sm font-medium tracking-wide text-background transition hover:bg-gold-soft"
                   >
-                    Checkout · PKR {(subtotal / 100).toFixed(2)}
+                    Checkout · PKR {subtotal.toLocaleString()}
                   </Link>
                   <button
                     onClick={() => setOpen(false)}

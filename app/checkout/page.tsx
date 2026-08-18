@@ -66,9 +66,7 @@ export default function CheckoutPage() {
     }
   };
 
-  const shipping = 0;
-  const tax = subtotal * 0.1;
-  const grandTotal = subtotal + shipping + tax;
+
 
   const formatWhatsAppMessage = (): string => {
     let message = `🛍 *NEW ORDER*\n\n`;
@@ -84,18 +82,19 @@ export default function CheckoutPage() {
     message += `🛒 *Order Items*\n\n`;
 
     lines.forEach((line, index) => {
-      const { product, qty } = line;
+      const { product, qty, isBundle, bundlePrice } = line;
+      const unitPrice = isBundle && bundlePrice ? bundlePrice : product.price;
       message += `• ${index + 1}. ${product.name}\n`;
       message += `   Quantity: ${qty}\n`;
-      message += `   Unit Price: $${(product.price / 100).toFixed(2)}\n`;
-      message += `   Item Total: $${((product.price * qty) / 100).toFixed(2)}\n\n`;
+      message += `   Unit Price: PKR ${unitPrice.toLocaleString()}\n`;
+      message += `   Item Total: PKR ${(unitPrice * qty).toLocaleString()}\n\n`;
     });
 
     message += `💰 *Order Summary*\n`;
-    message += `Subtotal: $${(subtotal / 100).toFixed(2)}\n`;
-    message += `Shipping: $${(shipping / 100).toFixed(2)}\n`;
-    message += `Tax: $${(tax / 100).toFixed(2)}\n`;
-    message += `Grand Total: $${(grandTotal / 100).toFixed(2)}\n\n`;
+    message += `Subtotal: PKR ${subtotal.toLocaleString()}\n`;
+    message += `Shipping: Free\n`;
+    message += `Tax: Free\n`;
+    message += `Grand Total: PKR ${subtotal.toLocaleString()}\n\n`;
     message += `Please confirm my order.`;
 
     return message;
@@ -291,20 +290,24 @@ export default function CheckoutPage() {
                 <h2 className="text-[#D4B483] text-sm uppercase tracking-[0.2em] font-semibold mb-6">Order Summary</h2>
                 
                 <div className="space-y-4 mb-6 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
-                  {lines.map((line) => (
-                    <div key={line.product.slug} className="flex gap-4">
-                      <div className="h-20 w-16 shrink-0 rounded-md overflow-hidden bg-white/5">
-                        <img src={line.product.image} alt={line.product.name} className="h-full w-full object-cover" />
+                  {lines.map((line) => {
+                    const { product, qty, isBundle, bundlePrice } = line;
+                    const unitPrice = isBundle && bundlePrice ? bundlePrice : product.price;
+                    return (
+                      <div key={line.product.slug} className="flex gap-4">
+                        <div className="h-20 w-16 shrink-0 rounded-md overflow-hidden bg-white/5">
+                          <img src={line.product.image} alt={line.product.name} className="h-full w-full object-cover" />
+                        </div>
+                        <div className="flex-1 flex flex-col justify-center">
+                          <p className="text-[#F8F4ED] font-display text-lg leading-tight">{line.product.name}</p>
+                          <p className="text-xs text-[#B8B5AC] mt-1">Qty: {line.qty}</p>
+                        </div>
+                        <div className="flex items-center">
+                          <p className="text-[#F8F4ED] text-sm">PKR {(unitPrice * qty).toLocaleString()}</p>
+                        </div>
                       </div>
-                      <div className="flex-1 flex flex-col justify-center">
-                        <p className="text-[#F8F4ED] font-display text-lg leading-tight">{line.product.name}</p>
-                        <p className="text-xs text-[#B8B5AC] mt-1">Qty: {line.qty}</p>
-                      </div>
-                      <div className="flex items-center">
-                        <p className="text-[#F8F4ED] text-sm">${((line.product.price * line.qty) / 100).toFixed(2)}</p>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {/* Coupon Box */}
@@ -316,19 +319,19 @@ export default function CheckoutPage() {
                 <div className="space-y-3 mb-8 border-t border-white/10 pt-6">
                   <div className="flex justify-between text-sm text-[#B8B5AC]">
                     <span>Subtotal</span>
-                    <span>${(subtotal / 100).toFixed(2)}</span>
+                    <span>PKR {subtotal.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-sm text-[#B8B5AC]">
                     <span>Shipping</span>
                     <span>Free</span>
                   </div>
                   <div className="flex justify-between text-sm text-[#B8B5AC]">
-                    <span>Tax (10%)</span>
-                    <span>${(tax / 100).toFixed(2)}</span>
+                    <span>Tax</span>
+                    <span>Free</span>
                   </div>
                   <div className="flex justify-between text-lg text-[#D4B483] font-display pt-3 border-t border-white/10 mt-3">
                     <span>Total</span>
-                    <span>${(grandTotal / 100).toFixed(2)}</span>
+                    <span>PKR {subtotal.toLocaleString()}</span>
                   </div>
                 </div>
 

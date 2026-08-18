@@ -73,14 +73,14 @@ export function CheckoutForm() {
   const formatWhatsAppMessage = (): string => {
     const shipping = 0;
     const discount = 0;
-    const tax = subtotal * 0.1;
-    const grandTotal = subtotal + shipping - discount + tax;
+    const tax = 0;
+    const grandTotal = subtotal;
 
-    const subtotalInDollars = subtotal / 100;
+    const subtotalInDollars = subtotal;
     const shippingInDollars = shipping;
     const discountInDollars = discount;
-    const taxInDollars = tax / 100;
-    const grandTotalInDollars = grandTotal / 100;
+    const taxInDollars = tax;
+    const grandTotalInDollars = grandTotal;
 
     const now = new Date();
     const orderDate = now.toLocaleDateString("en-US", {
@@ -120,15 +120,16 @@ Street Address: ${customerInfo.address}
 `;
 
     lines.forEach((line: CartLine, index: number) => {
-      const { product, qty } = line;
-      const totalPrice = product.price * qty;
+      const { product, qty, isBundle, bundlePrice } = line;
+      const unitPrice = isBundle && bundlePrice ? bundlePrice : product.price;
+      const totalPrice = unitPrice * qty;
       message += `• ${index + 1}. ${product.name}
    Variant: ${product.size}
    Color: ${product.collection}
    Size: ${product.size}
    Quantity: ${qty}
-   Unit Price: PKR ${(product.price / 100).toFixed(2)}
-   Item Total: PKR ${(totalPrice / 100).toFixed(2)}
+   Unit Price: PKR ${unitPrice.toLocaleString()}
+   Item Total: PKR ${totalPrice.toLocaleString()}
 
 `;
     });
@@ -137,11 +138,11 @@ Street Address: ${customerInfo.address}
 
 💰 Order Summary
 
-Subtotal: PKR ${subtotalInDollars.toFixed(2)}
-Shipping: PKR ${shippingInDollars.toFixed(2)}
-Discount: PKR ${discountInDollars.toFixed(2)}
-Tax: PKR ${taxInDollars.toFixed(2)}
-Grand Total: PKR ${grandTotalInDollars.toFixed(2)}
+Subtotal: PKR ${subtotalInDollars.toLocaleString()}
+Shipping: Free
+Discount: Free
+Tax: Free
+Grand Total: PKR ${grandTotalInDollars.toLocaleString()}
 
 ━━━━━━━━━━━━━━━━━━
 
@@ -196,7 +197,7 @@ Please confirm my order.`;
         onClick={() => setShowForm(true)}
         className="w-full rounded-full bg-gold py-3.5 text-sm font-medium tracking-wide text-background transition hover:bg-gold-soft"
       >
-        Checkout · PKR {(subtotal / 100).toFixed(2)}
+        Checkout · PKR {subtotal.toLocaleString()}
       </button>
     );
   }
@@ -334,19 +335,19 @@ Please confirm my order.`;
       <div className="border-t pt-3 space-y-1">
         <div className="flex justify-between text-xs">
           <span className="text-muted-foreground">Subtotal</span>
-          <span>PKR {(subtotal / 100).toFixed(2)}</span>
+          <span>PKR {subtotal.toLocaleString()}</span>
         </div>
         <div className="flex justify-between text-xs">
           <span className="text-muted-foreground">Shipping</span>
-          <span>PKR 0.00</span>
+          <span>Free</span>
         </div>
         <div className="flex justify-between text-xs">
-          <span className="text-muted-foreground">Tax (10%)</span>
-          <span>PKR {((subtotal * 0.1) / 100).toFixed(2)}</span>
+          <span className="text-muted-foreground">Tax</span>
+          <span>Free</span>
         </div>
         <div className="flex justify-between text-sm font-bold">
           <span>Total</span>
-          <span>PKR {((subtotal * 1.1) / 100).toFixed(2)}</span>
+          <span>PKR {subtotal.toLocaleString()}</span>
         </div>
       </div>
 

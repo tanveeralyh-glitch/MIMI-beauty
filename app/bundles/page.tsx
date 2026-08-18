@@ -65,26 +65,43 @@ const bundles = [
     products: ["dew", "veil", "herbe", "halo"],
     image: "/08_everything_set.jpg",
   },
-  {
-    id: "bundle-8",
-    name: "Mimi's Edit",
-    description: "A handpicked edit to love, gift or keep.",
-    price: 18950,
-    products: ["dew", "veil"],
-    image: "/09_mimis_edit.jpg",
-  },
 ];
 
 function BundleCard({ bundle }: { bundle: typeof bundles[0] }) {
   const { add } = useCart();
 
   const handleAddToBag = () => {
-    bundle.products.forEach((productSlug) => {
-      const product = products.find((p) => p.slug === productSlug);
-      if (product) {
-        add(product, 1);
-      }
-    });
+    // Create a product-like object for the bundle
+    const bundleProduct = {
+      slug: bundle.id,
+      name: bundle.name,
+      tagline: bundle.description,
+      category: "BUNDLE",
+      collection: "Mimi Sets",
+      price: bundle.price,
+      originalPrice: bundle.price,
+      size: "Bundle",
+      image: bundle.image,
+      hoverImage: bundle.image,
+      rating: 5.0,
+      reviews: 0,
+      benefits: [],
+      ingredients: [],
+      directions: "",
+      skinType: [],
+      description: bundle.description,
+      gallery: [bundle.image],
+      theme: {
+        bg: "#121A15",
+        accent: "#C9A86A",
+        accentMuted: "rgba(201,168,106,0.15)",
+        surface: "rgba(255,255,255,0.03)",
+        glow: "rgba(201,168,106,0.06)",
+      },
+    };
+    
+    // Add the bundle as a single item with its bundle price
+    add(bundleProduct as any, 1, true, bundle.price);
   };
 
   return (
@@ -93,10 +110,10 @@ function BundleCard({ bundle }: { bundle: typeof bundles[0] }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease }}
-      className="group flex flex-col bg-[#FAF8F3] border border-[#E8E4DC] rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg"
+      className="group flex flex-col bg-[#121A15] border border-gold/20 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gold/50"
     >
       {/* Image Section */}
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#F5F2EC]">
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#0A100C]">
         <img
           src={bundle.image}
           alt={bundle.name}
@@ -106,16 +123,16 @@ function BundleCard({ bundle }: { bundle: typeof bundles[0] }) {
 
       {/* Content Section */}
       <div className="flex flex-col p-5 flex-1">
-        <h3 className="text-xl text-[#2C2C2C] mb-2" style={{ fontFamily: "Cinzel", fontWeight: "500" }}>
+        <h3 className="text-xl text-[#F5F2EC] mb-2" style={{ fontFamily: "Cinzel", fontWeight: "500" }}>
           {bundle.name}
         </h3>
-        <p className="text-sm text-[#5C5C5C] mb-4 leading-relaxed" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
+        <p className="text-sm text-[#D8D2C8] mb-4 leading-relaxed" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
           {bundle.description}
         </p>
 
         {/* Price */}
         <div className="mt-auto mb-4">
-          <span className="text-lg font-medium text-[#2C2C2C]" style={{ fontFamily: "Montserrat", fontWeight: "500" }}>
+          <span className="text-lg font-medium text-[#F5F2EC]" style={{ fontFamily: "Montserrat", fontWeight: "500" }}>
             PKR {bundle.price.toLocaleString()}
           </span>
         </div>
@@ -123,7 +140,7 @@ function BundleCard({ bundle }: { bundle: typeof bundles[0] }) {
         {/* Add to Bag Button */}
         <button
           onClick={handleAddToBag}
-          className="w-full border border-[#2C2C2C] bg-transparent px-4 py-2.5 text-xs font-medium uppercase tracking-[0.15em] text-[#2C2C2C] transition-all duration-300 hover:bg-[#2C2C2C] hover:text-white"
+          className="w-full border border-gold bg-transparent px-4 py-2.5 text-xs font-medium uppercase tracking-[0.15em] text-gold transition-all duration-300 hover:bg-gold hover:text-background"
           style={{ fontFamily: "Montserrat", fontWeight: "500" }}
         >
           ADD TO BAG
@@ -135,9 +152,16 @@ function BundleCard({ bundle }: { bundle: typeof bundles[0] }) {
 
 export default function BundlesPage() {
   return (
-    <div className="min-h-screen bg-[#FAF8F3]">
+    <div className="min-h-screen bg-background text-white">
+      {/* Back to Home Button */}
+      <div className="mx-auto max-w-[1400px] px-6 py-4">
+        <Link href="/" className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gold hover:text-white transition-colors">
+          ← Back to Home
+        </Link>
+      </div>
+
       {/* Hero Section - Mimi Sets */}
-      <section className="relative overflow-hidden bg-[#FAF8F3]">
+      <section className="relative overflow-hidden bg-background">
         <div className="relative mx-auto max-w-[1400px] px-6 py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left - Content */}
@@ -147,19 +171,19 @@ export default function BundlesPage() {
               transition={{ duration: 0.8, ease }}
               className="order-2 lg:order-1"
             >
-              <h1 className="text-[#2C2C2C] mb-8" style={{ fontFamily: "Cinzel", fontWeight: "500", fontSize: "clamp(3rem, 8vw, 6rem)", lineHeight: "0.9" }}>
+              <h1 className="text-[#F5F2EC] mb-8" style={{ fontFamily: "Cinzel", fontWeight: "500", fontSize: "clamp(3rem, 8vw, 6rem)", lineHeight: "0.9" }}>
                 Mimi Sets
               </h1>
-              <p className="text-xl md:text-2xl text-[#5C5C5C] mb-6 leading-relaxed max-w-lg" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
+              <p className="text-xl md:text-2xl text-[#D8D2C8] mb-6 leading-relaxed max-w-lg" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
                 Curated combinations for your skin, hair, and body.
               </p>
-              <p className="text-lg text-[#5C5C5C] mb-10 leading-relaxed max-w-md" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
+              <p className="text-lg text-[#D8D2C8] mb-10 leading-relaxed max-w-md" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
                 Thoughtfully paired. Effortlessly essential.<br />
                 Everything you need, in harmony.
               </p>
               <Link
                 href="#bundles"
-                className="inline-flex items-center gap-3 border-2 border-[#C9A86A] bg-transparent px-10 py-4 text-sm font-bold uppercase tracking-[0.2em] text-[#C9A86A] transition-all duration-300 hover:bg-[#C9A86A] hover:text-white"
+                className="inline-flex items-center gap-3 border-2 border-gold bg-transparent px-10 py-4 text-sm font-bold uppercase tracking-[0.2em] text-gold transition-all duration-300 hover:bg-gold hover:text-background"
               >
                 SHOP SETS
                 <ShoppingBag className="h-5 w-5" />
@@ -173,7 +197,7 @@ export default function BundlesPage() {
               transition={{ duration: 0.8, ease, delay: 0.2 }}
               className="order-1 lg:order-2"
             >
-              <div className="relative aspect-square bg-[#F5F2EC] rounded-lg overflow-hidden">
+              <div className="relative aspect-square bg-[#0A100C] rounded-lg overflow-hidden">
                 <img
                   src="/01_hero_mimi_sets.jpg.png"
                   alt="Mimi Beauty Products"
@@ -186,7 +210,7 @@ export default function BundlesPage() {
       </section>
 
       {/* Our Bundles Section */}
-      <section id="bundles" className="relative py-16 md:py-24 bg-[#FAF8F3]">
+      <section id="bundles" className="relative py-16 md:py-24 bg-background">
         <div className="mx-auto max-w-[1400px] px-6">
           {/* Section Header */}
           <motion.div
@@ -196,10 +220,10 @@ export default function BundlesPage() {
             transition={{ duration: 0.6, ease }}
             className="text-center mb-12"
           >
-            <h2 className="text-[#2C2C2C] mb-3" style={{ fontFamily: "Cinzel", fontWeight: "500", fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: "0.95" }}>
+            <h2 className="text-[#F5F2EC] mb-3" style={{ fontFamily: "Cinzel", fontWeight: "500", fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: "0.95" }}>
               Our Bundles
             </h2>
-            <p className="text-lg md:text-xl text-[#5C5C5C] mb-6" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
+            <p className="text-lg md:text-xl text-[#D8D2C8] mb-6" style={{ fontFamily: "Montserrat", fontWeight: "400" }}>
               Care, simplified. Results, amplified.
             </p>
             <div className="flex items-center justify-center gap-2">
@@ -222,23 +246,23 @@ export default function BundlesPage() {
       <section className="px-6 pb-16 md:pb-24" aria-labelledby="custom-bundle-title">
         <div className="mx-auto max-w-[1400px]">
           <div
-            className="relative min-h-[300px] overflow-hidden bg-[#EDE6DA] bg-cover bg-center bg-no-repeat md:min-h-[360px]"
+            className="relative min-h-[400px] overflow-hidden bg-[#EDE6DA] bg-cover bg-center bg-no-repeat md:min-h-[500px]"
             style={{
               backgroundImage:
-                "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0imuFsCYDAmPEFw2WU4RFHSkaxWo6c.png)",
+                "url(/make-your-own-bundle-bg.png)",
             }}
           >
-            <div className="flex min-h-[300px] items-center justify-end px-8 py-10 sm:px-16 md:min-h-[360px] md:px-24">
-              <div className="max-w-sm text-center text-[#2C2C2C] sm:text-left">
+            <div className="flex min-h-[400px] items-center justify-end px-8 py-12 sm:px-16 md:min-h-[500px] md:px-24 md:py-16">
+              <div className="max-w-md text-center text-[#2C2C2C] sm:text-left">
                 <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.28em] text-[#8A755B]">
                   Your ritual, your way
                 </p>
                 <h2
                   id="custom-bundle-title"
-                  className="text-3xl leading-tight sm:text-4xl"
+                  className="text-3xl leading-tight sm:text-4xl md:text-5xl"
                   style={{ fontFamily: "Cinzel", fontWeight: "500" }}
                 >
-                  Make your own bundle
+                  MIMI's Edits
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-[#5C5C5C]" style={{ fontFamily: "Montserrat" }}>
                   Choose the essentials that make you feel most like yourself.
