@@ -39,7 +39,7 @@ export function BundlesFooter() {
               MIMI
             </Link>
             <p className="mt-6 text-xs leading-relaxed text-[#D8D2C8] opacity-80 font-light" style={{ fontFamily: "Montserrat" }}>
-              Skincare and haircare, made with naturally derived ingredients.
+              Thoughtful beauty for skin, hair, and body. Made to bring you back to yourself.
             </p>
           </div>
 

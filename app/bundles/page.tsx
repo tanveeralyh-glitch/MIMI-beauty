@@ -105,7 +105,7 @@ export default function BundlesPage() {
             {/* Left - Elegant Beauty Still Life Image */}
             <div className="relative order-2 md:order-1 aspect-[4/3] md:aspect-auto min-h-[350px] md:min-h-[500px] overflow-hidden">
               <img
-                src="/mimis_edits_editorial.jpg"
+                src="/mimis_edits_editorial.PNG"
                 alt="Mimi's Edit Collection"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />

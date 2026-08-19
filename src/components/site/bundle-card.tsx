@@ -46,7 +46,7 @@ export const bundles: Bundle[] = [
     originalPrice: 8500,
     discountPercent: 10,
     products: ["dew", "halo"],
-    image: "/02_luna_glow_duo.jpg",
+    image: "/02_luna_glow_duo.PNG",
   },
   {
     id: "bundle-2",
@@ -56,7 +56,7 @@ export const bundles: Bundle[] = [
     originalPrice: 8000,
     discountPercent: 10,
     products: ["veil", "herbe"],
-    image: "/03_root_to_radiance.jpg",
+    image: "/03_root_to_radiance.PNG",
   },
   {
     id: "bundle-3",
@@ -66,7 +66,7 @@ export const bundles: Bundle[] = [
     originalPrice: 11500,
     discountPercent: 10,
     products: ["dew", "veil", "halo"],
-    image: "/04_radiant_you.jpg",
+    image: "/04_radiant_you.PNG",
   },
   {
     id: "bundle-4",
@@ -76,7 +76,7 @@ export const bundles: Bundle[] = [
     originalPrice: 16500,
     discountPercent: 10,
     products: ["dew", "veil", "herbe", "halo"],
-    image: "/05_complete_glow.jpg",
+    image: "/05_complete_glow.PNG",
   },
   {
     id: "bundle-5",
@@ -86,7 +86,7 @@ export const bundles: Bundle[] = [
     originalPrice: 10000,
     discountPercent: 10,
     products: ["halo"],
-    image: "/06_halo_duo.jpg",
+    image: "/06_halo_duo.PNG",
   },
   {
     id: "bundle-6",
@@ -96,7 +96,7 @@ export const bundles: Bundle[] = [
     originalPrice: 20000,
     discountPercent: 10,
     products: ["halo"],
-    image: "/07_halo_quartet.jpg",
+    image: "/07_halo_quartet.PNG",
   },
   {
     id: "bundle-7",
@@ -106,7 +106,7 @@ export const bundles: Bundle[] = [
     originalPrice: 31500,
     discountPercent: 20,
     products: ["dew", "veil", "herbe", "halo"],
-    image: "/08_everything_set.jpg",
+    image: "/08_everything_set.PNG",
   },
 ];
 
