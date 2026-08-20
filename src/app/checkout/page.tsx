@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { useCart } from "@/lib/cart";
-
-const WHATSAPP_NUMBER = "923274984584";
+import { buildOrderWhatsAppMessage, createOrderId, openOrderWhatsApp } from "@/lib/order-whatsapp";
 
 interface CustomerInfo {
   firstName: string;
@@ -68,39 +67,8 @@ export default function CheckoutPage() {
 
 
 
-  const formatWhatsAppMessage = (): string => {
-    let message = `🛍 *NEW ORDER*\n\n`;
-    message += `👤 *Customer Information*\n`;
-    message += `Name: ${customerInfo.firstName} ${customerInfo.lastName}\n`;
-    message += `Phone: ${customerInfo.phone}\n`;
-    message += `Email: ${customerInfo.email}\n\n`;
-    message += `📍 *Shipping Address*\n`;
-    message += `Address: ${customerInfo.address}\n`;
-    message += `City: ${customerInfo.city}, ${customerInfo.zipCode}\n`;
-    message += `Country: ${customerInfo.country}\n\n`;
-    message += `💳 *Payment Method*: ${customerInfo.paymentMethod}\n\n`;
-    message += `🛒 *Order Items*\n\n`;
-
-    lines.forEach((line, index) => {
-      const { product, qty, isBundle, bundlePrice, giftPackaging } = line;
-      const unitPrice = isBundle && bundlePrice ? bundlePrice : product.price;
-      message += `• ${index + 1}. ${product.name}${giftPackaging ? " (Gift Packaging)" : ""}\n`;
-      if (line.selectedOptions && line.selectedOptions.length > 0) {
-        message += `   Selection: ${product.tagline}\n`;
-      }
-      message += `   Quantity: ${qty}\n`;
-      message += `   Unit Price: PKR ${unitPrice.toLocaleString()}\n`;
-      message += `   Item Total: PKR ${(unitPrice * qty).toLocaleString()}\n\n`;
-    });
-
-    message += `💰 *Order Summary*\n`;
-    message += `Subtotal: PKR ${subtotal.toLocaleString()}\n`;
-    message += `Shipping: Free\n`;
-    message += `Tax: Free\n`;
-    message += `Grand Total: PKR ${subtotal.toLocaleString()}\n\n`;
-    message += `Please confirm my order.`;
-
-    return message;
+  const formatWhatsAppMessage = (orderId: string): string => {
+    return buildOrderWhatsAppMessage(orderId, customerInfo, lines, subtotal);
   };
 
   const handleCheckout = async (e: React.FormEvent) => {
@@ -109,17 +77,11 @@ export default function CheckoutPage() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
-    // Simulate processing
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    
-    const message = formatWhatsAppMessage();
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    
-    // Open WhatsApp
-    window.open(whatsappUrl, "_blank");
-    
-    // Clear cart and redirect
+
+    const orderId = createOrderId();
+    const message = formatWhatsAppMessage(orderId);
+    openOrderWhatsApp(message);
+
     clear();
     router.push("/checkout/success");
   };
