@@ -24,7 +24,7 @@ import { collections, products } from "@/lib/products";
 const nav = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Products", mega: true },
-  { href: "/bundles", label: "Bundles" },
+  { href: "/bundles", label: "Sets" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -211,11 +211,15 @@ export function Header() {
                   href={item.href}
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                   className={`group relative py-2 text-[12px] font-medium uppercase tracking-[0.22em] transition-colors hover:text-foreground ${
-                    pathname === item.href ? "text-foreground" : "text-foreground/75"
+                    pathname === item.href || (item.href === "/bundles" && pathname.startsWith("/bundle"))
+                      ? "text-foreground"
+                      : "text-foreground/75"
                   }`}
                 >
                   {item.label}
-                  <NavUnderline active={pathname === item.href} />
+                  <NavUnderline
+                    active={pathname === item.href || (item.href === "/bundles" && pathname.startsWith("/bundle"))}
+                  />
                 </Link>
               ),
             )}

@@ -2,23 +2,24 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-/** Tuned for Apple-like smooth scroll without overshoot lag. */
+/** Smooth scroll on fine-pointer desktops only — native scroll on mobile. */
 export function useSmoothScroll() {
   useEffect(() => {
     const reduce =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarse =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse), (max-width: 767px)").matches;
 
-    if (reduce) return;
+    if (reduce || coarse) return;
 
     const lenis = new Lenis({
-      // Shorter duration + lerp = responsive, not floaty
       duration: 0.9,
       lerp: 0.09,
       smoothWheel: true,
       touchMultiplier: 1.35,
       wheelMultiplier: 0.95,
-      // Avoid fighting native iOS momentum
       syncTouch: false,
     });
 

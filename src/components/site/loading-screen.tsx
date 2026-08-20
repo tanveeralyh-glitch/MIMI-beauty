@@ -7,6 +7,10 @@ export function LoadingScreen() {
   const [show, setShow] = useState(false);
   useEffect(() => {
     if (sessionStorage.getItem("mimi-loaded")) return;
+    if (window.matchMedia("(pointer: coarse), (max-width: 767px)").matches) {
+      sessionStorage.setItem("mimi-loaded", "1");
+      return;
+    }
     setShow(true);
     const t = setTimeout(() => {
       setShow(false);

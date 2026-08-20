@@ -95,7 +95,14 @@ export function CartDrawer() {
                               <Plus className="h-3 w-3" />
                             </button>
                           </div>
-                          <p className="text-sm font-medium">PKR {((isBundle && bundlePrice ? bundlePrice : product.price) * qty).toLocaleString()}</p>
+                          <p className="text-right text-sm font-medium">
+                            {isBundle && product.originalPrice && product.originalPrice > (bundlePrice || product.price) && (
+                              <span className="mr-2 text-xs text-muted-foreground line-through">
+                                PKR {((product.originalPrice) * qty).toLocaleString()}
+                              </span>
+                            )}
+                            PKR {((isBundle && bundlePrice ? bundlePrice : product.price) * qty).toLocaleString()}
+                          </p>
                         </div>
                       </div>
                     </li>

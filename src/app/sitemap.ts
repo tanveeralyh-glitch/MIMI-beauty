@@ -5,15 +5,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "",
     "/shop",
-    "/collections",
+    "/bundles",
+    "/build-your-set",
     "/quiz",
     "/blog",
     "/about",
+    "/brand-philosophy",
+    "/who-we-are",
     "/contact",
+    "/ingredients",
     "/product/dew",
     "/product/veil",
     "/product/herbe",
     "/product/halo",
+    "/product/pearl",
+    "/product/amalfi",
+    "/product/santorini",
   ];
 
   return paths.map((p) => ({

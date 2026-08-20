@@ -8,11 +8,15 @@ export type CartLine = {
   isBundle?: boolean;
   bundlePrice?: number;
   giftPackaging?: boolean;
+  selectedOptions?: string[];
+  selectedQuantities?: Record<string, number>;
 };
 
 type AddOptions = {
   openCart?: boolean;
   giftPackaging?: boolean;
+  selectedOptions?: string[];
+  selectedQuantities?: Record<string, number>;
 };
 
 type CartCtx = {
@@ -46,6 +50,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const value = useMemo<CartCtx>(() => {
     const add = (p: Product, qty = 1, isBundle = false, bundlePrice?: number, options?: AddOptions) => {
       const giftPackaging = Boolean(options?.giftPackaging);
+      const selectedOptions = options?.selectedOptions ?? [];
+      const selectedQuantities = options?.selectedQuantities;
       setLines((prev) => {
         const idx = prev.findIndex((l) => l.product.slug === p.slug);
         if (idx >= 0) {
@@ -53,7 +59,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           next[idx] = { ...next[idx], qty: next[idx].qty + qty };
           return next;
         }
-        return [...prev, { product: p, qty, isBundle, bundlePrice, giftPackaging }];
+        return [...prev, { product: p, qty, isBundle, bundlePrice, giftPackaging, selectedOptions, selectedQuantities }];
       });
       if (options?.openCart !== false) setOpen(true);
     };

@@ -1,11 +1,11 @@
 export const assets = {
-  dew: "/dew.jpg",
-  veil: "/veil.jpg",
-  herbe: "/herbe.jpg",
-  halo: "/halo.jpg",
+  dew: "/products/dew.jpg",
+  veil: "/products/veil.jpg",
+  herbe: "/products/herbe.jpg",
+  halo: "/products/halo.jpg",
   lineup: "/hero_dew_collection.jpg",
   water: "/hero_dew_girl_left.jpg",
-  stone: "/contact_organic_bg.jpg",
+  stone: "/brand-story-editorial.jpg",
   logo: "/logo.png",
 };
 
@@ -33,6 +33,7 @@ export type Product = {
   benefits: string[];
   ingredients: string[];
   directions: string;
+  howToUse: string;
   storageCaution?: string;
   skinType: string[];
   description: string;
@@ -50,9 +51,9 @@ export const products: Product[] = [
     price: 3500,
     originalPrice: 4500,
     size: "30ml",
-    image: assets.halo,
-    hoverImage: assets.water,
-    gallery: [assets.halo, assets.water, assets.lineup, assets.stone],
+    image: assets.dew,
+    hoverImage: assets.dew,
+    gallery: [assets.dew, assets.water, assets.lineup],
     rating: 4.9,
     reviews: 428,
     theme: {
@@ -80,6 +81,7 @@ export const products: Product[] = [
       "Tocopherol"
     ],
     directions: "After washing your face, apply 2–3 drops to clean, damp skin. Gently spread evenly over the face and neck until fully absorbed. Use morning and night for best results.",
+    howToUse: "Use morning and night as part of your daily facial ritual. Apply after cleansing and allow the serum to absorb fully before makeup or additional products.",
     storageCaution: "Store in cool, dry place.\nFor external use only.\nAvoid direct eye contact.",
     skinType: ["All", "Dry", "Sensitive"],
     description:
@@ -95,8 +97,8 @@ export const products: Product[] = [
     originalPrice: 4500,
     size: "30ml",
     image: assets.veil,
-    hoverImage: assets.lineup,
-    gallery: [assets.veil, assets.lineup, assets.water, assets.stone],
+    hoverImage: assets.veil,
+    gallery: [assets.veil, assets.lineup, assets.water],
     rating: 4.8,
     reviews: 312,
     theme: {
@@ -124,6 +126,7 @@ export const products: Product[] = [
       "Fragrance/Parfum"
     ],
     directions: "Apply 2–3 drops to wet hair after washing. Spread evenly through the mid-length to ends. For curly/wavy hair, use a comb for even distribution. Do not rinse. Towel dry only, then style as desired.",
+    howToUse: "Use after every wash on damp hair, or on dry hair whenever you want a smoother, more protected finish. Do not rinse; style as desired.",
     storageCaution: "Store in cool, dry place.\nFor external use only.\nAvoid direct eye contact.",
     skinType: ["All hair types"],
     description:
@@ -139,8 +142,8 @@ export const products: Product[] = [
     originalPrice: 5500,
     size: "50ml",
     image: assets.herbe,
-    hoverImage: assets.stone,
-    gallery: [assets.herbe, assets.stone, assets.water, assets.lineup],
+    hoverImage: assets.herbe,
+    gallery: [assets.herbe, assets.water, assets.lineup],
     rating: 4.9,
     reviews: 271,
     theme: {
@@ -171,6 +174,7 @@ export const products: Product[] = [
       "Tocopherol"
     ],
     directions: "Apply directly, using dropper to scalp and massage gently using fingertips. Leave on for at least 30 mins or overnight. Wash thoroughly with mild shampoo. Use 1–2 times per week.",
+    howToUse: "Use 1–2 times per week before shampooing. Massage into the scalp, leave on for at least 30 minutes or overnight, then cleanse thoroughly with a mild shampoo.",
     storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
     skinType: ["Sensitive scalp", "Oily"],
     description:
@@ -185,9 +189,9 @@ export const products: Product[] = [
     price: 5000,
     originalPrice: 6500,
     size: "100ml",
-    image: assets.dew,
-    hoverImage: assets.water,
-    gallery: [assets.dew, assets.water, assets.lineup, assets.stone],
+    image: assets.halo,
+    hoverImage: assets.halo,
+    gallery: [assets.halo, assets.water, assets.lineup],
     rating: 5.0,
     reviews: 542,
     theme: {
@@ -217,6 +221,7 @@ export const products: Product[] = [
       "Mica"
     ],
     directions: "For best results, apply to clean, wet/damp skin for best absorption. If applying to dry skin, use a few pumps and massage well until fully absorbed. Use daily for soft, radiant and nourished skin.",
+    howToUse: "Use daily after bathing, shaving, or whenever skin needs extra care. Massage Halò into damp or dry skin until fully absorbed.",
     storageCaution: "Store in cool, dry place.\nFor external use only.\nAvoid direct eye contact.",
     skinType: ["All"],
     description:
@@ -231,9 +236,9 @@ export const products: Product[] = [
     price: 5000,
     originalPrice: 6500,
     size: "100ml",
-    image: "/Pearl.jpg",
-    hoverImage: assets.water,
-    gallery: ["/Pearl.jpg", assets.water, assets.lineup, assets.stone],
+    image: "/products/pearl.jpg",
+    hoverImage: "/products/pearl.jpg",
+    gallery: ["/products/pearl.jpg", assets.water, assets.lineup],
     rating: 5.0,
     reviews: 328,
     theme: {
@@ -263,6 +268,7 @@ export const products: Product[] = [
       "Mica"
     ],
     directions: "For best results, apply to clean, wet/damp skin for best absorption. If applying to dry skin, use a few pumps and massage well until fully absorbed. Use daily for soft, radiant and nourished skin.",
+    howToUse: "Use daily after bathing, shaving, or whenever skin needs extra care. Massage Pearl into damp or dry skin until fully absorbed.",
     storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
     skinType: ["All"],
     description:
@@ -277,9 +283,9 @@ export const products: Product[] = [
     price: 5000,
     originalPrice: 6500,
     size: "100ml",
-    image: "/Amalfi.jpg",
-    hoverImage: assets.water,
-    gallery: ["/Amalfi.jpg", assets.water, assets.lineup, assets.stone],
+    image: "/products/amalfi.jpg",
+    hoverImage: "/products/amalfi.jpg",
+    gallery: ["/products/amalfi.jpg", assets.water, assets.lineup],
     rating: 4.9,
     reviews: 256,
     theme: {
@@ -309,6 +315,7 @@ export const products: Product[] = [
       "Mica"
     ],
     directions: "For best results, apply to clean, wet/damp skin for best absorption. If applying to dry skin, use a few pumps and massage well until fully absorbed. Use daily for soft, radiant and nourished skin.",
+    howToUse: "Use daily after bathing, shaving, or whenever skin needs extra care. Massage Amalfi into damp or dry skin until fully absorbed.",
     storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
     skinType: ["All"],
     description:
@@ -323,9 +330,9 @@ export const products: Product[] = [
     price: 5000,
     originalPrice: 6500,
     size: "100ml",
-    image: "/Santorini.jpg",
-    hoverImage: assets.water,
-    gallery: ["/Santorini.jpg", assets.water, assets.lineup, assets.stone],
+    image: "/products/santorini.jpg",
+    hoverImage: "/products/santorini.jpg",
+    gallery: ["/products/santorini.jpg", assets.water, assets.lineup],
     rating: 4.9,
     reviews: 189,
     theme: {
@@ -355,6 +362,7 @@ export const products: Product[] = [
       "Mica"
     ],
     directions: "For best results, apply to clean, wet/damp skin for best absorption. If applying to dry skin, use a few pumps and massage well until fully absorbed. Use daily for soft, radiant and nourished skin.",
+    howToUse: "Use daily after bathing, shaving, or whenever skin needs extra care. Massage Santorini into damp or dry skin until fully absorbed.",
     storageCaution: "Store in cool, dry place. For external use only. Avoid direct eye contact.",
     skinType: ["All"],
     description:

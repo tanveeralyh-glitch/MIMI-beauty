@@ -15,7 +15,9 @@ export default function Shop() {
     let list = [...products];
     if (cat !== "All") list = list.filter((p) => p.category === cat);
     if (q.trim())
-      list = list.filter((p) => (p.name + p.tagline).toLowerCase().includes(q.toLowerCase()));
+      list = list.filter((p) =>
+        (p.name + p.tagline + p.description + p.ingredients.join(" ")).toLowerCase().includes(q.toLowerCase()),
+      );
     switch (sort) {
       case "price-asc":
         list.sort((a, b) => a.price - b.price);
@@ -155,9 +157,9 @@ export default function Shop() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-x-6 gap-y-16 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
             {filtered.map((p, i) => (
-              <ProductCard key={p.slug} product={p} index={i} />
+              <ProductCard key={p.slug} product={p} index={i} variant="shop" />
             ))}
           </div>
         )}

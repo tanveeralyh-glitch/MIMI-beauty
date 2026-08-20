@@ -10,6 +10,7 @@ import type { ReactNode } from "react";
 
 export function ClientLayout({ children }: { children: ReactNode }) {
   useSmoothScroll();
+
   return (
     <>
       <LoadingScreen />

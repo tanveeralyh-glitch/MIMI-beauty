@@ -18,6 +18,7 @@ import {
   type ReactNode,
   type RefObject,
 } from "react";
+import { SmartImage } from "./smart-image";
 
 const GOLD = "#CFA76A";
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -181,17 +182,14 @@ function HeroVideo({
         <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.04] p-1.5 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.85)] transition-[border-color] duration-500 group-hover:border-gold/55">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[26px] bg-background">
             {FILM.map((f, i) => (
-              <img
+              <SmartImage
                 key={f.src}
                 src={f.src}
                 alt=""
-                width={800}
-                height={1000}
-                fetchPriority={i === 0 ? "high" : "low"}
-                loading={i === 0 ? "eager" : "lazy"}
-                decoding="async"
-                // GPU-friendly crossfade: opacity + transform only
-                className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-[1200ms] ease-out ${
+                fill
+                sizes="(max-width: 1024px) 100vw, 560px"
+                priority={i === 0}
+                className={`object-cover transition-[opacity,transform] duration-[1200ms] ease-out ${
                   i === scene ? "scale-[1.04] opacity-100" : "scale-110 opacity-0"
                 }`}
               />
