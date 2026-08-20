@@ -1,257 +1,118 @@
-"use client";
-import { motion } from "framer-motion";
-import { assets } from "@/lib/products";
-import { Sparkles, Shield, Leaf, Heart } from "lucide-react";
+﻿"use client";
 
-const timeline = [
-  {
-    year: "2024",
-    title: "The Copenhagen Kitchen",
-    label: "Initial formulation and botanical studies begin in Copenhagen.",
-  },
-  {
-    year: "2025",
-    title: "Dermatological Testing",
-    label: "First batch of Dew tested and refined with 40 leading dermatologists.",
-  },
-  {
-    year: "2026",
-    title: "The Launch of MIMIbeauty",
-    label: "MIMIbeauty officially opens its doors to the public.",
-  },
-  {
-    year: "2027",
-    title: "Worldwide Expansion",
-    label: "Refillable luxury glass packaging launches globally.",
-  },
-];
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <div className="relative min-h-screen bg-background text-white selection:bg-gold/20 selection:text-gold overflow-hidden">
-      {/* Background Decorative Gradients */}
-      <div className="absolute top-[-10%] left-[-10%] h-[600px] w-[600px] rounded-full bg-gold/5 blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[-10%] h-[800px] w-[800px] rounded-full bg-stone-500/5 blur-[200px] pointer-events-none" />
-
-      {/* Hero Section */}
-      <section className="relative isolate min-h-[90vh] flex items-center overflow-hidden pt-24 pb-20">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src={assets.stone}
-            alt="Background Stone"
-            className="h-full w-full object-cover opacity-45 scale-105 filter grayscale contrast-125"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
-        </div>
-
-        <div className="mx-auto max-w-[1800px] w-full px-6 lg:px-12 xl:px-20">
-          <div className="max-w-4xl">
+    <div className="relative min-h-screen overflow-x-hidden bg-background text-[#F6F2EB]">
+      {/* Hero */}
+      <section className="relative flex min-h-[100svh] items-center">
+        <div className="mx-auto w-full max-w-[1600px] px-6 pb-16 pt-32 sm:px-10 lg:px-16 xl:px-24">
+          <div className="max-w-[920px]">
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex items-center gap-4"
+              transition={{ duration: 0.7 }}
+              className="flex items-center gap-3"
             >
-              <span className="h-[1px] w-12 bg-gold/60" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.5em] text-gold">
-                The House of MIMI
+              <span className="h-px w-8 shrink-0 bg-gold sm:w-10" />
+              <span
+                className="text-[10px] font-medium uppercase tracking-[0.42em] text-gold sm:text-[11px]"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
+              >
+                The House of Mimi
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="mt-8 font-display text-[clamp(2.5rem,7.5vw,7.5rem)] leading-[0.9] tracking-tighter text-balance"
+              transition={{ duration: 0.9, delay: 0.12 }}
+              className="mt-7 font-display text-[clamp(2.55rem,8.4vw,6.6rem)] font-medium uppercase leading-[0.92] tracking-[-0.02em]"
             >
-              A quiet obsession <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gold/70">
-                with skin.
-              </span>
+              A quiet
+              <br />
+              obsession
+              <br />
+              with <span className="text-gold">skin.</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-foreground/70"
+              transition={{ duration: 0.8, delay: 0.28 }}
+              className="mt-7 max-w-[36rem] text-[15px] leading-[1.75] text-[#F6F2EB]/72 sm:text-base md:text-lg"
+              style={{ fontFamily: "Montserrat, sans-serif" }}
             >
-              We design intentional skincare formulated to integrate seamlessly into your
-              daily space. Crafting botanically-infused, clinically-proven formulas in small
-              batches.
+              We design skincare that feels, repairs, and is intentional.
+              <br className="hidden sm:block" /> It integrates seamlessly into your daily space.
             </motion.p>
           </div>
         </div>
 
-        {/* Scroll indicator micro-animation */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-60">
-          <span className="text-[9px] uppercase tracking-[0.3em] text-white/50">
-            Scroll to explore
-          </span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-1.5 h-6 rounded-full bg-gold/50"
-          />
-        </div>
       </section>
 
-      {/* Who We Are */}
-      <section className="relative z-10 mx-auto max-w-[1800px] px-6 lg:px-12 xl:px-20 pt-24 md:pt-36 pb-12 md:pb-16 border-t border-white/5">
-        <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr] items-start">
+      {/* About Us */}
+      <section className="relative pb-24 pt-10 md:pb-36 md:pt-16">
+        <div className="mx-auto grid w-full max-w-[1600px] items-start gap-10 px-6 sm:px-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16 lg:px-16 xl:gap-24 xl:px-24">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8 }}
+            className="min-w-0"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <span className="h-[1px] w-8 bg-gold" />
-              <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold">
-                Who We Are
-              </p>
-            </div>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
-              The best care works with your body, not against it.
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="space-y-6 text-lg md:text-xl text-foreground/80 leading-relaxed font-light"
-          >
-            <p>
-              Mimi Beauty is a premium Pakistani skincare brand built on a simple belief that the best care works with your body, not against it.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              We thoughtfully formulate products using naturally derived ingredients that support healthy skin, hair, and body care without complexity. Every formula is intentionally designed to deliver effective results while respecting your body's natural balance.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              Our collection is centered around fast-absorbing dry oil formulations that nourish deeply without leaving a heavy or greasy feel. From face and hair to body care, each product is designed to fit seamlessly into your daily routine while delivering purposeful, long-term care.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              At Mimi Beauty, we believe luxury is found in thoughtful formulation, honest ingredients, and products that truly deserve a place in your routine. We don't believe in creating more. We believe in creating better.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              This is more than skincare. It is a commitment to helping you care for yourself with intention, confidence, and simplicity.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              Working in harmony with nature, helping your body restore, protect, and strengthen from within.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Brand Philosophy */}
-      <section className="relative z-10 mx-auto max-w-[1800px] px-6 lg:px-12 xl:px-20 pb-24 md:pb-36">
-        <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr] items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <span className="h-[1px] w-8 bg-gold" />
-              <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold">
-                Brand Philosophy
-              </p>
-            </div>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
-              Care that restores, not conceals.
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="space-y-6 text-lg md:text-xl text-foreground/80 leading-relaxed font-light"
-          >
-            <p>
-              Your skin and hair were never meant to depend on products forever. They were designed to protect, heal, and thrive naturally.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              Many conventional products deliver quick, visible results by treating the surface rather than the root cause. Over time, harsh ingredients can weaken the skin barrier, damage the hair cuticle, and leave your skin and hair relying on continuous use instead of becoming healthier.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              At Mimi Beauty, we believe skincare and haircare should support your body's natural ability to restore itself, not replace it.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              Every formula is thoughtfully crafted with naturally derived ingredients that promote long term skin, hair, and body health. Rather than offering temporary results, our products work with your body to nourish, repair, and strengthen from within.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              You will never find long ingredient lists or complicated routines at Mimi Beauty. Every ingredient is chosen with intention because we believe quality matters more than quantity.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              Every product has a purpose, every formula serves a function, and every step is designed to deliver meaningful care without complexity.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              We are not here to create dependency. We are here to help your skin, hair, and body become healthier, stronger, and more resilient with every use.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              Because true beauty is not about covering imperfections. It is about restoring balance, protecting what is already yours, and helping your natural beauty flourish.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              Your journey to healthier skin, stronger hair, and lasting body wellness begins with the choices you make today. Discover naturally derived care that restores, protects, and strengthens from within, because lasting beauty begins with lasting skin, hair, and body health.
-            </p>
-            <p className="text-foreground/60 text-base md:text-lg">
-              Choose care that restores, not conceals. Welcome to a new standard of naturally intentional beauty. Welcome to Mimi Beauty.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-
-      {/* Timeline Section */}
-      <section className="relative z-10 mx-auto max-w-[1800px] px-6 lg:px-12 xl:px-20 py-24 md:py-36">
-        <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <div className="sticky top-32">
-              <div className="flex items-center gap-4">
-                <span className="h-[1px] w-8 bg-gold" />
-                <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold">
-                  Chronology
-                </p>
-              </div>
-              <h2 className="mt-6 font-display text-4xl md:text-6xl">Our journey.</h2>
-              <p className="mt-6 text-foreground/50 max-w-sm font-light leading-relaxed">
-                From a small design and chemistry studio to a globally recognized standard for
-                intentional care.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative border-l border-white/10 pl-8 md:pl-16 space-y-16 md:space-y-24 py-4">
-            {timeline.map((t, i) => (
-              <motion.div
-                key={t.year}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: i * 0.1 }}
-                className="relative group"
+            <div className="mb-6 flex items-center gap-3">
+              <span className="h-px w-8 shrink-0 bg-gold" />
+              <p
+                className="text-[10px] font-medium uppercase tracking-[0.42em] text-gold sm:text-[11px]"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
               >
-                {/* Custom glowing dot */}
-                <span className="absolute -left-[41px] md:-left-[73px] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-gold bg-background transition-all duration-300 group-hover:scale-125">
-                  <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-                </span>
+                About Us
+              </p>
+            </div>
+            <h2 className="font-display text-[clamp(1.7rem,4.4vw,4.15rem)] font-medium uppercase leading-[1.12] tracking-[-0.015em] text-[#F6F2EB]">
+              At Mimi Beauty,
+              <br />
+              we believe skincare should
+              <br className="hidden sm:block" />
+              feel effortless, luxurious,
+              <br className="hidden sm:block" />
+              and inspired by nature.
+            </h2>
+          </motion.div>
 
-                <span className="font-display text-4xl md:text-5xl text-gold/80 block group-hover:text-gold transition-colors duration-300">
-                  {t.year}
-                </span>
-                <h4 className="mt-2 text-xl font-medium tracking-tight text-white">{t.title}</h4>
-                <p className="mt-3 text-base md:text-lg text-foreground/60 font-light max-w-xl leading-relaxed">
-                  {t.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="min-w-0 space-y-7 text-[15px] font-light leading-[1.85] text-[#F6F2EB]/82 sm:text-[16px] md:space-y-8 md:text-[17px]"
+            style={{ fontFamily: "Montserrat, sans-serif" }}
+          >
+            <p>
+              We design healing skincare that heals, repairs
+              <br className="hidden md:block" /> and is intentional. It integrates seamlessly
+              <br className="hidden md:block" /> into your daily space.
+            </p>
+            <p>
+              Created in Pakistan, our collection is thoughtfully formulated with
+              naturally derived ingredients to nourish your skin with lightweight, fast-
+              absorbing care. Every product is designed to fit seamlessly into your
+              daily collection while delivering effective, uncompromising results.
+            </p>
+            <p>
+              As one of the first local brands to introduce a complete head-to-toe range of
+              specialized dry oils, we&apos;re redefining modern skincare with formulas crafted for
+              face, body, hair, and intimate areas.
+            </p>
+            <p>
+              Our products are free from sulphates, parabens, silicones, and harsh synthetic
+              additives because we believe what you leave out is just as important as what you
+              put in.
+            </p>
+            <p className="pt-1 font-medium text-gold">Simple. Intentional. Naturally beautiful.</p>
+          </motion.div>
         </div>
       </section>
     </div>
