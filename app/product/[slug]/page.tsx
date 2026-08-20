@@ -179,8 +179,8 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         </div>
 
         <section className="mx-auto max-w-[1800px] flex flex-col lg:grid lg:grid-cols-[1.5fr_1fr] lg:gap-12 xl:gap-20">
-          {/* Left: Cinematic Stage - Mobile Second */}
-          <div className="relative order-2 px-6 lg:order-1 lg:pl-12 xl:pl-20">
+          {/* Left: Cinematic Stage - Mobile First */}
+          <div className="relative order-1 px-6 lg:order-1 lg:pl-12 xl:pl-20">
             <CinematicStage image={gallery[active]} accent={theme.accent} glow={theme.glow} />
 
 
@@ -231,8 +231,8 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
             </motion.div>
           </div>
 
-          {/* Right: Product Info - Mobile First */}
-          <div className="relative order-1 mt-12 px-6 lg:order-2 lg:mt-0 lg:pr-12 xl:pr-20">
+          {/* Right: Product Info - Mobile Second */}
+          <div className="relative order-2 mt-12 px-6 lg:order-2 lg:mt-0 lg:pr-12 xl:pr-20">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
               <div className="flex items-center gap-4">
                 <span className="h-[1px] w-8" style={{ backgroundColor: theme.accent }} />

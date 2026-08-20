@@ -125,16 +125,22 @@ export default function About() {
             className="space-y-6 text-lg md:text-xl text-foreground/80 leading-relaxed font-light"
           >
             <p>
-              Mimi Beauty is a premium Pakistani skincare brand built on a simple belief that the best care works with your body, not against it. We thoughtfully formulate products using naturally derived ingredients that support healthy skin, hair, and body care without complexity.
+              Mimi Beauty is a premium Pakistani skincare brand built on a simple belief that the best care works with your body, not against it.
+            </p>
+            <p className="text-foreground/60 text-base md:text-lg">
+              We thoughtfully formulate products using naturally derived ingredients that support healthy skin, hair, and body care without complexity. Every formula is intentionally designed to deliver effective results while respecting your body's natural balance.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
               Our collection is centered around fast-absorbing dry oil formulations that nourish deeply without leaving a heavy or greasy feel. From face and hair to body care, each product is designed to fit seamlessly into your daily routine while delivering purposeful, long-term care.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
-              At Mimi Beauty, we believe luxury is found in thoughtful formulation, honest ingredients, and products that truly deserve a place in your routine. We don’t believe in creating more. We believe in creating better.
+              At Mimi Beauty, we believe luxury is found in thoughtful formulation, honest ingredients, and products that truly deserve a place in your routine. We don't believe in creating more. We believe in creating better.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
-              This is more than skincare. It is a commitment to helping you care for yourself with intention, confidence, and simplicity. Working in harmony with nature, helping your body restore, protect, and strengthen from within.
+              This is more than skincare. It is a commitment to helping you care for yourself with intention, confidence, and simplicity.
+            </p>
+            <p className="text-foreground/60 text-base md:text-lg">
+              Working in harmony with nature, helping your body restore, protect, and strengthen from within.
             </p>
           </motion.div>
         </div>
@@ -168,19 +174,34 @@ export default function About() {
             className="space-y-6 text-lg md:text-xl text-foreground/80 leading-relaxed font-light"
           >
             <p>
-              Your skin and hair were never meant to depend on products forever. They were designed to protect, heal, and thrive naturally. At Mimi Beauty, we believe skincare and haircare should support your body’s natural ability to restore itself, not replace it.
+              Your skin and hair were never meant to depend on products forever. They were designed to protect, heal, and thrive naturally.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
               Many conventional products deliver quick, visible results by treating the surface rather than the root cause. Over time, harsh ingredients can weaken the skin barrier, damage the hair cuticle, and leave your skin and hair relying on continuous use instead of becoming healthier.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
-              Every formula is thoughtfully crafted with naturally derived ingredients that promote long term skin, hair, and body health. You will never find long ingredient lists or complicated routines at Mimi Beauty. Every product has a purpose, every formula serves a function, and every step is designed to deliver meaningful care without complexity.
+              At Mimi Beauty, we believe skincare and haircare should support your body's natural ability to restore itself, not replace it.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
-              We are not here to create dependency. We are here to help your skin, hair, and body become healthier, stronger, and more resilient with every use. Because true beauty is not about covering imperfections. It is about restoring balance, protecting what is already yours, and helping your natural beauty flourish.
+              Every formula is thoughtfully crafted with naturally derived ingredients that promote long term skin, hair, and body health. Rather than offering temporary results, our products work with your body to nourish, repair, and strengthen from within.
             </p>
             <p className="text-foreground/60 text-base md:text-lg">
-              Your journey to healthier skin, stronger hair, and lasting body wellness begins with the choices you make today. Welcome to a new standard of naturally intentional beauty. Welcome to Mimi Beauty.
+              You will never find long ingredient lists or complicated routines at Mimi Beauty. Every ingredient is chosen with intention because we believe quality matters more than quantity.
+            </p>
+            <p className="text-foreground/60 text-base md:text-lg">
+              Every product has a purpose, every formula serves a function, and every step is designed to deliver meaningful care without complexity.
+            </p>
+            <p className="text-foreground/60 text-base md:text-lg">
+              We are not here to create dependency. We are here to help your skin, hair, and body become healthier, stronger, and more resilient with every use.
+            </p>
+            <p className="text-foreground/60 text-base md:text-lg">
+              Because true beauty is not about covering imperfections. It is about restoring balance, protecting what is already yours, and helping your natural beauty flourish.
+            </p>
+            <p className="text-foreground/60 text-base md:text-lg">
+              Your journey to healthier skin, stronger hair, and lasting body wellness begins with the choices you make today. Discover naturally derived care that restores, protects, and strengthens from within, because lasting beauty begins with lasting skin, hair, and body health.
+            </p>
+            <p className="text-foreground/60 text-base md:text-lg">
+              Choose care that restores, not conceals. Welcome to a new standard of naturally intentional beauty. Welcome to Mimi Beauty.
             </p>
           </motion.div>
         </div>

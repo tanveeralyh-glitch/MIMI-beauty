@@ -144,9 +144,12 @@ export function BundleCard({ bundle }: { bundle: Bundle }) {
   const [pickerOpen, setPickerOpen] = useState(false);
   const [intent, setIntent] = useState<"cart" | "buy">("cart");
   const [packaging, setPackaging] = useState<"only" | "gift">("only");
+  const [selectedBodyOil, setSelectedBodyOil] = useState<string>("halo");
 
   const giftSelected = packaging === "gift";
   const totalPrice = bundle.price + (giftSelected ? GIFT_PACKAGING_FEE : 0);
+  const containsBodyOil = bundle.products.includes("halo");
+  const bodyOils = ["Halò", "Pearl", "Amalfi", "Santorini"];
 
   const openPicker = (nextIntent: "cart" | "buy") => {
     setIntent(nextIntent);
@@ -297,6 +300,36 @@ export function BundleCard({ bundle }: { bundle: Bundle }) {
               </div>
             </Label>
           </RadioGroup>
+
+          {containsBodyOil && (
+            <div className="mt-6">
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#D8D2C8] mb-3" style={{ fontFamily: "Montserrat" }}>
+                Choose Your Body Oil
+              </p>
+              <RadioGroup
+                value={selectedBodyOil}
+                onValueChange={setSelectedBodyOil}
+                className="gap-2"
+              >
+                {bodyOils.map((oil) => (
+                  <Label
+                    key={oil}
+                    htmlFor={`${bundle.id}-${oil}`}
+                    className={`flex cursor-pointer items-center justify-between rounded-sm border px-4 py-3 transition-colors ${
+                      selectedBodyOil === oil.toLowerCase() ? "border-gold bg-gold/10" : "border-gold/20 hover:border-gold/40"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <RadioGroupItem id={`${bundle.id}-${oil}`} value={oil.toLowerCase()} className="border-gold text-gold" />
+                      <span className="text-sm font-medium tracking-wide text-[#F5F2EC]" style={{ fontFamily: "Montserrat" }}>
+                        {oil}
+                      </span>
+                    </div>
+                  </Label>
+                ))}
+              </RadioGroup>
+            </div>
+          )}
 
           <div className="mt-2 flex items-center justify-between border-t border-gold/15 pt-4">
             <span className="text-xs uppercase tracking-[0.18em] text-[#D8D2C8]" style={{ fontFamily: "Montserrat" }}>
