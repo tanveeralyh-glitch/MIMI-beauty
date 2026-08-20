@@ -179,60 +179,13 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         </div>
 
         <section className="mx-auto max-w-[1800px] flex flex-col lg:grid lg:grid-cols-[1.5fr_1fr] lg:gap-12 xl:gap-20">
-          {/* Left: Cinematic Stage - Mobile First */}
+          {/* Left: Cinematic Stage - Mobile First, Desktop Left */}
           <div className="relative order-1 px-6 lg:order-1 lg:pl-12 xl:pl-20">
             <CinematicStage image={gallery[active]} accent={theme.accent} glow={theme.glow} />
-
-
-            {/* Accordions on left */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.4 }} className="mt-16 pb-16">
-              <AccordionItem title="Ingredients" open={activeTab === "ingredients"} onClick={() => setActiveTab(activeTab === "ingredients" ? "" : "ingredients")} accent={theme.accent}>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {product.ingredients.map((i: string) => (
-                    <div key={i} className="rounded-xl border px-5 py-4 backdrop-blur-sm transition"
-                      style={{ borderColor: `${theme.accent}15`, backgroundColor: theme.surface }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = theme.accentMuted; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = theme.surface; }}>
-                      <span className="text-white/90">{i}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-4 flex gap-6">
-                  {["Clean", "Vegan", "Cruelty-Free"].map((tag) => (
-                    <span key={tag} className="text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: theme.accent }}>{tag}</span>
-                  ))}
-                </div>
-              </AccordionItem>
-
-              <AccordionItem title="Benefits" open={activeTab === "benefits"} onClick={() => setActiveTab(activeTab === "benefits" ? "" : "benefits")} accent={theme.accent}>
-                <ul className="space-y-6">
-                  {product.benefits.map((b: string) => (
-                    <li key={b} className="flex items-start gap-5">
-                      <span className="mt-1.5 grid h-3 w-3 shrink-0 place-items-center rounded-full" style={{ backgroundColor: theme.accentMuted }}>
-                        <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: theme.accent }} />
-                      </span>
-                      <span className="text-lg text-white/75">{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </AccordionItem>
-
-              {product.directions && (
-                <AccordionItem title="Directions" open={activeTab === "directions"} onClick={() => setActiveTab(activeTab === "directions" ? "" : "directions")} accent={theme.accent}>
-                  <p className="text-lg text-white/75 leading-relaxed whitespace-pre-wrap">{product.directions}</p>
-                </AccordionItem>
-              )}
-
-              {product.storageCaution && (
-                <AccordionItem title="Storage & Caution" open={activeTab === "storage"} onClick={() => setActiveTab(activeTab === "storage" ? "" : "storage")} accent={theme.accent}>
-                  <p className="text-lg text-white/75 leading-relaxed whitespace-pre-wrap">{product.storageCaution}</p>
-                </AccordionItem>
-              )}
-            </motion.div>
           </div>
 
-          {/* Right: Product Info - Mobile Second */}
-          <div className="relative order-2 mt-12 px-6 lg:order-2 lg:mt-0 lg:pr-12 xl:pr-20">
+          {/* Right: Product Info - Mobile Second, Desktop Right */}
+          <div className="relative order-2 mt-8 px-6 lg:order-2 lg:mt-0 lg:pr-12 xl:pr-20">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
               <div className="flex items-center gap-4">
                 <span className="h-[1px] w-8" style={{ backgroundColor: theme.accent }} />
@@ -309,6 +262,54 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   <Share2 className="h-4 w-4 transition-transform group-hover:scale-110" strokeWidth={1.5} /> Share
                 </button>
               </div>
+            </motion.div>
+          </div>
+
+          {/* Accordions - Mobile Third, Desktop Left */}
+          <div className="relative order-3 px-6 lg:order-1 lg:pl-12 xl:pl-20 lg:mt-16">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.4 }} className="mt-8 pb-16 lg:mt-0">
+              <AccordionItem title="Ingredients" open={activeTab === "ingredients"} onClick={() => setActiveTab(activeTab === "ingredients" ? "" : "ingredients")} accent={theme.accent}>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {product.ingredients.map((i: string) => (
+                    <div key={i} className="rounded-xl border px-5 py-4 backdrop-blur-sm transition"
+                      style={{ borderColor: `${theme.accent}15`, backgroundColor: theme.surface }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = theme.accentMuted; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = theme.surface; }}>
+                      <span className="text-white/90">{i}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex gap-6">
+                  {["Clean", "Vegan", "Cruelty-Free"].map((tag) => (
+                    <span key={tag} className="text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: theme.accent }}>{tag}</span>
+                  ))}
+                </div>
+              </AccordionItem>
+
+              <AccordionItem title="Benefits" open={activeTab === "benefits"} onClick={() => setActiveTab(activeTab === "benefits" ? "" : "benefits")} accent={theme.accent}>
+                <ul className="space-y-6">
+                  {product.benefits.map((b: string) => (
+                    <li key={b} className="flex items-start gap-5">
+                      <span className="mt-1.5 grid h-3 w-3 shrink-0 place-items-center rounded-full" style={{ backgroundColor: theme.accentMuted }}>
+                        <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: theme.accent }} />
+                      </span>
+                      <span className="text-lg text-white/75">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </AccordionItem>
+
+              {product.directions && (
+                <AccordionItem title="Directions" open={activeTab === "directions"} onClick={() => setActiveTab(activeTab === "directions" ? "" : "directions")} accent={theme.accent}>
+                  <p className="text-lg text-white/75 leading-relaxed whitespace-pre-wrap">{product.directions}</p>
+                </AccordionItem>
+              )}
+
+              {product.storageCaution && (
+                <AccordionItem title="Storage & Caution" open={activeTab === "storage"} onClick={() => setActiveTab(activeTab === "storage" ? "" : "storage")} accent={theme.accent}>
+                  <p className="text-lg text-white/75 leading-relaxed whitespace-pre-wrap">{product.storageCaution}</p>
+                </AccordionItem>
+              )}
             </motion.div>
           </div>
         </section>

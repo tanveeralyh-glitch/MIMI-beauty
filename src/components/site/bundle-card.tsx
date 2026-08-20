@@ -2,18 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useCart } from "@/lib/cart";
 import type { Product } from "@/lib/products";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 export const GIFT_PACKAGING_FEE = 300;
@@ -139,45 +131,14 @@ function toBundleProduct(bundle: Bundle, giftPackaging: boolean, totalPrice: num
 }
 
 export function BundleCard({ bundle }: { bundle: Bundle }) {
-  const { add } = useCart();
-  const router = useRouter();
-  const [pickerOpen, setPickerOpen] = useState(false);
-  const [intent, setIntent] = useState<"cart" | "buy">("cart");
-  const [packaging, setPackaging] = useState<"only" | "gift">("only");
-  const [selectedBodyOil, setSelectedBodyOil] = useState<string>("halo");
-
-  const giftSelected = packaging === "gift";
-  const totalPrice = bundle.price + (giftSelected ? GIFT_PACKAGING_FEE : 0);
-  const containsBodyOil = bundle.products.includes("halo");
-  const bodyOils = ["Halò", "Pearl", "Amalfi", "Santorini"];
-
-  const openPicker = (nextIntent: "cart" | "buy") => {
-    setIntent(nextIntent);
-    setPackaging("only");
-    setPickerOpen(true);
-  };
-
-  const handleConfirm = () => {
-    setPickerOpen(false);
-
-    const product = toBundleProduct(bundle, giftSelected, totalPrice);
-    add(product, 1, true, totalPrice, {
-      openCart: intent === "cart",
-      giftPackaging: giftSelected,
-    });
-
-    if (intent === "buy") router.push("/checkout");
-  };
-
   return (
-    <>
+    <Link href={`/bundle/${bundle.id}`}>
       <motion.article
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease }}
-        className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-sm border border-gold/15 bg-[#121A15] text-center transition-all duration-300 hover:border-gold/45 hover:shadow-[0_18px_50px_-28px_rgba(201,168,106,0.45)]"
-        onClick={() => openPicker("cart")}
+        className="group flex h-full flex-col overflow-hidden rounded-sm border border-gold/15 bg-[#121A15] text-center transition-all duration-300 hover:border-gold/45 hover:shadow-[0_18px_50px_-28px_rgba(201,168,106,0.45)]"
       >
         <div className="relative aspect-square overflow-hidden bg-[#0A100C]">
           <img
@@ -218,138 +179,8 @@ export function BundleCard({ bundle }: { bundle: Bundle }) {
               {formatPkr(bundle.price)}
             </span>
           </div>
-
-          <div className="mt-auto flex flex-col gap-2.5">
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                openPicker("buy");
-              }}
-              className="w-full border border-[#F5F2EC]/80 bg-transparent px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#F5F2EC] transition-all duration-300 hover:bg-[#F5F2EC] hover:text-background"
-              style={{ fontFamily: "Montserrat", fontWeight: "500" }}
-            >
-              BUY NOW
-            </button>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                openPicker("cart");
-              }}
-              className="w-full border border-gold bg-transparent px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-gold transition-all duration-300 hover:bg-gold hover:text-background"
-              style={{ fontFamily: "Montserrat", fontWeight: "500" }}
-            >
-              ADD TO CART
-            </button>
-          </div>
         </div>
       </motion.article>
-
-      <Dialog open={pickerOpen} onOpenChange={setPickerOpen}>
-        <DialogContent className="max-w-md border-gold/20 bg-[#0D1C14] text-[#F5F2EC] sm:rounded-sm">
-          <DialogHeader className="text-center sm:text-center">
-            <DialogTitle className="font-display text-2xl tracking-wide" style={{ fontFamily: "Cinzel" }}>
-              {bundle.name}
-            </DialogTitle>
-            <DialogDescription className="text-[#D8D2C8]">
-              Choose how you'd like to receive your set.
-            </DialogDescription>
-          </DialogHeader>
-
-          <RadioGroup
-            value={packaging}
-            onValueChange={(value) => setPackaging(value as "only" | "gift")}
-            className="mt-2 gap-3"
-          >
-            <Label
-              htmlFor={`${bundle.id}-only`}
-              className={`flex cursor-pointer items-center justify-between rounded-sm border px-4 py-4 transition-colors ${
-                packaging === "only" ? "border-gold bg-gold/10" : "border-gold/20 hover:border-gold/40"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <RadioGroupItem id={`${bundle.id}-only`} value="only" className="border-gold text-gold" />
-                <div>
-                  <p className="text-sm font-medium tracking-wide text-[#F5F2EC]" style={{ fontFamily: "Montserrat" }}>
-                    Only Set
-                  </p>
-                  <p className="mt-1 text-xs text-[#D8D2C8]" style={{ fontFamily: "Montserrat" }}>
-                    {formatPkr(bundle.price)}
-                  </p>
-                </div>
-              </div>
-            </Label>
-
-            <Label
-              htmlFor={`${bundle.id}-gift`}
-              className={`flex cursor-pointer items-center justify-between rounded-sm border px-4 py-4 transition-colors ${
-                packaging === "gift" ? "border-gold bg-gold/10" : "border-gold/20 hover:border-gold/40"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <RadioGroupItem id={`${bundle.id}-gift`} value="gift" className="border-gold text-gold" />
-                <div>
-                  <p className="text-sm font-medium tracking-wide text-[#F5F2EC]" style={{ fontFamily: "Montserrat" }}>
-                    Gift Packaging
-                  </p>
-                  <p className="mt-1 text-xs text-[#D8D2C8]" style={{ fontFamily: "Montserrat" }}>
-                    + {formatPkr(GIFT_PACKAGING_FEE)}
-                  </p>
-                </div>
-              </div>
-            </Label>
-          </RadioGroup>
-
-          {containsBodyOil && (
-            <div className="mt-6">
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#D8D2C8] mb-3" style={{ fontFamily: "Montserrat" }}>
-                Choose Your Body Oil
-              </p>
-              <RadioGroup
-                value={selectedBodyOil}
-                onValueChange={setSelectedBodyOil}
-                className="gap-2"
-              >
-                {bodyOils.map((oil) => (
-                  <Label
-                    key={oil}
-                    htmlFor={`${bundle.id}-${oil}`}
-                    className={`flex cursor-pointer items-center justify-between rounded-sm border px-4 py-3 transition-colors ${
-                      selectedBodyOil === oil.toLowerCase() ? "border-gold bg-gold/10" : "border-gold/20 hover:border-gold/40"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <RadioGroupItem id={`${bundle.id}-${oil}`} value={oil.toLowerCase()} className="border-gold text-gold" />
-                      <span className="text-sm font-medium tracking-wide text-[#F5F2EC]" style={{ fontFamily: "Montserrat" }}>
-                        {oil}
-                      </span>
-                    </div>
-                  </Label>
-                ))}
-              </RadioGroup>
-            </div>
-          )}
-
-          <div className="mt-2 flex items-center justify-between border-t border-gold/15 pt-4">
-            <span className="text-xs uppercase tracking-[0.18em] text-[#D8D2C8]" style={{ fontFamily: "Montserrat" }}>
-              Total
-            </span>
-            <span className="text-sm font-semibold text-[#F5F2EC]" style={{ fontFamily: "Montserrat" }}>
-              {formatPkr(totalPrice)}
-            </span>
-          </div>
-
-          <button
-            type="button"
-            onClick={handleConfirm}
-            className="mt-1 w-full border border-gold bg-gold px-4 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-background transition-all duration-300 hover:bg-gold-soft"
-            style={{ fontFamily: "Montserrat", fontWeight: "500" }}
-          >
-            {intent === "buy" ? "BUY NOW" : "ADD TO CART"}
-          </button>
-        </DialogContent>
-      </Dialog>
-    </>
+    </Link>
   );
 }
