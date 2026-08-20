@@ -138,8 +138,6 @@ function HeroVideo({
   const [active, setActive] = useState(true);
   const frameX = useTransform(parallaxX, [-1, 1], [-10, 10]);
   const frameY = useTransform(parallaxY, [-1, 1], [-8, 8]);
-  const bottleX = useTransform(parallaxX, [-1, 1], [12, -12]);
-  const bottleY = useTransform(parallaxY, [-1, 1], [8, -8]);
 
   // Pause slideshow when offscreen — stops timer + GPU work
   useEffect(() => {
@@ -223,25 +221,6 @@ function HeroVideo({
             </div>
           </div>
         </div>
-
-        <motion.div
-          style={{ x: bottleX, y: bottleY }}
-          className="pointer-events-none absolute -bottom-4 right-2 z-20 w-24 sm:right-0 sm:w-32 md:-right-2 md:w-36"
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.7, ease }}
-        >
-          {/* CSS float — one compositor animation, not Framer infinite */}
-          <img
-            src="/herbe.png"
-            alt="Herbé bottle in hand"
-            width={200}
-            height={280}
-            loading="lazy"
-            decoding="async"
-            className="hero-float w-full drop-shadow-[0_30px_50px_rgba(0,0,0,0.7)]"
-          />
-        </motion.div>
       </motion.div>
     </motion.div>
   );

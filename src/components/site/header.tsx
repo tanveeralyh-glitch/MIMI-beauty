@@ -133,6 +133,11 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // Close mega menu when navigation occurs
+  useEffect(() => {
+    setMegaOpen(false);
+  }, [pathname]);
+
   useEffect(() => {
     if (!wishlistOpen) return;
     const onPointer = (e: MouseEvent) => {
@@ -185,7 +190,13 @@ export function Header() {
                     type="button"
                     className="group relative flex items-center gap-1 py-2 text-[12px] font-medium uppercase tracking-[0.22em] text-foreground/75 transition-colors hover:text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}
                     aria-expanded={megaOpen}
-                    onClick={() => setMegaOpen((v) => !v)}
+                    onClick={() => {
+                      if (megaOpen) {
+                        setMegaOpen(false);
+                      } else {
+                        setMegaOpen(true);
+                      }
+                    }}
                   >
                     {item.label}
                     <ChevronDown
@@ -313,6 +324,7 @@ export function Header() {
                         <Link
                           href="/coming-soon/body-lava-collection"
                           className="flex items-start gap-4"
+                          onClick={() => setMegaOpen(false)}
                         >
                           <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#151c17] text-[#C9A86A] border border-[#C9A86A]/20 transition group-hover:bg-[#C9A86A] group-hover:text-black">
                             <Sparkles className="h-4 w-4" />
@@ -335,6 +347,7 @@ export function Header() {
                         <Link
                           href="/coming-soon/hair-collection"
                           className="flex items-start gap-4"
+                          onClick={() => setMegaOpen(false)}
                         >
                           <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#151c17] text-[#C9A86A] border border-[#C9A86A]/20 transition group-hover:bg-[#C9A86A] group-hover:text-black">
                             <Wind className="h-4 w-4" />
@@ -354,7 +367,7 @@ export function Header() {
                       </li>
 
                       <li className="group cursor-pointer">
-                        <Link href="/coming-soon/face-serum" className="flex items-start gap-4">
+                        <Link href="/coming-soon/face-serum" className="flex items-start gap-4" onClick={() => setMegaOpen(false)}>
                           <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#151c17] text-[#C9A86A] border border-[#C9A86A]/20 transition group-hover:bg-[#C9A86A] group-hover:text-black">
                             <Droplet className="h-4 w-4" />
                           </div>
@@ -377,6 +390,7 @@ export function Header() {
                       <Link
                         href="/shop"
                         className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A86A] hover:text-white transition-colors flex items-center gap-2"
+                        onClick={() => setMegaOpen(false)}
                       >
                         VIEW ALL PRODUCTS <ArrowRight className="h-3 w-3" />
                       </Link>
@@ -393,7 +407,7 @@ export function Header() {
                       <div className="grid grid-cols-4 gap-8">
                         {["Halò", "Pearl", "Amalfi", "Santorini"].map(
                           (n) => (
-                            <Link href="/shop" key={n} className="group text-white">
+                            <Link href="/shop" key={n} className="group text-white" onClick={() => setMegaOpen(false)}>
                               <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
                                 {n}
                               </p>
@@ -411,7 +425,7 @@ export function Header() {
                         HAIR COLLECTION
                       </p>
                       <div className="grid grid-cols-4 gap-8">
-                        <Link href="/shop" className="group text-white">
+                        <Link href="/shop" className="group text-white" onClick={() => setMegaOpen(false)}>
                           <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
                             Veil
                           </p>
@@ -419,7 +433,7 @@ export function Header() {
                           <p className="text-xs text-white/50 mt-2 mb-1">30ml</p>
                           <p className="text-xs text-white/80">Rs. 3500</p>
                         </Link>
-                        <Link href="/shop" className="group text-white">
+                        <Link href="/shop" className="group text-white" onClick={() => setMegaOpen(false)}>
                           <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
                             Herbé
                           </p>
@@ -436,7 +450,7 @@ export function Header() {
                         FACE SERUM
                       </p>
                       <div className="grid grid-cols-4 gap-8">
-                        <Link href="/shop" className="group text-white">
+                        <Link href="/shop" className="group text-white" onClick={() => setMegaOpen(false)}>
                           <p className="font-display text-lg text-[#F5F2EC] group-hover:text-[#C9A86A] transition-colors">
                             Dew
                           </p>
@@ -473,12 +487,14 @@ export function Header() {
                       <Link
                         href="/shop"
                         className="rounded-full bg-[#E8D7BE] px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-black transition hover:bg-white flex items-center gap-2"
+                        onClick={() => setMegaOpen(false)}
                       >
                         SHOP COLLECTION <ArrowRight className="h-3 w-3" />
                       </Link>
                       <Link
                         href="/shop"
                         className="rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-white transition hover:border-[#C9A86A] hover:text-[#C9A86A]"
+                        onClick={() => setMegaOpen(false)}
                       >
                         WATCH ROUTINE
                       </Link>
