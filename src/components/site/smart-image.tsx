@@ -11,11 +11,12 @@ type Props = {
   height?: number;
 };
 
-/** Native img — avoids Next optimizer 404s on local product photos. */
+/** Native img from /public — same absolute path on localhost and Vercel. */
 export function SmartImage({ src, alt, className, priority, fill, width, height }: Props) {
+  const url = src.startsWith("http") || src.startsWith("/") ? src : `/${src}`;
   return (
     <img
-      src={src}
+      src={url}
       alt={alt}
       width={fill ? undefined : width}
       height={fill ? undefined : height}

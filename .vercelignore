@@ -1,25 +1,25 @@
-public/Dew.jpg
-public/Halo.jpg
-public/herbe.jpg
-public/Veil.jpg
-public/Pearl.jpg
-public/Amalfi.jpg
-public/Santorini.jpg
-public/02_luna_glow_duo.PNG
-public/03_root_to_radiance.PNG
-public/04_radiant_you.PNG
-public/05_complete_glow.PNG
-public/06_halo_duo.PNG
-public/07_halo_quartet.PNG
-public/08_everything_set.PNG
-public/01_hero_mimi_sets.jpg.png
-public/mimis_edits_editorial.PNG
-public/make-your-own-bundle-bg.png
-public/gift-package.jpg.png
-Dew.jpg
-halo.jpg
-herbe.jpg
-veil.jpg
-Pearl.jpg
-Amalfi.jpg
-Santorini.jpg
+# Ignore unused large originals at these exact public-root paths only.
+# Do NOT use unanchored names like halo.jpg — those also match public/products/halo.jpg
+# and Vercel would deploy without the live product photos.
+
+/public/Dew.jpg
+/public/Halo.jpg
+/public/herbe.jpg
+/public/Veil.jpg
+/public/Pearl.jpg
+/public/Amalfi.jpg
+/public/Santorini.jpg
+/public/02_luna_glow_duo.PNG
+/public/03_root_to_radiance.PNG
+/public/04_radiant_you.PNG
+/public/05_complete_glow.PNG
+/public/06_halo_duo.PNG
+/public/07_halo_quartet.PNG
+/public/08_everything_set.PNG
+/public/01_hero_mimi_sets.jpg.png
+/public/mimis_edits_editorial.PNG
+/public/make-your-own-bundle-bg.png
+/public/gift-package.jpg.png
+
+# Always upload the compressed product photos used in production.
+!/public/products/**
