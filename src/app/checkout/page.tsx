@@ -38,6 +38,12 @@ export default function CheckoutPage() {
   });
   
   const [errors, setErrors] = useState<Partial<Record<keyof CustomerInfo, string>>>({});
+  const [discountCode, setDiscountCode] = useState("");
+  const [appliedCode, setAppliedCode] = useState<string | null>(null);
+  const [discountError, setDiscountError] = useState("");
+
+  const discountAmount = appliedCode === "MIMI10" ? Math.round(subtotal * 0.1) : 0;
+  const total = subtotal - discountAmount;
 
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof CustomerInfo, string>> = {};
@@ -68,8 +74,18 @@ export default function CheckoutPage() {
 
 
 
+  const handleApplyDiscount = () => {
+    const code = discountCode.trim().toUpperCase();
+    if (code === "MIMI10") {
+      setAppliedCode("MIMI10");
+      setDiscountError("");
+      return;
+    }
+    setDiscountError("Invalid discount code. Please try again.");
+  };
+
   const formatWhatsAppMessage = (orderId: string): string => {
-    return buildOrderWhatsAppMessage(orderId, customerInfo, lines, subtotal);
+    return buildOrderWhatsAppMessage(orderId, customerInfo, lines, subtotal, discountAmount);
   };
 
   const handleCheckout = async (e: React.FormEvent) => {
@@ -278,9 +294,34 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Coupon Box */}
-                <div className="flex gap-2 mb-8">
-                  <input placeholder="Gift card or discount code" className="checkout-input flex-1" />
-                  <button className="bg-white/10 hover:bg-white/15 transition text-[#F8F4ED] px-4 rounded-lg text-sm font-medium">Apply</button>
+                <div className="mb-8">
+                  <div className="flex gap-2">
+                    <input
+                      placeholder="Gift card or discount code"
+                      value={discountCode}
+                      onChange={(e) => {
+                        setDiscountCode(e.target.value);
+                        if (discountError) setDiscountError("");
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          handleApplyDiscount();
+                        }
+                      }}
+                      className={`checkout-input flex-1 ${discountError ? "error" : ""}`}
+                    />
+                    <button
+                      type="button"
+                      onClick={handleApplyDiscount}
+                      className="bg-white/10 hover:bg-white/15 transition text-[#F8F4ED] px-4 rounded-lg text-sm font-medium"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                  {discountError && (
+                    <span className="text-[10px] text-red-400 mt-1 block">{discountError}</span>
+                  )}
                 </div>
 
                 <div className="space-y-3 mb-8 border-t border-white/10 pt-6">
@@ -288,6 +329,12 @@ export default function CheckoutPage() {
                     <span>Subtotal</span>
                     <span>PKR {subtotal.toLocaleString()}</span>
                   </div>
+                  {discountAmount > 0 && (
+                    <div className="flex justify-between text-sm text-[#B8B5AC]">
+                      <span>Discount (MIMI10 – 10%)</span>
+                      <span>−PKR {discountAmount.toLocaleString()}</span>
+                    </div>
+                  )}
                   <div className="flex justify-between text-sm text-[#B8B5AC]">
                     <span>Shipping</span>
                     <span>Free</span>
@@ -298,7 +345,7 @@ export default function CheckoutPage() {
                   </div>
                   <div className="flex justify-between text-lg text-[#D4B483] font-display pt-3 border-t border-white/10 mt-3">
                     <span>Total</span>
-                    <span>PKR {subtotal.toLocaleString()}</span>
+                    <span>PKR {total.toLocaleString()}</span>
                   </div>
                 </div>
 

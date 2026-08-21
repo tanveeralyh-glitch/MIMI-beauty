@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 
-const SESSION_KEY = "mimi_popup_dismissed_v4";
+const SESSION_KEY = "mimi_popup_dismissed_v5";
+const PROMO_CODE = "MIMI10";
 
 export function PromotionalPopup() {
   const [isOpen, setIsOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     // Small delay so the page loads first, then popup appears
@@ -40,6 +41,16 @@ export function PromotionalPopup() {
     try {
       sessionStorage.setItem(SESSION_KEY, "true");
     } catch { /* ignore */ }
+  };
+
+  const handleCopyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(PROMO_CODE);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
   };
 
   // Keyboard: Escape to close
@@ -157,7 +168,7 @@ export function PromotionalPopup() {
 
                   {/* Invitation headline */}
                   <p className="text-[10px] uppercase tracking-[0.35em] text-[#FDFBF7]/55 mb-8">
-                    EXCLUSIVE WELCOME
+                    FIRST 100 CUSTOMERS
                   </p>
 
                   {/* Main offer — large editorial serif */}
@@ -199,8 +210,8 @@ export function PromotionalPopup() {
                   </div>
 
                   {/* Subheading */}
-                  <p className="text-[9px] uppercase tracking-[0.35em] text-[#FDFBF7]/38 mb-8">
-                    FOR OUR FIRST 100 CUSTOMERS
+                  <p className="text-[9px] tracking-[0.18em] text-[#FDFBF7]/38 mb-8">
+                    Get 10% OFF Your First Order
                   </p>
 
                   {/* Gold divider with diamond */}
@@ -222,13 +233,13 @@ export function PromotionalPopup() {
                       lineHeight: "1.7",
                     }}
                   >
-                    Be among the first to experience<br />the world of Mimi Beauty.
+                    Use code {PROMO_CODE}
                   </p>
 
-                  {/* CTA — luxury outlined button */}
-                  <Link
-                    href="/shop"
-                    onClick={handleClose}
+                  {/* CTA — copy discount code */}
+                  <button
+                    type="button"
+                    onClick={handleCopyCode}
                     className="group relative inline-flex items-center justify-center w-full h-11 overflow-hidden transition-colors duration-300"
                     style={{ border: "1px solid rgba(201,168,106,0.45)" }}
                   >
@@ -237,9 +248,9 @@ export function PromotionalPopup() {
                       style={{ background: "rgba(201,168,106,0.09)" }}
                     />
                     <span className="relative text-[10px] font-medium uppercase tracking-[0.4em] text-[#C9A86A] transition-colors duration-300 group-hover:text-[#FDFBF7]">
-                      CLAIM 10% OFF
+                      {copied ? "COPIED" : "COPY CODE"}
                     </span>
-                  </Link>
+                  </button>
 
                   {/* Dismiss */}
                   <button

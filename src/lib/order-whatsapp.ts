@@ -59,9 +59,11 @@ export function buildOrderWhatsAppMessage(
   customer: OrderCustomer,
   lines: CartLine[],
   total: number,
+  promoDiscount = 0,
 ) {
-  const discount = lines.reduce((sum, line) => sum + lineDiscount(line), 0);
-  const subtotalBeforeDiscount = total + discount;
+  const productDiscount = lines.reduce((sum, line) => sum + lineDiscount(line), 0);
+  const subtotalBeforeDiscount = total + productDiscount;
+  const finalTotal = total - promoDiscount;
 
   let message = `*MIMI BEAUTY — NEW ORDER*\n`;
   message += `Order ID: ${orderId}\n\n`;
@@ -109,8 +111,15 @@ export function buildOrderWhatsAppMessage(
 
   message += `*Totals*\n`;
   message += `Subtotal: ${pkr(subtotalBeforeDiscount)}\n`;
-  message += `Discount: ${discount > 0 ? `− ${pkr(discount)}` : pkr(0)}\n`;
-  message += `Final total: ${pkr(total)}\n\n`;
+  if (promoDiscount > 0) {
+    message += `Discount (MIMI10 – 10%): − ${pkr(promoDiscount)}\n`;
+  }
+  if (productDiscount > 0) {
+    message += `Discount: − ${pkr(productDiscount)}\n`;
+  } else if (promoDiscount === 0) {
+    message += `Discount: ${pkr(0)}\n`;
+  }
+  message += `Final total: ${pkr(finalTotal)}\n\n`;
 
   message += `*Customer*\n`;
   message += `Name: ${customer.firstName} ${customer.lastName}\n`;
