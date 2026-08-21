@@ -2,6 +2,7 @@
 
 import { bodyOilProducts, includedProducts, selectionMax, showsBodyOilSelector, showsProductOptions, type Bundle } from "@/lib/sets";
 import type { Product } from "@/lib/products";
+import { SmartImage } from "@/components/site/smart-image";
 
 function OptionTile({
   product,
@@ -25,13 +26,13 @@ function OptionTile({
       } ${disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer"}`}
     >
       <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-sm bg-[#0A100C]">
-        <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+        <SmartImage src={product.image} alt={product.name} fill sizes="48px" className="object-cover" />
       </span>
       <span className="min-w-0">
-        <span className="block truncate text-sm font-medium tracking-wide text-[#F5F2EC]" style={{ fontFamily: "Montserrat" }}>
+        <span className="font-display block truncate text-sm tracking-wide text-[#F5F2EC]">
           {product.name}
         </span>
-        <span className="mt-0.5 block truncate text-[11px] text-[#D8D2C8]/80" style={{ fontFamily: "Montserrat" }}>
+        <span className="mt-0.5 block truncate text-[11px] text-[#D8D2C8]/80">
           {product.tagline}
         </span>
       </span>
@@ -51,24 +52,24 @@ export function SetProductOptions({
   const oilMode = showsBodyOilSelector(bundle);
   const options = oilMode ? bodyOilProducts() : includedProducts(bundle);
   const max = selectionMax(bundle);
+  const exclusive = !oilMode && max <= 1;
 
   if (!showsProductOptions(bundle) || options.length === 0) return null;
 
   return (
     <div className="mt-6">
       <p
-        className={`${oilMode ? "mb-1" : "mb-3"} text-[11px] font-medium uppercase tracking-[0.2em] text-[#D8D2C8]`}
-        style={{ fontFamily: "Montserrat" }}
+        className={`${oilMode ? "mb-1" : "mb-3"} text-[11px] font-normal uppercase tracking-[0.2em] text-[#D8D2C8]`}
       >
-        {oilMode ? "Choose Your Body Oil" : options.length === 1 ? "Included product" : `${options.length} products in this set`}
+        {oilMode ? "Choose Your Body Oil" : options.length === 1 ? "Included product" : `${options.length} Products in This Set`}
       </p>
       {oilMode && (
-        <p className="mb-3 text-[12px] text-[#D8D2C8]/80" style={{ fontFamily: "Montserrat" }}>
+        <p className="mb-3 text-[12px] text-[#D8D2C8]/80">
           Select {max} unique body oils
           {selectedSlugs.length > 0 ? ` · ${selectedSlugs.length}/${max}` : ""}
         </p>
       )}
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <div className="hide-scrollbar grid max-h-[min(50vh,20rem)] grid-cols-1 gap-2 overflow-y-auto overflow-x-hidden sm:grid-cols-2">
         {options.map((product) => {
           const selected = selectedSlugs.includes(product.slug);
           const atMax = selectedSlugs.length >= max;
@@ -77,7 +78,7 @@ export function SetProductOptions({
               key={product.slug}
               product={product}
               selected={selected}
-              disabled={!selected && atMax}
+              disabled={!selected && atMax && !exclusive}
               onClick={() => onToggle(product.slug)}
             />
           );

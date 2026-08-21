@@ -2,8 +2,8 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-
 import { Variants } from "framer-motion";
+import { SmartImage } from "@/components/site/smart-image";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 36 },
@@ -92,19 +92,18 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* ─── Google Fonts ─── */}
+      {/* ─── Page styles ─── */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap');
-
-        .contact-font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
-        .contact-font-sans  { font-family: 'Inter', system-ui, sans-serif; }
+        .contact-font-serif { font-family: var(--font-display); font-weight: 500; }
+        .contact-font-sans  { font-family: var(--font-sans); font-weight: 400; }
 
         .contact-input {
           background: rgba(255,255,255,0.035);
           border: 1px solid rgba(229,212,192,0.14);
           border-radius: 10px;
           color: #EDE5D8;
-          font-family: 'Inter', system-ui, sans-serif;
+          font-family: var(--font-sans);
+          font-weight: 400;
           font-size: 14px;
           padding: 14px 16px;
           width: 100%;
@@ -167,17 +166,13 @@ export default function ContactPage() {
             zIndex: 0,
           }}
         >
-          <img
+          <SmartImage
             src="/brand-story-editorial.jpg"
             alt=""
-            aria-hidden
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center",
-              filter: "saturate(0.7) brightness(0.5)",
-            }}
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            style={{ filter: "saturate(0.7) brightness(0.5)" }}
           />
           {/* dark overlay */}
           <div
@@ -255,7 +250,7 @@ export default function ContactPage() {
                 className="contact-font-serif"
                 style={{
                   fontSize: "clamp(38px, 4.5vw, 60px)",
-                  fontWeight: 300,
+                  fontWeight: 500,
                   lineHeight: 1.1,
                   color: "#EDE5D8",
                   letterSpacing: "-0.01em",
@@ -415,7 +410,7 @@ export default function ContactPage() {
                     className="contact-font-serif"
                     style={{
                       fontSize: 22,
-                      fontWeight: 400,
+                      fontWeight: 500,
                       fontStyle: "italic",
                       color: "#EDE5D8",
                       letterSpacing: "0.01em",
@@ -566,12 +561,12 @@ export default function ContactPage() {
                       background: sent ? "rgba(201,168,106,0.18)" : "#E5D4C0",
                       color: sent ? "#C9A86A" : "#0F1F17",
                       fontSize: 12,
-                      fontWeight: 700,
+                      fontWeight: 400,
                       letterSpacing: "0.2em",
                       textTransform: "uppercase",
                       border: sent ? "1px solid rgba(201,168,106,0.35)" : "none",
                       cursor: sent ? "default" : "pointer",
-                      fontFamily: "'Inter', system-ui, sans-serif",
+                      fontFamily: "var(--font-sans)",
                       transition: "all 0.3s ease",
                     }}
                   >

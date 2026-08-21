@@ -165,8 +165,8 @@ export function PromotionalPopup() {
                     <span
                       className="leading-none text-[#FDFBF7]"
                       style={{
-                        fontFamily: "'Cormorant Garamond', 'Bodoni Moda', Georgia, serif",
-                        fontWeight: 300,
+                        fontFamily: "var(--font-display)",
+                        fontWeight: 500,
                         fontSize: "clamp(80px, 22vw, 108px)",
                         letterSpacing: "-0.02em",
                       }}
@@ -177,8 +177,8 @@ export function PromotionalPopup() {
                       <span
                         className="leading-none text-[#C9A86A]"
                         style={{
-                          fontFamily: "'Cormorant Garamond', 'Bodoni Moda', Georgia, serif",
-                          fontWeight: 300,
+                          fontFamily: "var(--font-display)",
+                          fontWeight: 500,
                           fontSize: "clamp(24px, 6vw, 32px)",
                         }}
                       >
@@ -187,8 +187,8 @@ export function PromotionalPopup() {
                       <span
                         className="leading-none text-[#FDFBF7]/65 mt-1"
                         style={{
-                          fontFamily: "'Cormorant Garamond', Georgia, serif",
-                          fontWeight: 400,
+                          fontFamily: "var(--font-display)",
+                          fontWeight: 500,
                           fontSize: "13px",
                           letterSpacing: "0.14em",
                         }}
@@ -214,10 +214,10 @@ export function PromotionalPopup() {
 
                   {/* Emotional message */}
                   <p
-                    className="text-[#FDFBF7]/55 mb-10 italic"
+                    className="text-[#FDFBF7]/55 mb-10"
                     style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontWeight: 300,
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 400,
                       fontSize: "clamp(13px, 3.5vw, 15px)",
                       lineHeight: "1.7",
                     }}

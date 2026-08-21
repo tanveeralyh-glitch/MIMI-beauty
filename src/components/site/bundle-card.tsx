@@ -25,6 +25,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { SetProductOptions } from "@/components/site/set-options";
+import { SmartImage } from "@/components/site/smart-image";
 
 export { bundles, GIFT_PACKAGING_FEE };
 export type { Bundle };
@@ -83,10 +84,12 @@ export function BundleCard({ bundle }: { bundle: Bundle }) {
       >
         <Link href={`/bundle/${bundle.id}`} className="block">
           <div className="relative aspect-square overflow-hidden bg-[#0A100C]">
-            <img
+            <SmartImage
               src={bundle.image}
               alt={bundle.name}
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
             <span className="absolute left-4 top-4 rounded-full border border-gold/40 bg-[#0A100C]/85 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-gold">
               {bundle.discountPercent}% OFF
@@ -139,7 +142,7 @@ export function BundleCard({ bundle }: { bundle: Bundle }) {
       </motion.article>
 
       <Dialog open={pickerOpen} onOpenChange={setPickerOpen}>
-        <DialogContent className="max-h-[90vh] overflow-y-auto max-w-md border-gold/20 bg-[#0D1C14] text-[#F5F2EC] sm:rounded-sm">
+        <DialogContent className="hide-scrollbar max-h-[90vh] overflow-y-auto max-w-md border-gold/20 bg-[#0D1C14] text-[#F5F2EC] sm:rounded-sm">
           <DialogHeader className="text-center sm:text-center">
             <DialogTitle className="font-display text-2xl tracking-wide" style={{ fontFamily: "Cinzel" }}>
               {bundle.name}

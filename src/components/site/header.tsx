@@ -20,6 +20,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { useCart } from "@/lib/cart";
 import { useWishlist } from "@/lib/wishlist";
 import { collections, products } from "@/lib/products";
+import { SmartImage } from "./smart-image";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -172,8 +173,8 @@ export function Header() {
             onClick={closeOverlays}
             className="z-10 justify-self-start no-underline flex items-center gap-2"
           >
-            <img src="/logo.png" alt="Mimi Beauty" className="h-[70px] md:h-[100px] max-w-[90px] sm:max-w-none object-contain" />
-            <span style={{ fontFamily: "'Cinzel', serif", fontWeight: 500, letterSpacing: "0.08em" }} className="text-2xl sm:text-3xl tracking-wide text-foreground mt-1">
+            <SmartImage src="/logo.png" alt="Mimi Beauty" width={132} height={100} priority sizes="90px" className="h-[70px] md:h-[100px] w-auto max-w-[90px] sm:max-w-none object-contain" style={{ width: "auto" }} />
+            <span className="font-display text-2xl sm:text-3xl tracking-wide text-foreground mt-1" style={{ letterSpacing: "0.08em" }}>
               Mimi<span className="text-gold">Beauty</span>
             </span>
           </Link>
@@ -470,10 +471,12 @@ export function Header() {
                 {/* Bottom Banner */}
                 <div className="relative h-64 overflow-hidden bg-[#070b09] flex items-center px-10 border-t border-gold/10">
                   <div className="absolute inset-0 z-0">
-                    <img
+                    <SmartImage
                       src="/hero_dew_collection.jpg"
                       alt="Collection lineup"
-                      className="h-full w-full object-cover object-right opacity-80 mix-blend-overlay"
+                      fill
+                      sizes="100vw"
+                      className="object-cover object-right opacity-80 mix-blend-overlay"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0a110c] via-[#0a110c]/80 to-transparent" />
                   </div>
@@ -583,7 +586,7 @@ export function Header() {
                       }}
                       className="flex items-center gap-4 rounded-sm px-3 py-3 transition-colors hover:bg-gold/10"
                     >
-                      <img src={p.image} alt="" className="h-14 w-14 object-cover" />
+                      <SmartImage src={p.image} alt="" width={56} height={56} sizes="56px" className="h-14 w-14 object-cover" />
                       <div className="min-w-0 flex-1">
                         <p className="font-display text-lg">{p.name}</p>
                         <p className="truncate text-xs text-muted-foreground">{p.tagline}</p>
@@ -631,7 +634,7 @@ export function Header() {
                 onClick={closeOverlays}
                 className="no-underline"
               >
-                <img src="/logo.png" alt="Mimi Beauty" className="h-[120px] w-[132px] object-contain" />
+                <SmartImage src="/logo.png" alt="Mimi Beauty" width={132} height={120} sizes="132px" className="h-[120px] w-[132px] object-contain" style={{ width: "auto", height: "auto" }} />
               </Link>
               <button
                 type="button"
@@ -808,7 +811,7 @@ function WishlistPanel({
                 onClick={onClose}
                 className="flex min-w-0 flex-1 items-center gap-3"
               >
-                <img src={p.image} alt="" className="h-12 w-12 object-cover" />
+                <SmartImage src={p.image} alt="" width={48} height={48} sizes="48px" className="h-12 w-12 object-cover" />
                 <div className="min-w-0">
                   <p className="truncate font-display text-base">{p.name}</p>
                   <p className="text-xs text-gold">Rs. {p.price}</p>

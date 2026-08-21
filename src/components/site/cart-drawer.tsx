@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus, X } from "lucide-react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart";
+import { SmartImage } from "@/components/site/smart-image";
 
 export function CartDrawer() {
   const { open, setOpen, lines, remove, setQty, subtotal, count } = useCart();
@@ -56,11 +57,13 @@ export function CartDrawer() {
                 <ul className="space-y-6">
                   {lines.map(({ product, qty, isBundle, bundlePrice, giftPackaging }) => (
                     <li key={product.slug} className="flex gap-4">
-                      <div className="h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-secondary">
-                        <img
+                      <div className="relative h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-secondary">
+                        <SmartImage
                           src={product.image}
                           alt={product.name}
-                          className="h-full w-full object-cover"
+                          fill
+                          sizes="80px"
+                          className="object-cover"
                         />
                       </div>
                       <div className="min-w-0 flex-1">

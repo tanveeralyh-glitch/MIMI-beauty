@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ShoppingBag, Star } from "lucide-react";
 import { bundles, BundleCard } from "@/components/site/bundle-card";
+import { SmartImage } from "@/components/site/smart-image";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -54,10 +55,13 @@ export default function BundlesPage() {
               className="order-1 lg:order-2"
             >
               <div className="relative aspect-square bg-[#0A100C] rounded-lg overflow-hidden">
-                <img
+                <SmartImage
                   src="/products/mimi-sets-hero.jpg"
                   alt="Mimi Beauty Products"
-                  className="h-full w-full object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
             </motion.div>
@@ -104,10 +108,12 @@ export default function BundlesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-lg bg-background border border-gold/10">
             {/* Left - Elegant Beauty Still Life Image */}
             <div className="relative order-2 md:order-1 aspect-[4/3] md:aspect-auto min-h-[350px] md:min-h-[500px] overflow-hidden">
-              <img
+              <SmartImage
                 src="/products/mimis-edit.jpg"
                 alt="Mimi's Edit Collection"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent pointer-events-none" />
             </div>

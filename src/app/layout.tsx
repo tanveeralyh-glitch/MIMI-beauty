@@ -1,7 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Cinzel, Montserrat } from "next/font/google";
 import { Providers } from "./providers";
 import { ClientLayout } from "./client-layout";
 import "../styles.css";
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: "500",
+  variable: "--font-cinzel",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-montserrat",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "MIMIbeauty · Luxury Skincare",
@@ -29,16 +44,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Montserrat:wght@400;500;600;700&display=swap"
-        />
-      </head>
-      <body>
+    <html lang="en" className={`dark ${cinzel.variable} ${montserrat.variable}`}>
+      <body className={montserrat.className}>
         <Providers>
           <ClientLayout>{children}</ClientLayout>
         </Providers>

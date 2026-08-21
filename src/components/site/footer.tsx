@@ -52,7 +52,7 @@ export function Footer() {
         {/* Top Masthead */}
         <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-start px-6 text-left md:px-10 pb-16 sm:pb-24 md:pb-40">
           <Link href="/" className="no-underline">
-            <h2 className="text-[2rem] sm:text-[2.75rem] md:text-[6rem] lg:text-[8rem] leading-[0.85] tracking-tight text-[#F5F2EC]">
+            <h2 className="font-display text-[2rem] sm:text-[2.75rem] md:text-[6rem] lg:text-[8rem] leading-[0.85] tracking-tight text-[#F5F2EC]">
               Mimi<span className="italic text-[#C9A86A]">Beauty</span>
             </h2>
           </Link>
@@ -96,10 +96,7 @@ export function Footer() {
               {/* Newsletter Section */}
               <div className="md:col-span-4 md:pr-12">
                 <Link href="/" className="no-underline">
-                  <p
-                    className="text-2xl sm:text-3xl text-[#C9A86A]"
-                    style={{ fontFamily: "var(--font-script, cursive)" }}
-                  >
+                  <p className="font-display text-2xl sm:text-3xl text-[#C9A86A]">
                     Mimi Beauty.
                   </p>
                 </Link>

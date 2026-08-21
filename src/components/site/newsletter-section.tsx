@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Mail, Heart } from "lucide-react";
+import { SmartImage } from "@/components/site/smart-image";
 
 function LeafIcon({ className = "" }: { className?: string }) {
   return (
@@ -74,13 +75,13 @@ export function NewsletterSection() {
   return (
     <section className="relative w-full overflow-hidden bg-[#111A15] py-20 md:py-32">
       <div className="absolute inset-0 z-0">
-        <img
+        <SmartImage
           src="/dew-serum-hero.jpg"
           alt="Mimi Beauty DEW Radiant Glow Facial Serum"
-          className="h-full w-full object-cover object-center"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
           style={{ filter: "brightness(0.75) saturate(0.85) sepia(0.18)" }}
-          loading="lazy"
-          decoding="async"
         />
         <div
           className="absolute inset-0 z-10"

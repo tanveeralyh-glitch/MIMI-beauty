@@ -16,6 +16,7 @@ import { NewsletterSection } from "@/components/site/newsletter-section";
 import { TestimonialsCarousel } from "@/components/site/testimonials-carousel";
 import { ReadSlowlySection } from "@/components/site/read-slowly-section";
 import { bundles, BundleCard } from "@/components/site/bundle-card";
+import { SmartImage } from "@/components/site/smart-image";
 
 
 
@@ -110,7 +111,7 @@ function BestSellers() {
             >
               {/* Line 1 — Skincare that */}
               <span className="block text-5xl sm:text-6xl md:text-8xl lg:text-[96px] tracking-tight">
-                Skincare <span className="italic text-[#F6F2EB]/60">that</span>
+                Skincare <span className="italic text-[#FFFFFF]">that</span>
               </span>
               {/* Line 2 — gold italic, stays with you. */}
               <em className="not-italic block text-4xl sm:text-5xl md:text-7xl lg:text-[80px] text-gold tracking-tight italic">
@@ -319,9 +320,9 @@ function BeforeAfter() {
       onPointerLeave={() => (draggingRef.current = false)}
       className="relative mt-16 aspect-[16/9] w-full select-none overflow-hidden rounded-3xl border border-border touch-none"
     >
-      <img src="/after.png" alt="After" className="absolute inset-0 h-full w-full object-cover" />
+      <SmartImage src="/after.png" alt="After" fill sizes="100vw" className="object-cover" />
       <div ref={beforeRef} className="absolute inset-0" style={{ clipPath: "inset(0 50% 0 0)" }}>
-        <img src="/before.png" alt="Before" className="absolute inset-0 h-full w-full object-cover" />
+        <SmartImage src="/before.png" alt="Before" fill sizes="100vw" className="object-cover" />
       </div>
       <div ref={dividerRef} className="absolute inset-y-0 left-1/2 z-10 w-px -translate-x-1/2 bg-gold">
         <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full border border-gold bg-background/90 cursor-ew-resize">
@@ -379,16 +380,17 @@ function Blog() {
               transition={{ duration: 0.7, delay: i * 0.06 }}
               className="group flex flex-col"
             >
-              <div className="aspect-[3/4] overflow-hidden rounded-none bg-secondary/20">
-                <img 
+              <div className="relative aspect-[3/4] overflow-hidden rounded-none bg-secondary/20">
+                <SmartImage
                   src={[
-                    "https://images.unsplash.com/photo-1611078449921-2a134a413d42?auto=format&fit=crop&q=80", 
-                    "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80", 
-                    "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80"
-                  ][i]} 
-                  alt="" 
-                  className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-105" 
-                  loading="lazy" 
+                    "https://images.unsplash.com/photo-1611078449921-2a134a413d42?auto=format&fit=crop&q=80",
+                    "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80",
+                    "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80",
+                  ][i]}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-all duration-1000 group-hover:scale-105"
                 />
               </div>
               <div className="pt-6">

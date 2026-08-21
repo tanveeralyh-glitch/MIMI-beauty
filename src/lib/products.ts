@@ -46,7 +46,7 @@ export const products: Product[] = [
     slug: "dew",
     name: "Dew",
     tagline: "Barrier Repair Face Serum",
-    category: "SERUM",
+    category: "FACE",
     collection: "Glow",
     price: 3500,
     originalPrice: 4500,
@@ -409,16 +409,7 @@ export const ingredientsShowcase = [
   },
 ];
 
-export const categories = [
-  "Cleanser",
-  "Serum",
-  "Moisturizer",
-  "Toner",
-  "Sunscreen",
-  "Face Mask",
-  "Eye Care",
-  "Lip Care",
-];
+export const categories = ["FACE", "HAIR", "SCALP", "BODY"] as const;
 
 export const collections = [
   { slug: "glow", name: "Glow Collection", tone: "from-[oklch(0.86_0.08_78)] to-[oklch(0.74_0.09_78)]" },

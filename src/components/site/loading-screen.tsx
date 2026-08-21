@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { assets } from "@/lib/products";
+import { SmartImage } from "./smart-image";
 
 export function LoadingScreen() {
   const [show, setShow] = useState(false);
@@ -33,7 +34,7 @@ export function LoadingScreen() {
             transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1] }}
             className="flex flex-col items-center gap-4"
           >
-            <img src={assets.logo} className="h-16 w-16 rounded-full object-cover" alt="" />
+            <SmartImage src={assets.logo} alt="" width={64} height={64} priority sizes="64px" className="h-16 w-16 rounded-full object-cover" />
             <div className="h-px w-24 overflow-hidden bg-border">
               <motion.div
                 className="h-full w-full bg-gold"

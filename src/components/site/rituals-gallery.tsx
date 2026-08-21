@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRef, type MouseEvent } from "react";
+import { SmartImage } from "@/components/site/smart-image";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const GOLD = "#C9A86A";
@@ -108,13 +109,12 @@ function CollectionCard({
           style={{ background: glow }}
         />
 
-        <img
+        <SmartImage
           src={item.src}
           alt={item.name}
-          loading="lazy"
-          decoding="async"
-          // Hover zoom via CSS transform — no continuous JS animation
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+          fill
+          sizes="(max-width: 768px) 85vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
         />
 
         <div

@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { SmartImage } from "@/components/site/smart-image";
 
 const posts = [
   {
@@ -127,13 +128,14 @@ export default function JournalPage() {
             transition={{ delay: i * 0.04 }}
             className="overflow-hidden rounded-3xl border border-white/10"
           >
-            <div className="aspect-[16/10] overflow-hidden">
-              <img
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <SmartImage
                 src={p.img}
                 alt={p.title}
-                className="h-full w-full object-cover"
-                loading={i === 0 ? "eager" : "lazy"}
-                decoding="async"
+                fill
+                sizes="(max-width: 768px) 100vw, 800px"
+                priority={i === 0}
+                className="object-cover"
               />
             </div>
             <div className="p-6 md:p-10">

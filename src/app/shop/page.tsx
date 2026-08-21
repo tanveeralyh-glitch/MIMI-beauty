@@ -32,11 +32,7 @@ export default function Shop() {
     return list;
   }, [q, cat, sort]);
 
-  const chips = [
-    "All",
-    ...Array.from(new Set(products.map((p) => p.category))),
-    ...categories.filter((c) => !products.some((p) => p.category === c)),
-  ];
+  const chips = ["All", ...categories];
 
   return (
     <div className="relative min-h-screen bg-background text-white selection:bg-gold/20 selection:text-gold">

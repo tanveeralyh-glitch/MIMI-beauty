@@ -51,6 +51,7 @@ export function ProductCard({
               src={product.image}
               alt={product.name}
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               priority={index < 4}
               className="object-cover object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.03]"
             />

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { buildOrderWhatsAppMessage, createOrderId, openOrderWhatsApp } from "@/lib/order-whatsapp";
+import { SmartImage } from "@/components/site/smart-image";
 
 interface CustomerInfo {
   firstName: string;
@@ -258,8 +259,8 @@ export default function CheckoutPage() {
                     const unitPrice = isBundle && bundlePrice ? bundlePrice : product.price;
                     return (
                       <div key={line.product.slug} className="flex gap-4">
-                        <div className="h-20 w-16 shrink-0 rounded-md overflow-hidden bg-white/5">
-                          <img src={line.product.image} alt={line.product.name} className="h-full w-full object-cover" />
+                        <div className="relative h-20 w-16 shrink-0 rounded-md overflow-hidden bg-white/5">
+                          <SmartImage src={line.product.image} alt={line.product.name} fill sizes="64px" className="object-cover" />
                         </div>
                         <div className="flex-1 flex flex-col justify-center">
                           <p className="text-[#F8F4ED] font-display text-lg leading-tight">{line.product.name}</p>

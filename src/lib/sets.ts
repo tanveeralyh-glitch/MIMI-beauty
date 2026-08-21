@@ -15,6 +15,8 @@ export type Bundle = {
   bodyOilSlots: number;
   /** When false, hide the “products in this set” picker entirely. */
   showProductOptions?: boolean;
+  /** Cap how many included products can be selected at once. */
+  productSelectionMax?: number;
 };
 
 const bundleTheme = {
@@ -71,6 +73,7 @@ export const bundles: Bundle[] = [
     products: ["halo", "pearl", "santorini", "amalfi"],
     image: "/products/complete-glow.jpg",
     bodyOilSlots: 0,
+    productSelectionMax: 1,
   },
   {
     id: "bundle-5",
@@ -93,6 +96,7 @@ export const bundles: Bundle[] = [
     products: ["halo", "pearl", "amalfi", "santorini"],
     image: "/products/halo-quartet.jpg",
     bodyOilSlots: 0,
+    showProductOptions: false,
   },
   {
     id: "bundle-7",
@@ -127,15 +131,21 @@ export function showsProductOptions(bundle: Bundle) {
 }
 
 export function selectionMax(bundle: Bundle) {
-  return showsBodyOilSelector(bundle) ? bundle.bodyOilSlots : includedProducts(bundle).length;
+  if (showsBodyOilSelector(bundle)) return bundle.bodyOilSlots;
+  if (bundle.productSelectionMax != null) return bundle.productSelectionMax;
+  return includedProducts(bundle).length;
 }
 
 export function defaultSelectedSlugs(bundle: Bundle) {
   if (showsBodyOilSelector(bundle)) return [];
-  return includedProducts(bundle).map((p) => p.slug);
+  const included = includedProducts(bundle);
+  const max = selectionMax(bundle);
+  if (max <= 1) return included[0] ? [included[0].slug] : [];
+  return included.map((p) => p.slug);
 }
 
 export function toggleUnique(list: string[], slug: string, max: number) {
+  if (max <= 1) return [slug];
   if (list.includes(slug)) return list.filter((item) => item !== slug);
   if (list.length >= max) return list;
   return [...list, slug];

@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { SmartImage } from "@/components/site/smart-image";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const GOLD = "#C9A86A";
@@ -118,9 +119,9 @@ function IngredientCard({ item, index }: { item: (typeof newIngredients)[0]; ind
         </div>
 
         {/* Image Container: Under text on mobile (large/prominent), absolute circular overlapping on desktop */}
-        <div className="mt-6 w-full h-48 md:h-40 md:w-40 rounded-xl md:rounded-full overflow-hidden border border-gold/10 opacity-90 transition-transform duration-700 group-hover:scale-[1.03] md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-4 md:mt-0">
+        <div className="relative mt-6 w-full h-48 md:h-40 md:w-40 rounded-xl md:rounded-full overflow-hidden border border-gold/10 opacity-90 transition-transform duration-700 group-hover:scale-[1.03] md:absolute md:top-1/2 md:-translate-y-1/2 md:-right-4 md:mt-0">
           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent to-[#121A15] opacity-40 z-10" />
-          <img src={item.image} alt={item.name} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <SmartImage src={item.image} alt={item.name} fill sizes="(max-width: 768px) 100vw, 160px" className="object-cover" />
         </div>
       </div>
     </motion.div>

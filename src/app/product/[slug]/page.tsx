@@ -130,6 +130,7 @@ export default function ProductPage() {
                   alt={product.name}
                   fill
                   priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center"
                 />
               </div>

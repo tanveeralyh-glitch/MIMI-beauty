@@ -18,6 +18,7 @@ import {
   totalSelectedQuantity,
   type QuantityMap,
 } from "@/lib/sets";
+import { SmartImage } from "@/components/site/smart-image";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 
@@ -110,13 +111,13 @@ export default function BuildYourSetPage() {
                       className="flex min-w-0 items-center gap-3 text-left"
                     >
                       <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-sm bg-[#0A100C] sm:h-[4.5rem] sm:w-[4.5rem]">
-                        <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+                        <SmartImage src={product.image} alt={product.name} fill sizes="72px" className="object-cover" />
                       </span>
                       <span className="min-w-0">
-                        <span className="block truncate text-sm font-medium tracking-wide text-[#F5F2EC]" style={{ fontFamily: "Montserrat" }}>
+                        <span className="font-display block truncate text-sm tracking-wide text-[#F5F2EC]">
                           {product.name}
                         </span>
-                        <span className="mt-0.5 block truncate text-[11px] text-[#D8D2C8]/80" style={{ fontFamily: "Montserrat" }}>
+                        <span className="mt-0.5 block truncate text-[11px] text-[#D8D2C8]/80">
                           {product.tagline}
                         </span>
                         <span className="mt-1 block text-[12px] text-[#F5F2EC]" style={{ fontFamily: "Montserrat" }}>
