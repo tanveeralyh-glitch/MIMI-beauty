@@ -425,3 +425,23 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Subtle gold-tinted scrollbar for the bundle selection modal */
+.bundle-modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 106, 0.35) rgba(255, 255, 255, 0.04);
+}
+.bundle-modal-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.bundle-modal-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+}
+.bundle-modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 106, 0.35);
+  border-radius: 2px;
+}
+.bundle-modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 106, 0.55);
+}

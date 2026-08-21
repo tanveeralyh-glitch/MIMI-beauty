@@ -142,7 +142,7 @@ export function BundleCard({ bundle }: { bundle: Bundle }) {
       </motion.article>
 
       <Dialog open={pickerOpen} onOpenChange={setPickerOpen}>
-        <DialogContent className="hide-scrollbar max-h-[90vh] overflow-y-auto max-w-md border-gold/20 bg-[#0D1C14] text-[#F5F2EC] sm:rounded-sm">
+        <DialogContent className="bundle-modal-scroll max-h-[90vh] overflow-y-auto max-w-md border-gold/20 bg-[#0D1C14] text-[#F5F2EC] sm:rounded-sm">
           <DialogHeader className="text-center sm:text-center">
             <DialogTitle className="font-display text-2xl tracking-wide" style={{ fontFamily: "Cinzel" }}>
               {bundle.name}

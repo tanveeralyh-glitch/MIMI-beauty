@@ -69,7 +69,7 @@ export function SetProductOptions({
           {selectedSlugs.length > 0 ? ` · ${selectedSlugs.length}/${max}` : ""}
         </p>
       )}
-      <div className="hide-scrollbar grid max-h-[min(50vh,20rem)] grid-cols-1 gap-2 overflow-y-auto overflow-x-hidden sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-2 overflow-x-hidden sm:grid-cols-2">
         {options.map((product) => {
           const selected = selectedSlugs.includes(product.slug);
           const atMax = selectedSlugs.length >= max;
